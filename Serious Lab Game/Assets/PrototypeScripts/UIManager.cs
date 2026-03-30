@@ -24,17 +24,14 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        // Detecta escena
         isGameplayScene = SceneManager.GetActiveScene().name == "Game";
 
         if (!isGameplayScene)
         {
-            // Solo menu (o escena sin gameplay)
             ShowMenu();
         }
         else
         {
-            // Gameplay arranca sin UI visible
             HideAll();
             ResumeGame();
         }
@@ -100,17 +97,29 @@ public class UIManager : MonoBehaviour
 
     public void StartGameButton()
     {
-        SceneController.Instance.StartGame();
+        var sceneController = (SceneController)ServiceLocator.Instance.GetService("SceneController");
+        if (sceneController != null)
+        {
+            sceneController.StartGame();
+        }
     }
 
-    public void ContinueButton()
+    public void ReloadSceneButton()
     {
-        ShowMenu();
+        var sceneController = (SceneController)ServiceLocator.Instance.GetService("SceneController");
+        if (sceneController != null)
+        {
+            sceneController.ReloadScene();
+        }
     }
 
-    public void RetryButton()
+    public void LoadMenuButton()
     {
-        SceneController.Instance.ReloadScene();
+        var sceneController = (SceneController)ServiceLocator.Instance.GetService("SceneController");
+        if (sceneController != null)
+        {
+            sceneController.LoadMenu();
+        }
     }
 
     // ---------------- GAME CONTROL ----------------

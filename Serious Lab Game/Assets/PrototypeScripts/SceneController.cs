@@ -28,6 +28,8 @@ public class SceneController : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        ServiceLocator.Instance.SetService("SceneController", this);
     }
 
     public void StartGame()
