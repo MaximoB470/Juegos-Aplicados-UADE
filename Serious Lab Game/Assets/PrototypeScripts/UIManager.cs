@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
         if (!isGameplayScene)
         {
-            // Solo menú (o escena sin gameplay)
+            // Solo menu (o escena sin gameplay)
             ShowMenu();
         }
         else
