@@ -405,8 +405,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.41, y: -3.68, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.88, y: 1.88, z: 1.88}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1506889841}
   m_Father: {fileID: 556599536}
@@ -428,7 +428,7 @@ MonoBehaviour:
     sujetos y fuera del paso. Un tropiezo puede provocar ca\xEDdas o derribar equipos,
     y un cable suelto cerca de l\xEDquidos puede causar cortocircuito."
   foundMarker: {fileID: 1506889840}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 70155767}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!58 &70155766
 CircleCollider2D:
@@ -516,7 +516,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2591,8 +2591,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.23, y: -5.42, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 843697005}
   m_Father: {fileID: 556599536}
@@ -2647,7 +2647,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2739,7 +2739,7 @@ Transform:
   m_GameObject: {fileID: 734461893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.31, y: -1.08, z: 0}
+  m_LocalPosition: {x: 8.43, y: -1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2796,7 +2796,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2858,7 +2858,7 @@ MonoBehaviour:
     Todos los reactivos deben estar correctamente rotulados con nombre, concentraci\xF3n,
     fecha y s\xEDmbolo de peligro antes de utilizarse."
   foundMarker: {fileID: 7871677}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 734461895}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!1 &807386126
 GameObject:
@@ -3358,9 +3358,9 @@ Transform:
   m_GameObject: {fileID: 950607074}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.56, y: 4.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -3.56, y: 3.99, z: 0}
+  m_LocalScale: {x: 1.31, y: 1.31, z: 1.31}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 602673039}
   m_Father: {fileID: 556599536}
@@ -3382,7 +3382,7 @@ MonoBehaviour:
     o con fecha vencida puede fallar en el momento cr\xEDtico. Verific\xE1 regularmente
     la etiqueta de revisi\xF3n y report\xE1 cualquier anomal\xEDa."
   foundMarker: {fileID: 602673038}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 950607078}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!58 &950607077
 CircleCollider2D:
@@ -3470,7 +3470,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3508,8 +3508,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13, y: 1.62, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.68, y: 1.68, z: 1.68}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1400476787}
   m_Father: {fileID: 556599536}
@@ -3564,7 +3564,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3626,7 +3626,7 @@ MonoBehaviour:
     mantenerse siempre despejadas. En una evacuaci\xF3n, cada segundo cuenta y un
     obst\xE1culo puede ser fatal."
   foundMarker: {fileID: 1400476786}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 960393484}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!1 &1038252919
 GameObject:
@@ -3713,7 +3713,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3775,7 +3775,7 @@ MonoBehaviour:
     qu\xEDmico es obligatorio usar anteojos de seguridad. Un salpicado sin protecci\xF3n
     puede causar da\xF1o ocular permanente."
   foundMarker: {fileID: 23730197}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 1038252921}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!1 &1126953795
 GameObject:
@@ -3804,7 +3804,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.08, y: 0.07, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1659232291}
@@ -4360,8 +4360,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.3, y: 1.62, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2140977103}
   m_Father: {fileID: 556599536}
@@ -4383,7 +4383,7 @@ MonoBehaviour:
     y comunes deben separarse en contenedores espec\xEDficos. Mezclarlos puede generar
     reacciones peligrosas y contaminar el ambiente."
   foundMarker: {fileID: 2140977102}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 1343248246}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!58 &1343248245
 CircleCollider2D:
@@ -4471,7 +4471,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4993,9 +4993,9 @@ Transform:
   m_GameObject: {fileID: 1659232290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.07, y: -3.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 10.52, y: -3.51, z: 0}
+  m_LocalScale: {x: 2.89, y: 2.89, z: 2.89}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1126953796}
   m_Father: {fileID: 556599536}
@@ -5050,7 +5050,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5093,8 +5093,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0.05493692, y: 0}
+  m_Radius: 0.6901671
 --- !u!114 &1659232294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5112,7 +5112,7 @@ MonoBehaviour:
     Las sustancias qu\xEDmicas pueden contaminar la comida sin que sea visible, provocando
     intoxicaciones graves."
   foundMarker: {fileID: 1126953795}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 1659232292}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!1 &1713943145
 GameObject:
@@ -5461,9 +5461,9 @@ Transform:
   m_GameObject: {fileID: 1755774918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.88, y: -0.08, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -11.66, y: -0.06, z: 0}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1237411908}
   m_Father: {fileID: 556599536}
@@ -5518,7 +5518,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5580,7 +5580,7 @@ MonoBehaviour:
     deben usarse para tocar teclados, manijas ni ninguna superficie compartida. Al
     salir del \xE1rea de trabajo, los guantes deben retirarse."
   foundMarker: {fileID: 1237411907}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 1755774920}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!1 &1760679020
 GameObject:
@@ -5800,7 +5800,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5843,8 +5843,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0.47727072}
+  m_Radius: 0.9772707
 --- !u!114 &1798965781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5862,7 +5862,7 @@ MonoBehaviour:
     sin supervisi\xF3n activa. Si no est\xE1s trabajando con \xE9l, apagalo cortando
     el suministro de gas."
   foundMarker: {fileID: 1584577730}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 1798965779}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!1001 &1817909273
 PrefabInstance:
@@ -6086,9 +6086,9 @@ Transform:
   m_GameObject: {fileID: 1998515168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.18, y: 2.9, z: 0}
+  m_LocalPosition: {x: 2.29, y: 2.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 506447439}
   m_Father: {fileID: 556599536}
@@ -6143,7 +6143,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.4640789, g: 0, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6186,8 +6186,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: -0.026836276, y: -0.6440713}
+  m_Radius: 1.4124364
 --- !u!114 &1998515172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6205,7 +6205,7 @@ MonoBehaviour:
     recogido en el laboratorio, especialmente cerca de llamas abiertas. Un descuido
     puede provocar quemaduras graves en segundos."
   foundMarker: {fileID: 506447438}
-  highlightRenderer: {fileID: 0}
+  highlightRenderer: {fileID: 1998515170}
   highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
 --- !u!1 &2104822142
 GameObject:

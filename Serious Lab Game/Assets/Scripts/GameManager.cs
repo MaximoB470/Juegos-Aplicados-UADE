@@ -16,13 +16,11 @@ public class GameManager : MonoBehaviour
     private int foundCount = 0;
     private float currentTime;
     private bool gameRunning = false;
-
-    // ── Lectura pública para la UI ───────────────────────────────────────────
     public int TotalPoints => allClickPoints != null ? allClickPoints.Count : 0;
     public int FoundCount => foundCount;
     public float RemainingTime => Mathf.Max(currentTime, 0f);
 
-    // ────────────────────────────────────────────────────────────────────────
+   
     private void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -42,14 +40,12 @@ public class GameManager : MonoBehaviour
         if (currentTime <= 0f) LoseGame();
     }
 
-    // ── Inicialización ───────────────────────────────────────────────────────
     public void StartGame()
     {
         foundCount = 0;
         currentTime = gameDuration;
         gameRunning = true;
 
-        // Todos los puntos arrancan activos (collider ON, marcador OFF)
         foreach (var cp in allClickPoints)
             cp.ResetPoint();
 
@@ -58,18 +54,13 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.UpdateProgressDisplay(foundCount, TotalPoints);
     }
 
-    // ── Llamado por ClickPoint cuando el jugador hace click ──────────────────
     public void OnPointClicked(ClickPoint point)
     {
         if (!gameRunning || UIManager.Instance.IsPaused) return;
-        if (point.IsFound) return; // ya fue encontrado, ignorar doble click
-
-        // Le decimos al UIManager qué texto mostrar; el ClickPoint se marcará
-        // como encontrado cuando el jugador cierre el panel.
+        if (point.IsFound) return;
         UIManager.Instance.ShowInfoPanel(point);
     }
 
-    // ── Llamado por UIManager al cerrar el InfoPanel ─────────────────────────
     public void RegisterPointFound()
     {
         foundCount++;
@@ -79,7 +70,6 @@ public class GameManager : MonoBehaviour
             Invoke(nameof(WinGame), 0.15f);
     }
 
-    // ── Win / Lose ───────────────────────────────────────────────────────────
     private void WinGame()
     {
         gameRunning = false;

@@ -14,15 +14,15 @@ public class UIManager : MonoBehaviour
 
     [Header("Info Panel")]
     [SerializeField] private GameObject infoPanel;
-    [SerializeField] private TMP_Text infoPanelTitle;       // Texto del título del error
-    [SerializeField] private TMP_Text infoPanelDescription; // Texto descriptivo/educativo
+    [SerializeField] private TMP_Text infoPanelTitle;      
+    [SerializeField] private TMP_Text infoPanelDescription; 
 
     [Header("HUD (opcional)")]
-    [SerializeField] private TMP_Text progressText; // ej: "3 / 12 errores encontrados"
-    [SerializeField] private TMP_Text timerText;    // ej: "2:45"
+    [SerializeField] private TMP_Text progressText; 
+    [SerializeField] private TMP_Text timerText;    
 
     public bool IsPaused { get; private set; }
-    private ClickPoint currentPoint; // punto pendiente de marcar al cerrar el panel
+    private ClickPoint currentPoint; 
     private SceneController GetSceneController() =>
         (SceneController)ServiceLocator.Instance.GetService("SceneController");
 

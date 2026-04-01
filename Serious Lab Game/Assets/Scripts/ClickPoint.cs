@@ -22,7 +22,6 @@ public class ClickPoint : MonoBehaviour
     [SerializeField] private SpriteRenderer highlightRenderer;
     [SerializeField] private Color highlightColor = new Color(1f, 0.8f, 0f, 0.35f);
 
-    // ── Estado ───────────────────────────────────────────────────────────────
     public bool IsFound { get; private set; }
     public string ErrorTitle => errorTitle;
     public string ErrorDescription => errorDescription;
@@ -30,7 +29,6 @@ public class ClickPoint : MonoBehaviour
     private Color originalColor;
     private Collider2D col;
 
-    // ────────────────────────────────────────────────────────────────────────
     private void Awake()
     {
         col = GetComponent<Collider2D>();
@@ -46,14 +44,12 @@ public class ClickPoint : MonoBehaviour
         if (highlightRenderer != null) highlightRenderer.color = originalColor;
     }
 
-    // ── Click ────────────────────────────────────────────────────────────────
     private void OnMouseDown()
     {
         if (IsFound) return;
         GameManager.Instance.OnPointClicked(this);
     }
 
-    // ── Hover highlight (opcional) ───────────────────────────────────────────
     private void OnMouseEnter()
     {
         if (IsFound || highlightRenderer == null) return;
@@ -65,12 +61,10 @@ public class ClickPoint : MonoBehaviour
         if (highlightRenderer == null) return;
         highlightRenderer.color = originalColor;
     }
-
-    // ── Marcar como encontrado (llamado por UIManager al cerrar el panel) ────
     public void MarkAsFound()
     {
         IsFound = true;
-        col.enabled = false; // desactivar collider para que no sea clickeable de nuevo
+        col.enabled = false; 
         if (foundMarker != null) foundMarker.SetActive(true);
         if (highlightRenderer != null) highlightRenderer.color = originalColor;
     }
