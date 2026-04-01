@@ -6392,7 +6392,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2997476638874671568, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
       propertyPath: m_Name
-      value: PointVidrio
+      value: Point Vidrio
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973233897533463574, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: errorTitle
+      value: Vidrio roto en el piso
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973233897533463574, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: errorDescription
+      value: "\xA1Peligro! Hay fragmentos de vidrio en el piso sin se\xF1alizar.
+        Los residuos de vidrio deben aislarse inmediatamente, se\xF1alizarse con
+        cinta de peligro y recogerse con pinza o escoba, nunca con la mano."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
