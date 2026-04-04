@@ -26,8 +26,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3b78251f27a50854295730f3a89f099b, type: 2}
   - {fileID: 11400000, guid: 097fd5c8d1e6f0f4d8cb7ec2b9f038d0, type: 2}
   feetOptions:
-  - {fileID: 11400000, guid: 8b6b38a83e18ae145b104b2c03bcf30f, type: 2}
-  - {fileID: 11400000, guid: f4ca2686366d83942a2b3b86513860af, type: 2}
+  - {fileID: 11400000, guid: 3ab8b43ed7419844ea6a557285dd4a0d, type: 2}
+  - {fileID: 11400000, guid: 7eeb5290971c8e4488b5d367c5b90f09, type: 2}
   feedbackCorrect: "\xA1Perfecto! Con llama abierta el cabello recogido es indispensable.
     Y sin guantes porque necesit\xE1s precisi\xF3n para manipular el mechero, adem\xE1s
     del riesgo de quemarse junto a la piel."

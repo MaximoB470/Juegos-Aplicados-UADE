@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d599043dd3a70a342ad94adf00cf7cfa, type: 3}
-  m_Name: Esc2_Manos_Latex
+  m_Name: Esc1_Cuerpo_Desabrochado
   m_EditorClassIdentifier: Assembly-CSharp::EPPOptionSO
-  optionLabel: Manos con guantes de latex
-  isCorrect: 1
+  optionLabel: Guardapolvo desabrochado
+  optionIcon: {fileID: 5526979238657510139, guid: 50317e2e885d6fc4b9e8a096f6ce9d66, type: 3}
+  isCorrect: 0

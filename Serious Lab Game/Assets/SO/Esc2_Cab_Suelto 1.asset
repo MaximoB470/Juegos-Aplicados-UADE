@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d599043dd3a70a342ad94adf00cf7cfa, type: 3}
-  m_Name: Esc1_Cuerpo_Desabrochado
+  m_Name: Esc2_Cab_Suelto 1
   m_EditorClassIdentifier: Assembly-CSharp::EPPOptionSO
-  optionLabel: Guardapolvo desabrochado
+  optionLabel: Cabello suelto
+  optionIcon: {fileID: -4114062373009576132, guid: dd859b9ed932c7a4e9ee7c8a746800b2, type: 3}
   isCorrect: 0

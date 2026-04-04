@@ -10,19 +10,14 @@ using UnityEngine;
 /// </summary>
 public class EPPGameManager : MonoBehaviour
 {
-    // ── Registro en ServiceLocator ────────────────────────────────────────────
     private const string SERVICE_KEY = "EPPGameManager";
 
-    // ── Datos del nivel ───────────────────────────────────────────────────────
     [Header("Escenarios del nivel (en orden)")]
     [SerializeField] private List<EPPScenarioSO> scenarios;
 
-    // ── Estado interno ────────────────────────────────────────────────────────
     private int currentScenarioIndex = 0;
     private int totalScore           = 0;   // puntos acumulados (1 por escenario correcto)
     private int correctCount         = 0;   // escenarios completados sin errores
-
-    // ── Eventos públicos ──────────────────────────────────────────────────────
 
     /// <summary>Se dispara al cargar un nuevo escenario.</summary>
     public event Action<EPPScenarioSO> OnScenarioLoaded;
@@ -35,8 +30,6 @@ public class EPPGameManager : MonoBehaviour
     /// Parámetros: (escenarios correctos, total de escenarios).
     /// </summary>
     public event Action<int, int> OnLevelComplete;
-
-    // ── Ciclo de vida ─────────────────────────────────────────────────────────
 
     private void Awake()
     {
@@ -57,8 +50,6 @@ public class EPPGameManager : MonoBehaviour
         OnResultReady     = null;
         OnLevelComplete   = null;
     }
-
-    // ── API pública ───────────────────────────────────────────────────────────
 
     /// <summary>
     /// Evalúa la selección del jugador y dispara <see cref="OnResultReady"/>.
@@ -102,8 +93,6 @@ public class EPPGameManager : MonoBehaviour
         }
     }
 
-    // ── Métodos privados ──────────────────────────────────────────────────────
-
     private void LoadCurrentScenario()
     {
         if (scenarios == null || scenarios.Count == 0)
@@ -126,7 +115,6 @@ public class EPPGameManager : MonoBehaviour
     {
         var result = new EPPResult();
 
-        // Evalúa cada categoría y acumula información de errores
         result.headCorrect  = EvaluateCategory(
             scenario.headOptions,  headIndex,  "Cabeza",
             result);
@@ -143,7 +131,6 @@ public class EPPGameManager : MonoBehaviour
             scenario.feetOptions,  feetIndex,  "Pies",
             result);
 
-        // Selecciona el feedback del escenario según si acertó todo
         result.scenarioFeedback = result.allCorrect
             ? scenario.feedbackCorrect
             : scenario.feedbackIncorrect;
@@ -164,20 +151,17 @@ public class EPPGameManager : MonoBehaviour
         if (options == null || options.Count == 0)
         {
             Debug.LogWarning($"[EPPGameManager] Categoría '{categoryName}' sin opciones.");
-            return true; // No penalizamos si no hay datos
+            return true; 
         }
 
-        // Clamp defensivo por si el slider está fuera de rango
         int safeIndex = Mathf.Clamp(selectedIndex, 0, options.Count - 1);
         EPPOptionSO chosen = options[safeIndex];
 
         if (chosen.isCorrect) return true;
 
-        // Registro de error: label elegido, label correcto y nombre de categoría
         result.incorrectLabels.Add(chosen.optionLabel);
         result.incorrectCategoryNames.Add(categoryName);
 
-        // Busca la primera opción correcta para mostrar "lo correcto era X"
         EPPOptionSO correctOption = options.Find(o => o.isCorrect);
         result.correctLabels.Add(correctOption != null ? correctOption.optionLabel : "—");
 

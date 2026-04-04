@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d599043dd3a70a342ad94adf00cf7cfa, type: 3}
-  m_Name: Esc2_Manos_SinGuantes
+  m_Name: Esc1_Cuerpo_Sin
   m_EditorClassIdentifier: Assembly-CSharp::EPPOptionSO
-  optionLabel: Manos sin Guantes
+  optionLabel: Cuerpo sin guarda
+  optionIcon: {fileID: 1673809729374277047, guid: 8746d213db86acf45bfd0d3084b798ad, type: 3}
   isCorrect: 0

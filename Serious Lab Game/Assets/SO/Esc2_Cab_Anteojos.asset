@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d599043dd3a70a342ad94adf00cf7cfa, type: 3}
-  m_Name: Esc1_Manos_SinGuantes
+  m_Name: Esc2_Cab_Anteojos
   m_EditorClassIdentifier: Assembly-CSharp::EPPOptionSO
-  optionLabel: Manos sin guantes
+  optionLabel: Cabello Recogido con Gafas
+  optionIcon: {fileID: 61737010272274932, guid: b2b17f12aab666e47b1238263b975e5c, type: 3}
   isCorrect: 1

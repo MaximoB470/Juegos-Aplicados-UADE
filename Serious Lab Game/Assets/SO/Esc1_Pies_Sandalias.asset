@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d599043dd3a70a342ad94adf00cf7cfa, type: 3}
-  m_Name: Esc1_Pies_Cerrados
+  m_Name: Esc1_Pies_Sandalias
   m_EditorClassIdentifier: Assembly-CSharp::EPPOptionSO
-  optionLabel: Zapatos cerrados
-  isCorrect: 1
+  optionLabel: Sandalias
+  optionIcon: {fileID: -4126976412562658733, guid: 4a485d2f6d0ef9646a46a48b2a550791, type: 3}
+  isCorrect: 0

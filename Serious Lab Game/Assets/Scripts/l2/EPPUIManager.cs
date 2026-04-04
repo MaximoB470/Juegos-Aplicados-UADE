@@ -11,14 +11,11 @@ using TMPro;
 /// </summary>
 public class EPPUIManager : MonoBehaviour
 {
-    // ── Registro en ServiceLocator ────────────────────────────────────────────
     private const string SERVICE_KEY      = "EPPUIManager";
     private const string GAME_MANAGER_KEY = "EPPGameManager";
 
-    // ── Referencia al manager de lógica ──────────────────────────────────────
     private EPPGameManager gameManager;
 
-    // ── UI: panel principal del escenario ─────────────────────────────────────
     [Header("Panel de escenario")]
     [SerializeField] private TextMeshProUGUI scenarioTitleText;
     [SerializeField] private TextMeshProUGUI scenarioContextText;
@@ -34,30 +31,30 @@ public class EPPUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bodyOptionLabel;
     [SerializeField] private TextMeshProUGUI handsOptionLabel;
     [SerializeField] private TextMeshProUGUI feetOptionLabel;
+    
+    [Header("Imágenes de opción actual")]
+    [SerializeField] private Image headOptionImage;
+    [SerializeField] private Image bodyOptionImage;
+    [SerializeField] private Image handsOptionImage;
+    [SerializeField] private Image feetOptionImage;
 
     [Header("Botón confirmar")]
     [SerializeField] private Button confirmButton;
 
-    // ── UI: panel de resultado ────────────────────────────────────────────────
     [Header("Panel de resultado")]
     [SerializeField] private GameObject resultPanel;
     [SerializeField] private TextMeshProUGUI resultTitleText;
     [SerializeField] private TextMeshProUGUI resultBodyText;
     [SerializeField] private Button continueButton;
 
-    // ── UI: pantalla de fin de nivel ──────────────────────────────────────────
     [Header("Pantalla de fin de nivel")]
     [SerializeField] private GameObject endLevelPanel;
     [SerializeField] private TextMeshProUGUI endLevelScoreText;
 
-    // ── Estado interno de UI ──────────────────────────────────────────────────
-    // Guardamos las listas de opciones del escenario actual para construir labels
     private List<EPPOptionSO> currentHeadOptions;
     private List<EPPOptionSO> currentBodyOptions;
     private List<EPPOptionSO> currentHandsOptions;
     private List<EPPOptionSO> currentFeetOptions;
-
-    // ── Ciclo de vida ─────────────────────────────────────────────────────────
 
     private void Awake()
     {
@@ -66,7 +63,6 @@ public class EPPUIManager : MonoBehaviour
 
     private void Start()
     {
-        // Obtener EPPGameManager desde el ServiceLocator
         gameManager = ServiceLocator.Instance.GetService(GAME_MANAGER_KEY) as EPPGameManager;
 
         if (gameManager == null)
@@ -75,29 +71,22 @@ public class EPPUIManager : MonoBehaviour
             return;
         }
 
-        // Suscribirse a los eventos
         gameManager.OnScenarioLoaded  += HandleScenarioLoaded;
         gameManager.OnResultReady     += HandleResultReady;
         gameManager.OnLevelComplete   += HandleLevelComplete;
-
-        // Vincular botones
         confirmButton?.onClick.AddListener(OnConfirmClicked);
         continueButton?.onClick.AddListener(OnContinueClicked);
+        headSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(headSlider,  currentHeadOptions,  headOptionLabel, headOptionImage));
+        bodySlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(bodySlider,  currentBodyOptions,  bodyOptionLabel, bodyOptionImage));
+        handsSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(handsSlider, currentHandsOptions, handsOptionLabel, handsOptionImage));
+        feetSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(feetSlider,  currentFeetOptions,  feetOptionLabel, feetOptionImage));
 
-        // Vincular sliders para actualizar labels en tiempo real
-        headSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(headSlider,  currentHeadOptions,  headOptionLabel));
-        bodySlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(bodySlider,  currentBodyOptions,  bodyOptionLabel));
-        handsSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(handsSlider, currentHandsOptions, handsOptionLabel));
-        feetSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(feetSlider,  currentFeetOptions,  feetOptionLabel));
-
-        // Estado inicial
         SetResultPanelActive(false);
         SetEndLevelPanelActive(false);
     }
 
     private void OnDestroy()
     {
-        // Desuscribirse para evitar memory leaks
         if (gameManager == null) return;
 
         gameManager.OnScenarioLoaded  -= HandleScenarioLoaded;
@@ -105,33 +94,26 @@ public class EPPUIManager : MonoBehaviour
         gameManager.OnLevelComplete   -= HandleLevelComplete;
     }
 
-    // ── Handlers de eventos ───────────────────────────────────────────────────
-
     private void HandleScenarioLoaded(EPPScenarioSO scenario)
     {
-        // Texto del escenario
         if (scenarioTitleText   != null) scenarioTitleText.text   = scenario.scenarioTitle;
         if (scenarioContextText != null) scenarioContextText.text = scenario.scenarioContext;
 
-        // Guardar listas de opciones en estado local
         currentHeadOptions  = scenario.headOptions;
         currentBodyOptions  = scenario.bodyOptions;
         currentHandsOptions = scenario.handsOptions;
         currentFeetOptions  = scenario.feetOptions;
 
-        // Configurar sliders (min siempre 0, whole numbers)
         ConfigureSlider(headSlider,  currentHeadOptions);
         ConfigureSlider(bodySlider,  currentBodyOptions);
         ConfigureSlider(handsSlider, currentHandsOptions);
         ConfigureSlider(feetSlider,  currentFeetOptions);
 
-        // Resetear a la primera opción y actualizar labels
-        ResetSlider(headSlider,  currentHeadOptions,  headOptionLabel);
-        ResetSlider(bodySlider,  currentBodyOptions,  bodyOptionLabel);
-        ResetSlider(handsSlider, currentHandsOptions, handsOptionLabel);
-        ResetSlider(feetSlider,  currentFeetOptions,  feetOptionLabel);
+        ResetSlider(headSlider,  currentHeadOptions,  headOptionLabel, headOptionImage);
+        ResetSlider(bodySlider,  currentBodyOptions,  bodyOptionLabel, bodyOptionImage);
+        ResetSlider(handsSlider, currentHandsOptions, handsOptionLabel, handsOptionImage);
+        ResetSlider(feetSlider,  currentFeetOptions,  feetOptionLabel, feetOptionImage);
 
-        // Ocultar panel de resultado al cargar nuevo escenario
         SetResultPanelActive(false);
         SetEndLevelPanelActive(false);
     }
@@ -150,7 +132,6 @@ public class EPPUIManager : MonoBehaviour
             endLevelScoreText.text = $"Acertaste {correct} de {total} situaciones";
     }
 
-    // ── Handlers de botones ───────────────────────────────────────────────────
 
     private void OnConfirmClicked()
     {
@@ -169,13 +150,11 @@ public class EPPUIManager : MonoBehaviour
         gameManager?.AdvanceToNextScenario();
     }
 
-    // ── Construcción del panel de resultado ───────────────────────────────────
 
     private void BuildAndShowResultPanel(EPPResult result)
     {
         if (result.allCorrect)
         {
-            // ── Respuesta perfecta ──────────────────────────────────────────
             if (resultTitleText != null)
             {
                 resultTitleText.text  = "¡Muy bien!";
@@ -187,7 +166,6 @@ public class EPPUIManager : MonoBehaviour
         }
         else
         {
-            // ── Hay errores ─────────────────────────────────────────────────
             if (resultTitleText != null)
             {
                 resultTitleText.text  = "Revisá tu elección";
@@ -198,7 +176,6 @@ public class EPPUIManager : MonoBehaviour
             {
                 var sb = new System.Text.StringBuilder();
 
-                // Desglose por categoría fallada
                 for (int i = 0; i < result.incorrectCategoryNames.Count; i++)
                 {
                     string category   = result.incorrectCategoryNames[i];
@@ -208,7 +185,6 @@ public class EPPUIManager : MonoBehaviour
                     sb.AppendLine($"• {category}: elegiste \"{chosen}\" — lo correcto era \"{correct}\"");
                 }
 
-                // Feedback del escenario al final
                 sb.AppendLine();
                 sb.Append(result.scenarioFeedback);
 
@@ -218,8 +194,6 @@ public class EPPUIManager : MonoBehaviour
 
         SetResultPanelActive(true);
     }
-
-    // ── Helpers de sliders ────────────────────────────────────────────────────
 
     /// <summary>
     /// Configura el rango del slider según la cantidad de opciones disponibles.
@@ -236,28 +210,33 @@ public class EPPUIManager : MonoBehaviour
     /// <summary>
     /// Resetea el slider a 0 y actualiza el label de la primera opción.
     /// </summary>
-    private void ResetSlider(Slider slider, List<EPPOptionSO> options, TextMeshProUGUI label)
+    private void ResetSlider(Slider slider, List<EPPOptionSO> options, TextMeshProUGUI label, Image image)
     {
         if (slider == null) return;
 
         slider.value = 0;
-        RefreshSliderLabel(slider, options, label);
+        RefreshSliderLabel(slider, options, label, image);
     }
 
     /// <summary>
-    /// Actualiza el label de texto según el valor actual del slider.
+    /// Actualiza el label de texto y la imagen según el valor actual del slider.
     /// </summary>
-    private void RefreshSliderLabel(Slider slider, List<EPPOptionSO> options, TextMeshProUGUI label)
+    private void RefreshSliderLabel(Slider slider, List<EPPOptionSO> options, TextMeshProUGUI label, Image image)
     {
         if (slider == null || options == null || label == null) return;
 
         int index = Mathf.RoundToInt(slider.value);
         index = Mathf.Clamp(index, 0, options.Count - 1);
 
-        label.text = options[index] != null ? options[index].optionLabel : "—";
+        var option = options[index];
+        label.text = option != null ? option.optionLabel : "—";
+        
+        if (image != null && option != null)
+        {
+            image.sprite = option.optionIcon;
+            image.gameObject.SetActive(option.optionIcon != null);
+        }
     }
-
-    // ── Helpers de visibilidad ────────────────────────────────────────────────
 
     private void SetResultPanelActive(bool active)
     {
