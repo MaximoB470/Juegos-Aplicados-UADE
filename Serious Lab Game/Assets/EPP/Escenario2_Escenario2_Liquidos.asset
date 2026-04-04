@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9990157d9668c73468e432dc075165ac, type: 3}
+  m_Name: Escenario2_Escenario2_Liquidos
+  m_EditorClassIdentifier: Assembly-CSharp::EPPScenarioSO
+  scenarioTitle: "El profe mezcla dos l\xEDquidos"
+  scenarioContext: El docente va a mezclar dos soluciones. Te pide que te acerques
+    a observar.
+  headOptions:
+  - {fileID: 11400000, guid: 9f687d2f715ce164c8781e78e2573817, type: 2}
+  - {fileID: 11400000, guid: ea0b121a7fc6f8242b0c63dda81e46d0, type: 2}
+  - {fileID: 11400000, guid: 858e2381610908148add47799304f595, type: 2}
+  bodyOptions:
+  - {fileID: 11400000, guid: a2784992b192f42418ed607cc5233d3a, type: 2}
+  - {fileID: 11400000, guid: e0387426ebc28ff4cb090802c71e671d, type: 2}
+  handsOptions:
+  - {fileID: 11400000, guid: 3b78251f27a50854295730f3a89f099b, type: 2}
+  - {fileID: 11400000, guid: 097fd5c8d1e6f0f4d8cb7ec2b9f038d0, type: 2}
+  feetOptions:
+  - {fileID: 11400000, guid: 7eeb5290971c8e4488b5d367c5b90f09, type: 2}
+  - {fileID: 11400000, guid: 3ab8b43ed7419844ea6a557285dd4a0d, type: 2}
+  feedbackCorrect: "\xA1Exacto! Aunque no seas vos quien mezcla, los anteojos son
+    obligatorios. Un salpicado puede llegar a cualquiera que est\xE9 cerca."
+  feedbackIncorrect: "Aunque no manipules nada, si est\xE1s cerca de una mezcla de
+    reactivos necesit\xE1s anteojos de seguridad siempre."

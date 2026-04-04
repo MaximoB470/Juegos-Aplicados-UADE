@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9990157d9668c73468e432dc075165ac, type: 3}
+  m_Name: Escenario1_Escenario1_EntrasAlLaboratorio
+  m_EditorClassIdentifier: Assembly-CSharp::EPPScenarioSO
+  scenarioTitle: "Entr\xE1s al laboratorio"
+  scenarioContext: "Es tu primera vez en el lab. El profe dice que hoy van a observar
+    materiales, nada m\xE1s."
+  headOptions:
+  - {fileID: 11400000, guid: b436b097b12371e4e9a3ca84dd82e4d4, type: 2}
+  - {fileID: 11400000, guid: 939bbc162cdeaab47b58b67c82ceff33, type: 2}
+  bodyOptions:
+  - {fileID: 11400000, guid: a2784992b192f42418ed607cc5233d3a, type: 2}
+  - {fileID: 11400000, guid: e0387426ebc28ff4cb090802c71e671d, type: 2}
+  - {fileID: 11400000, guid: d0987f0bc4f099744a9a9afc1cd32ad9, type: 2}
+  handsOptions:
+  - {fileID: 11400000, guid: 8b6b38a83e18ae145b104b2c03bcf30f, type: 2}
+  - {fileID: 11400000, guid: f4ca2686366d83942a2b3b86513860af, type: 2}
+  feetOptions:
+  - {fileID: 11400000, guid: 7eeb5290971c8e4488b5d367c5b90f09, type: 2}
+  - {fileID: 11400000, guid: 3ab8b43ed7419844ea6a557285dd4a0d, type: 2}
+  feedbackCorrect: "\xA1Perfecto! Aunque solo van a observar, el guardapolvo y el
+    cabello recogido son obligatorios siempre que est\xE9s en el laboratorio."
+  feedbackIncorrect: "Record\xE1: en el laboratorio siempre us\xE1s guardapolvo y
+    llev\xE1s el cabello recogido, incluso si no manipul\xE1s nada."

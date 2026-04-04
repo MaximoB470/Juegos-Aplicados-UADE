@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9990157d9668c73468e432dc075165ac, type: 3}
+  m_Name: Escenario3_Escenario3_Mechero
+  m_EditorClassIdentifier: Assembly-CSharp::EPPScenarioSO
+  scenarioTitle: Vas a encender el mechero
+  scenarioContext: El profe te pide que enciendas el mechero Bunsen para calentar
+    agua.
+  headOptions:
+  - {fileID: 11400000, guid: 9f687d2f715ce164c8781e78e2573817, type: 2}
+  - {fileID: 11400000, guid: ea0b121a7fc6f8242b0c63dda81e46d0, type: 2}
+  - {fileID: 11400000, guid: 858e2381610908148add47799304f595, type: 2}
+  bodyOptions:
+  - {fileID: 11400000, guid: a2784992b192f42418ed607cc5233d3a, type: 2}
+  - {fileID: 11400000, guid: e0387426ebc28ff4cb090802c71e671d, type: 2}
+  handsOptions:
+  - {fileID: 11400000, guid: 3b78251f27a50854295730f3a89f099b, type: 2}
+  - {fileID: 11400000, guid: 097fd5c8d1e6f0f4d8cb7ec2b9f038d0, type: 2}
+  feetOptions:
+  - {fileID: 11400000, guid: 8b6b38a83e18ae145b104b2c03bcf30f, type: 2}
+  - {fileID: 11400000, guid: f4ca2686366d83942a2b3b86513860af, type: 2}
+  feedbackCorrect: "\xA1Perfecto! Con llama abierta el cabello recogido es indispensable.
+    Y sin guantes porque necesit\xE1s precisi\xF3n para manipular el mechero, adem\xE1s
+    del riesgo de quemarse junto a la piel."
+  feedbackIncorrect: "Con el mechero encendido el riesgo m\xE1s com\xFAn es el cabello
+    suelto. Y los guantes no se usan porque reducen la sensibilidad al manipular
+    la llave, adem\xE1s del riesgo de quemarse junto a la piel."
