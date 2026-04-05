@@ -17,6 +17,7 @@ public class SceneController : MonoBehaviour
     [Header("Scenes")]
     [SerializeField] private string gameSceneName = "ProtoGameScene";
     [SerializeField] private string menuSceneName = "MenuScene";
+    [SerializeField] private string secondLevelName = "Level2";
 
     private void Awake()
     {
@@ -46,6 +47,10 @@ public class SceneController : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene(menuSceneName);
+    }
+    public void LoadSecondLevel()
+    {
+        SceneManager.LoadScene(secondLevelName);
     }
 
 

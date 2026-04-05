@@ -140,6 +140,10 @@ public class UIManager : MonoBehaviour
     {
         GetSceneController()?.LoadMenu();
     }
+    public void LoadLevelTwo()
+    {
+        GetSceneController()?.LoadSecondLevel();
+    }
 
     public void PauseGame()
     {
