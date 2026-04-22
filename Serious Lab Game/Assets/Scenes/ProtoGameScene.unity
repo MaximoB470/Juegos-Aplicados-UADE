@@ -6171,8 +6171,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Encontraste todos los errores de seguridad en la escena. Eso significa
-    que entr\xE1s al laboratorio sabiendo exactamente qu\xE9 buscar. Buen trabajo.\""
+  m_text: "Encontraste todos los errores de seguridad en la escena. Eso significa
+    que entr\xE1s al laboratorio sabiendo exactamente qu\xE9 buscar. Buen trabajo."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6432,7 +6432,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d0b1c8402e442ad4984531d335248c18, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.514
+  m_Volume: 0.015
   m_Pitch: 1
   Loop: 1
   Mute: 0
