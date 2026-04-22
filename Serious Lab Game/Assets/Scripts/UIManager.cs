@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;                // ← si usás TextMeshPro; reemplazá por UnityEngine.UI si usás Text legacy
+using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    // ── Canvases ─────────────────────────────────────────────────────────────
     [Header("Canvases")]
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject winCanvas;
@@ -19,8 +19,10 @@ public class UIManager : MonoBehaviour
 
     [Header("HUD (opcional)")]
     [SerializeField] private TMP_Text progressText; 
-    [SerializeField] private TMP_Text timerText;    
-
+    [SerializeField] private TMP_Text timerText;
+    
+    [Header("UI Elements")]
+    [SerializeField] private Button hintButton;
     public bool IsPaused { get; private set; }
     private ClickPoint currentPoint; 
     private SceneController GetSceneController() =>
@@ -86,6 +88,27 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Muestra el InfoPanel con la pista (hint) del ClickPoint recibido,
+    /// sin marcarlo como encontrado para que el jugador siga buscando.
+    /// </summary>
+    public void ShowHintPanel(ClickPoint point)
+    {
+        if (infoPanel == null) return;
+
+        // No asignamos currentPoint para que al cerrar no se marque como encontrado
+        currentPoint = null; 
+
+        if (infoPanelTitle != null)
+            infoPanelTitle.text = "Pista";
+
+        if (infoPanelDescription != null)
+            infoPanelDescription.text = point.HintText;
+
+        infoPanel.SetActive(true);
+        PauseGame();
+    }
+
+    /// <summary>
     /// Cerrá el InfoPanel desde el botón "Cerrar" del panel.
     /// Marca el punto como encontrado y notifica al GameManager.
     /// </summary>
@@ -129,6 +152,11 @@ public class UIManager : MonoBehaviour
     public void StartGameButton()
     {
         GetSceneController()?.StartGame();
+    }
+
+    public void HintButton()
+    {
+        GameManager.Instance?.ShowHint();
     }
 
     public void ReloadSceneButton()

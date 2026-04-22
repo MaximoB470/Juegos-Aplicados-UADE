@@ -17,6 +17,9 @@ public class ClickPoint : MonoBehaviour
     [Tooltip("Objeto hijo que se activa al encontrar el punto (ej: tilde verde, ícono de alerta).")]
     [SerializeField] private GameObject foundMarker;
 
+    [Header("Pista (Hint)")]
+    [SerializeField] private string hintText = "Pista para encontrar este error.";
+
     [Header("Highlight (hover opcional)")]
     [Tooltip("Renderer a colorear mientras el cursor está encima. Dejá vacío si no querés highlight.")]
     [SerializeField] private SpriteRenderer highlightRenderer;
@@ -25,6 +28,7 @@ public class ClickPoint : MonoBehaviour
     public bool IsFound { get; private set; }
     public string ErrorTitle => errorTitle;
     public string ErrorDescription => errorDescription;
+    public string HintText => hintText;
 
     private Color originalColor;
     private Collider2D col;

@@ -70,6 +70,26 @@ public class GameManager : MonoBehaviour
             Invoke(nameof(WinGame), 0.15f);
     }
 
+    public void ShowHint()
+    {
+        if (!gameRunning || UIManager.Instance.IsPaused) return;
+
+        List<ClickPoint> remainingPoints = new List<ClickPoint>();
+        foreach (var cp in allClickPoints)
+        {
+            if (!cp.IsFound)
+            {
+                remainingPoints.Add(cp);
+            }
+        }
+
+        if (remainingPoints.Count > 0)
+        {
+            ClickPoint randomPoint = remainingPoints[Random.Range(0, remainingPoints.Count)];
+            UIManager.Instance.ShowHintPanel(randomPoint);
+        }
+    }
+
     private void WinGame()
     {
         gameRunning = false;
