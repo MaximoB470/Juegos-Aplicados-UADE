@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// ScriptableObject que representa una opción dentro de una categoría de EPP.
-/// Crear desde: Assets > Create > LabSafe/EPP > EPP Option
-/// </summary>
 [CreateAssetMenu(menuName = "LabSafe/EPP/EPP Option", fileName = "NewEPPOption")]
 public class EPPOptionSO : ScriptableObject
 {

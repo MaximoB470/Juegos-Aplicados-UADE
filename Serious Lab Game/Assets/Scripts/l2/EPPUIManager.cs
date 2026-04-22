@@ -195,9 +195,6 @@ public class EPPUIManager : MonoBehaviour
         SetResultPanelActive(true);
     }
 
-    /// <summary>
-    /// Configura el rango del slider según la cantidad de opciones disponibles.
-    /// </summary>
     private void ConfigureSlider(Slider slider, List<EPPOptionSO> options)
     {
         if (slider == null || options == null) return;
@@ -207,9 +204,6 @@ public class EPPUIManager : MonoBehaviour
         slider.wholeNumbers = true;
     }
 
-    /// <summary>
-    /// Resetea el slider a 0 y actualiza el label de la primera opción.
-    /// </summary>
     private void ResetSlider(Slider slider, List<EPPOptionSO> options, TextMeshProUGUI label, Image image)
     {
         if (slider == null) return;
@@ -218,9 +212,6 @@ public class EPPUIManager : MonoBehaviour
         RefreshSliderLabel(slider, options, label, image);
     }
 
-    /// <summary>
-    /// Actualiza el label de texto y la imagen según el valor actual del slider.
-    /// </summary>
     private void RefreshSliderLabel(Slider slider, List<EPPOptionSO> options, TextMeshProUGUI label, Image image)
     {
         if (slider == null || options == null || label == null) return;

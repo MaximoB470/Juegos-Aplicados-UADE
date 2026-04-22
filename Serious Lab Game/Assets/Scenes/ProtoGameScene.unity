@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09969554, y: 0.12789904}
   m_AnchorMax: {x: 0.8998478, y: 0.8882753}
-  m_AnchoredPosition: {x: -0.000030517578, y: -3.5}
+  m_AnchoredPosition: {x: -0.000061035156, y: -3.5}
   m_SizeDelta: {x: 1.7843018, y: 0.8023071}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3173177
@@ -542,7 +542,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.41, y: -3.68, z: 0}
-  m_LocalScale: {x: 1.88, y: 1.88, z: 1.88}
+  m_LocalScale: {x: 2.0960119, y: 2.0960119, z: 2.0960119}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1506889841}
@@ -567,7 +567,7 @@ MonoBehaviour:
   foundMarker: {fileID: 1506889840}
   hintText: Cuidado al caminar
   highlightRenderer: {fileID: 70155767}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!58 &70155766
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -881,10 +881,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 378487021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2931533, y: 0.5}
-  m_AnchorMax: {x: 0.59800005, y: 0.661358}
-  m_AnchoredPosition: {x: 0, y: 31.5}
-  m_SizeDelta: {x: 135.1726, y: -47}
+  m_AnchorMin: {x: 0.12100001, y: 0.48864207}
+  m_AnchorMax: {x: 0.80500007, y: 0.7602841}
+  m_AnchoredPosition: {x: -201.5, y: 63.5}
+  m_SizeDelta: {x: -271.8274, y: -114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &112955818
 MonoBehaviour:
@@ -906,7 +906,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Perdiste, por favor intente de nuevo hasta encotnrar todas las malas pr\xE1cticas.\n"
+  m_text: "No llegaste a encontrar todos los errores, pero eso no significa que no
+    los viste, a veces el tiempo juega en contra. En un laboratorio real, identificar
+    los peligros antes de empezar a trabajar es uno de los h\xE1bitos m\xE1s importantes
+    que pod\xE9s desarrollar. \xA1Dale otra vuelta?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -972,7 +975,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -80.82383}
+  m_margin: {x: 0, y: 0, z: -567.8709, w: -175.99776}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1585,7 +1588,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next
+  m_text: Siguiente
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2053,8 +2056,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2880,7 +2883,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.43, y: -1.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7871678}
@@ -3000,7 +3003,7 @@ MonoBehaviour:
   foundMarker: {fileID: 7871677}
   hintText: "No deber\xEDan utilizarse si no se puede leer la info."
   highlightRenderer: {fileID: 734461895}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &807386126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,7 +3038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.119, y: 0.25500003}
   m_AnchorMax: {x: 0.88572836, y: 0.8563624}
-  m_AnchoredPosition: {x: 1.8139954, y: -1.9469986}
+  m_AnchoredPosition: {x: 1.8139954, y: -1.9470062}
   m_SizeDelta: {x: 1.8010254, y: -4.1069946}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807386128
@@ -3434,7 +3437,7 @@ MonoBehaviour:
   foundMarker: {fileID: 602673038}
   hintText: "Siempre chequear que no est\xE1n vencidos."
   highlightRenderer: {fileID: 950607078}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!58 &950607077
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3559,7 +3562,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13, y: 1.62, z: 0}
-  m_LocalScale: {x: 1.68, y: 1.68, z: 1.68}
+  m_LocalScale: {x: 1.8582479, y: 1.8582479, z: 1.8582479}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1400476787}
@@ -3679,7 +3682,7 @@ MonoBehaviour:
   foundMarker: {fileID: 1400476786}
   hintText: "Nunca deber\xEDa estar tapada."
   highlightRenderer: {fileID: 960393484}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1038252919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3709,7 +3712,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.6, y: 3.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2125, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 23730198}
@@ -3829,7 +3832,7 @@ MonoBehaviour:
   foundMarker: {fileID: 23730197}
   hintText: Falta algo que proteje al cuerpo de las personas.
   highlightRenderer: {fileID: 1038252921}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1126953795
 GameObject:
   m_ObjectHideFlags: 0
@@ -4013,8 +4016,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4415,7 +4418,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.3, y: 1.62, z: 0}
-  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
+  m_LocalScale: {x: 2.013025, y: 2.013025, z: 2.013025}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2140977103}
@@ -4440,7 +4443,7 @@ MonoBehaviour:
   foundMarker: {fileID: 2140977102}
   hintText: Pensar antes de tirar.
   highlightRenderer: {fileID: 1343248246}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!58 &1343248245
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5170,7 +5173,7 @@ MonoBehaviour:
   foundMarker: {fileID: 1126953795}
   hintText: No dejar esto cerca de quimicos.
   highlightRenderer: {fileID: 1659232292}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1713943145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5408,9 +5411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Retry
-
-'
+  m_text: Reintentar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5639,7 +5640,7 @@ MonoBehaviour:
   foundMarker: {fileID: 1237411907}
   hintText: "Deber\xEDan ser removidos luego de ser usados."
   highlightRenderer: {fileID: 1755774920}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1760679020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5922,7 +5923,7 @@ MonoBehaviour:
   foundMarker: {fileID: 1584577730}
   hintText: Algo que no deberia dejarse encendido.
   highlightRenderer: {fileID: 1798965779}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1813736797
 GameObject:
   m_ObjectHideFlags: 0
@@ -5957,10 +5958,10 @@ RectTransform:
   - {fileID: 58912638}
   m_Father: {fileID: 1339916722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.84000003, y: 0.8226421}
-  m_AnchorMax: {x: 0.95900005, y: 0.86128414}
-  m_AnchoredPosition: {x: -0.5, y: 0.5}
-  m_SizeDelta: {x: 30, y: 6}
+  m_AnchorMin: {x: 0.837, y: 0.85664207}
+  m_AnchorMax: {x: 0.95400006, y: 0.89500004}
+  m_AnchoredPosition: {x: 0.1000061, y: -0.5}
+  m_SizeDelta: {x: 32, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1813736799
 MonoBehaviour:
@@ -6145,10 +6146,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 889804599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.293843, y: 0.54971594}
-  m_AnchorMax: {x: 0.652, y: 0.614}
-  m_AnchoredPosition: {x: 0.5, y: 1.3333435}
-  m_SizeDelta: {x: 70.17261, y: 11}
+  m_AnchorMin: {x: 0.132, y: 0.5}
+  m_AnchorMax: {x: 0.80200005, y: 0.70156825}
+  m_AnchoredPosition: {x: -163, y: 41.5}
+  m_SizeDelta: {x: -259.8274, y: -72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987985517
 MonoBehaviour:
@@ -6170,7 +6171,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ganaste
+  m_text: "\"Encontraste todos los errores de seguridad en la escena. Eso significa
+    que entr\xE1s al laboratorio sabiendo exactamente qu\xE9 buscar. Buen trabajo.\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6236,7 +6238,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -382.64478, w: -92.18829}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6378,8 +6380,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.026836276, y: -0.6440713}
-  m_Radius: 1.4124364
+  m_Offset: {x: -0.026836276, y: -0.3475316}
+  m_Radius: 1.1158967
 --- !u!114 &1998515172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6399,7 +6401,7 @@ MonoBehaviour:
   foundMarker: {fileID: 506447438}
   hintText: "Algo que no deber\xEDa dejarse suelto."
   highlightRenderer: {fileID: 1998515170}
-  highlightColor: {r: 1, g: 0.8, b: 0, a: 0.5803922}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &2104822142
 GameObject:
   m_ObjectHideFlags: 0
@@ -6629,6 +6631,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 556599536}
     m_Modifications:
     - target: {fileID: 434520903830821442, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4769502
+      objectReference: {fileID: 0}
+    - target: {fileID: 434520903830821442, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4769502
+      objectReference: {fileID: 0}
+    - target: {fileID: 434520903830821442, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.4769502
+      objectReference: {fileID: 0}
+    - target: {fileID: 434520903830821442, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.23
       objectReference: {fileID: 0}
@@ -6685,6 +6699,22 @@ PrefabInstance:
       value: "\xA1Peligro! Hay fragmentos de vidrio en el piso sin se\xF1alizar.
         Los residuos de vidrio deben aislarse inmediatamente, se\xF1alizarse con
         cinta de peligro y recogerse con pinza o escoba, nunca con la mano."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973233897533463574, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: highlightColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973233897533463574, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: highlightColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973233897533463574, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: highlightColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973233897533463574, guid: 882241b30337a7e4489ebc5e1c74b3e3, type: 3}
+      propertyPath: highlightColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

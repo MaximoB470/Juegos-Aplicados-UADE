@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ScriptableObject que define un escenario completo del nivel EPP.
-/// Crear desde: Assets > Create > LabSafe/EPP > EPP Scenario
-/// </summary>
 [CreateAssetMenu(menuName = "LabSafe/EPP/EPP Scenario", fileName = "NewEPPScenario")]
 public class EPPScenarioSO : ScriptableObject
 {

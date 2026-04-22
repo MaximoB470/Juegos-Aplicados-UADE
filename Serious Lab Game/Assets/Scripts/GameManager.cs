@@ -34,10 +34,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
         if (!gameRunning || !useTimer || UIManager.Instance.IsPaused) return;
         currentTime -= Time.deltaTime;
         UIManager.Instance.UpdateTimerDisplay(currentTime);
         if (currentTime <= 0f) LoseGame();
+       
+        if (gameRunning && Input.GetKeyDown(KeyCode.F1))
+        {
+            LoseGame();
+        }
+
     }
 
     public void StartGame()

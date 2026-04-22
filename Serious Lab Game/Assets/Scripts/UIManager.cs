@@ -67,10 +67,6 @@ public class UIManager : MonoBehaviour
         PauseGame();
     }
 
-    /// <summary>
-    /// Abre el InfoPanel con el contenido del ClickPoint recibido.
-    /// No marca el punto todavía — eso ocurre al cerrarlo.
-    /// </summary>
     public void ShowInfoPanel(ClickPoint point)
     {
         if (infoPanel == null) return;
@@ -87,15 +83,10 @@ public class UIManager : MonoBehaviour
         PauseGame();
     }
 
-    /// <summary>
-    /// Muestra el InfoPanel con la pista (hint) del ClickPoint recibido,
-    /// sin marcarlo como encontrado para que el jugador siga buscando.
-    /// </summary>
     public void ShowHintPanel(ClickPoint point)
     {
         if (infoPanel == null) return;
 
-        // No asignamos currentPoint para que al cerrar no se marque como encontrado
         currentPoint = null; 
 
         if (infoPanelTitle != null)
@@ -107,11 +98,6 @@ public class UIManager : MonoBehaviour
         infoPanel.SetActive(true);
         PauseGame();
     }
-
-    /// <summary>
-    /// Cerrá el InfoPanel desde el botón "Cerrar" del panel.
-    /// Marca el punto como encontrado y notifica al GameManager.
-    /// </summary>
     public void CloseInfoPanel()
     {
         if (infoPanel == null) return;
@@ -189,6 +175,4 @@ public class UIManager : MonoBehaviour
     {
         if (go != null) go.SetActive(value);
     }
-
-    
 }

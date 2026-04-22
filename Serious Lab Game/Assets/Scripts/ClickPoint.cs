@@ -1,10 +1,5 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Colocá este componente en cada objeto de error del nivel.
-/// Requiere un CircleCollider2D (o SphereCollider en 3D) configurado como trigger.
-/// El sprite/renderer de "foundMarker" se activa cuando el jugador encuentra el error.
-/// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class ClickPoint : MonoBehaviour
 {
