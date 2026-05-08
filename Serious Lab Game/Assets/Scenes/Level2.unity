@@ -961,7 +961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5042293, y: 0.21188547}
   m_AnchorMax: {x: 0.5975208, y: 0.37025446}
-  m_AnchoredPosition: {x: 2.5, y: -1.4999695}
+  m_AnchoredPosition: {x: 2.5, y: -1.499939}
   m_SizeDelta: {x: -79, y: -71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485783127
@@ -1113,7 +1113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7387085, y: 0.11414758}
   m_AnchorMax: {x: 0.9178124, y: 0.16777864}
-  m_AnchoredPosition: {x: 6.049988, y: -6.0999756}
+  m_AnchoredPosition: {x: 6.0499268, y: -6.0999756}
   m_SizeDelta: {x: -183, y: -28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504604909
@@ -2761,59 +2761,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1120560227
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1120560229}
-  - component: {fileID: 1120560228}
-  m_Layer: 0
-  m_Name: UiManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1120560228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120560227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae06ca75e13ac84ab0ce9ffd234f40d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  menuCanvas: {fileID: 0}
-  winCanvas: {fileID: 0}
-  loseCanvas: {fileID: 0}
-  infoPanel: {fileID: 0}
-  infoPanelTitle: {fileID: 0}
-  infoPanelDescription: {fileID: 0}
-  progressText: {fileID: 0}
-  timerText: {fileID: 0}
-  hintButton: {fileID: 0}
---- !u!4 &1120560229
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120560227}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 367.7825, y: 209.3924, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1161983450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,7 +3489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08231251, y: 0.7971146}
   m_AnchorMax: {x: 0.31462497, y: 0.9054428}
-  m_AnchoredPosition: {x: -6.75, y: 2.9599915}
+  m_AnchoredPosition: {x: -6.75, y: 2.959961}
   m_SizeDelta: {x: -246, y: -67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321675137
@@ -3657,6 +3604,7 @@ GameObject:
   - component: {fileID: 1324313801}
   - component: {fileID: 1324313800}
   - component: {fileID: 1324313799}
+  - component: {fileID: 1324313802}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -3728,9 +3676,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1120560228}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadMenuButton
+      - m_Target: {fileID: 1324313802}
+        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
+        m_MethodName: GoToLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3778,6 +3726,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324313797}
   m_CullTransparentMesh: 1
+--- !u!114 &1324313802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324313797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174c01142921cbd479bef0f5ac7fc956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartButton
+  levelSceneBuildIndex: 0
 --- !u!1 &1349735675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5991,6 +5952,5 @@ SceneRoots:
   - {fileID: 1850143910}
   - {fileID: 2026637752}
   - {fileID: 1112779253}
-  - {fileID: 1120560229}
   - {fileID: 1083355086}
   - {fileID: 1504699236}
