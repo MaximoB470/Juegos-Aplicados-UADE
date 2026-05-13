@@ -43,12 +43,6 @@ public class ClickPoint : MonoBehaviour
         if (highlightRenderer != null) highlightRenderer.color = originalColor;
     }
 
-    private void OnMouseDown()
-    {
-        if (IsFound) return;
-        GameManager.Instance.OnPointClicked(this);
-    }
-
     private void OnMouseEnter()
     {
         if (IsFound || highlightRenderer == null) return;
