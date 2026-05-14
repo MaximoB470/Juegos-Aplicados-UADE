@@ -135,6 +135,10 @@ public class GameManager : MonoBehaviour
     private void WinGame()
     {
         gameRunning = false;
+
+        var progress = (LevelProgressService)ServiceLocator.Instance.GetService("LevelProgressService");
+        progress?.CompleteCurrentLevel();
+
         GetUI().ShowWin();
     }
 

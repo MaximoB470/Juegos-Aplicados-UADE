@@ -220,4 +220,9 @@ public class UIManager : MonoBehaviour
     {
         if (go != null) go.SetActive(value);
     }
+
+    public void LoadLevelSelector()
+    {
+       SceneManager.LoadScene("LevelSelector"); 
+    }
 }
