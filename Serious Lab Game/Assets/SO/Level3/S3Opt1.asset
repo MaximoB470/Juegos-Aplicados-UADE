@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S3Opt1
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: Acercar la nariz al recipiente para identificar mejor el olor del vapor
+  isCorrect: 0
+  incorrectFeedback: "Nunca deb\xE9s inhalar directamente vapores de laboratorio,
+    \nespecialmente de una reacci\xF3n no controlada. Muchos gases \nproducidos en
+    reacciones inesperadas son t\xF3xicos, irritantes \no incluso asfixiantes a concentraciones
+    que el olfato no puede \nadvertir a tiempo. Si necesit\xE1s percibir un olor
+    en laboratorio, \nla t\xE9cnica correcta es abanicar suavemente con la mano para
+    \ndirigir una peque\xF1a cantidad de vapor hacia la nariz, nunca \naspirar directamente
+    del recipiente."
+  correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

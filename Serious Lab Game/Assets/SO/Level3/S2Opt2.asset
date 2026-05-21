@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S2Opt2
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: Sacarte el guante, revisarte el corte y esperar a que deje de sangrar
+    solo
+  isCorrect: 0
+  incorrectFeedback: "Esperar a que un corte de laboratorio cese espont\xE1neamente
+    es \npeligroso por dos razones. Primero, los cortes con vidrio suelen \nser m\xE1s
+    profundos de lo que parecen y pueden requerir atenci\xF3n \nm\xE9dica. Segundo,
+    en un laboratorio existe riesgo de contaminaci\xF3n \nde la herida con sustancias
+    qu\xEDmicas presentes en la mesada. \nSiempre se debe aplicar presi\xF3n, avisar
+    al docente y buscar el \nbotiqu\xEDn de primeros auxilios de forma inmediata."
+  correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S2Opt3
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: "Presionar la herida con un pa\xF1o limpio, avisar al docente y dirigirte
+    al botiqu\xEDn de primeros auxilios"
+  isCorrect: 1
+  incorrectFeedback: 
+  correctFeedback: "\xA1Correcto! El protocolo ante un corte en laboratorio es: aplicar
+    \npresi\xF3n directa sobre la herida con un material limpio para \ncontrolar
+    el sangrado, notificar al docente o responsable \ninmediatamente, y acceder al
+    botiqu\xEDn de primeros auxilios. \nSi el corte es profundo o no cede el sangrado,
+    se debe buscar \natenci\xF3n m\xE9dica. Record\xE1 que los vidrios del piso deben
+    se\xF1alizarse \npara que nadie los pise y limpiarse con escoba, nunca con las
+    manos."

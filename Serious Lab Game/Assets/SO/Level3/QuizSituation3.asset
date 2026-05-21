@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba59874f1bb3d3647b62a1a0b18df633, type: 3}
+  m_Name: QuizSituation3
+  m_EditorClassIdentifier: Assembly-CSharp::QuizSituationSO
+  situationText: "Est\xE1s realizando una pr\xE1ctica de mezcla de soluciones. Al
+    combinar dos reactivos que el docente hab\xEDa indicado, la mezcla comienza a
+    burbujear de forma intensa, cambia de color a un marr\xF3n oscuro y empieza a
+    desprender un vapor con olor fuerte y desagradable. \nEsto no estaba previsto
+    en el procedimiento. \xBFQu\xE9 deb\xE9s hacer?"
+  options:
+  - {fileID: 11400000, guid: 8abbff9c9f1500448b1eeb0e2a62d735, type: 2}
+  - {fileID: 11400000, guid: 15dfa5afebf0a0146b37af22b328e2b7, type: 2}
+  - {fileID: 11400000, guid: 751be4e27d65ea5488244ae8795e8ea0, type: 2}

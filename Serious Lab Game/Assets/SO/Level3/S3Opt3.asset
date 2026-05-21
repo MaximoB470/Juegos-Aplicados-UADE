@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S3Opt3
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: Alejarte del recipiente, avisar al docente inmediatamente y ventilar
+    el ambiente abriendo ventanas
+  isCorrect: 0
+  incorrectFeedback: 
+  correctFeedback: "\xA1Correcto! Ante una reacci\xF3n qu\xEDmica inesperada, el
+    protocolo \nes alejarse de la fuente, no intentar intervenir por cuenta \npropia,
+    y notificar de inmediato al docente o responsable del \nlaboratorio. Ventilar
+    el espacio abriendo ventanas y puertas \nayuda a disipar posibles vapores t\xF3xicos.
+    Si la situaci\xF3n escala \n(humo denso, llamas, olor muy intenso) se debe activar
+    el \nprotocolo de evacuaci\xF3n. Record\xE1: en laboratorio, ante la duda, \nalejarse
+    y avisar siempre es la respuesta correcta."

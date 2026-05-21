@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S1Opt3
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: "Ir a la estaci\xF3n de lavado ocular y mantener los ojos abiertos
+    bajo el chorro al menos 15 minutos"
+  isCorrect: 1
+  incorrectFeedback: 
+  correctFeedback: "\xA1Correcto! La estaci\xF3n de lavado ocular es el dispositivo
+    espec\xEDfico \npara esta emergencia. Deb\xE9s mantener los p\xE1rpados abiertos
+    con los \ndedos, aunque sea dif\xEDcil por el reflejo, y dejar correr agua durante
+    \nun m\xEDnimo de 15 minutos continuos. Luego report\xE1 el incidente al \ndocente
+    y busc\xE1 atenci\xF3n m\xE9dica aunque los s\xEDntomas hayan cedido, \nya que
+    algunos qu\xEDmicos tienen efectos retardados."
