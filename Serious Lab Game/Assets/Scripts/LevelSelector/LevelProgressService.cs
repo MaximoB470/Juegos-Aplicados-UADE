@@ -1,22 +1,17 @@
 using UnityEngine;
 
 /// <summary>
-/// Servicio singleton que persiste entre escenas y lleva el registro
-/// del nivel actual desbloqueado. El progreso vive en memoria y se
-/// resetea automáticamente al detener el juego.
-///
-/// Uso desde otro script:
-///   var progress = (LevelProgressService)ServiceLocator.Instance.GetService("LevelProgressService");
-///   progress.CompleteCurrentLevel();
+/// Servicio singleton que rastrea qué niveles están desbloqueados.
+/// El desbloqueo ahora es responsabilidad de GradeService —
+/// este servicio solo almacena el índice máximo alcanzado.
 /// </summary>
 public class LevelProgressService : MonoBehaviour
 {
     public static LevelProgressService Instance { get; private set; }
 
-    /// <summary>Índice del nivel desbloqueado / activo (base 0).</summary>
+    /// <summary>Índice del nivel desbloqueado más alto (base 0).</summary>
     public int CurrentLevelIndex { get; private set; }
 
-    // Evento que el LevelSelectorManager escucha para refrescar la UI
     public System.Action<int> OnLevelProgressChanged;
 
     private void Awake()
@@ -29,7 +24,6 @@ public class LevelProgressService : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
         ServiceLocator.Instance.SetService("LevelProgressService", this);
 
         CurrentLevelIndex = 0;
@@ -38,27 +32,21 @@ public class LevelProgressService : MonoBehaviour
     // ─── API pública ─────────────────────────────────────────────────────────
 
     /// <summary>
-    /// Marca el nivel actual como completado y desbloquea el siguiente.
-    /// Llamar esto al terminar un nivel (desde WinGame o HandleLevelComplete).
+    /// Desbloquea el nivel en el índice indicado si es mayor al actual.
+    /// Llamado exclusivamente por GradeService cuando se aprueba un nivel.
     /// </summary>
-    public void CompleteCurrentLevel()
+    public void UnlockLevel(int index)
     {
-        CurrentLevelIndex++;
+        if (index <= CurrentLevelIndex) return;
+
+        CurrentLevelIndex = index;
         OnLevelProgressChanged?.Invoke(CurrentLevelIndex);
     }
 
-    /// <summary>
-    /// Fuerza un índice concreto (útil para debug o saltar niveles).
-    /// </summary>
-    public void SetCurrentLevel(int index)
-    {
-        CurrentLevelIndex = Mathf.Max(0, index);
-        OnLevelProgressChanged?.Invoke(CurrentLevelIndex);
-    }
-
-    /// <summary>Resetea el progreso al primer nivel.</summary>
+    /// <summary>Resetea el progreso al primer nivel (debug / nuevo juego).</summary>
     public void ResetProgress()
     {
-        SetCurrentLevel(0);
+        CurrentLevelIndex = 0;
+        OnLevelProgressChanged?.Invoke(CurrentLevelIndex);
     }
 }

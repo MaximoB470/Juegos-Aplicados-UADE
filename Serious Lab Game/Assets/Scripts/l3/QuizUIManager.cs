@@ -5,29 +5,26 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 /// <summary>
-/// Manager de UI del nivel Quiz (Nivel 3).
-/// - Se registra en el ServiceLocator con la clave "QuizUIManager".
-/// - Solo presenta datos y delega acciones al QuizGameManager.
-/// - No contiene lógica de evaluación ni de estado de juego.
+/// Manager de UI del Nivel 3 (Quiz).
+/// Solo presenta datos y delega acciones al QuizGameManager.
+/// La nota y el desbloqueo son manejados por QuizGameManager y GradeService.
 /// </summary>
 public class QuizUIManager : MonoBehaviour
 {
     private const string SERVICE_KEY      = "QuizUIManager";
     private const string GAME_MANAGER_KEY = "QuizGameManager";
-    private const string PROGRESS_KEY     = "LevelProgressService";
     private const string SELECTOR_SCENE   = "LevelSelector";
 
-    private QuizGameManager      gameManager;
-    private LevelProgressService progressService;
+    private QuizGameManager gameManager;
 
     [Header("Panel de pregunta")]
     [SerializeField] private TMP_Text situationText;
     [SerializeField] private Slider   timerSlider;
     [SerializeField] private TMP_Text timerLabel;
 
-    [Header("Botones de opciones — asigná exactamente 3")]
-    [SerializeField] private List<Button>    optionButtons;
-    [SerializeField] private List<TMP_Text>  optionLabels;
+    [Header("Botones de opciones — exactamente 3")]
+    [SerializeField] private List<Button>   optionButtons;
+    [SerializeField] private List<TMP_Text> optionLabels;
 
     [Header("Panel de resultado")]
     [SerializeField] private GameObject resultPanel;
@@ -37,17 +34,18 @@ public class QuizUIManager : MonoBehaviour
 
     [Header("Panel de timeout")]
     [SerializeField] private GameObject timeoutPanel;
+    [SerializeField] private TMP_Text   timeoutMessageText;
     [SerializeField] private Button     timeoutContinueButton;
 
     [Header("Pantalla de fin de quiz")]
     [SerializeField] private GameObject endPanel;
     [SerializeField] private TMP_Text   endScoreText;
+    [SerializeField] private TMP_Text   endGradeText;
     [SerializeField] private Button     endContinueButton;
 
-    // Cache de la situación actual para mapear botón → opción
     private List<QuizOptionSO> currentOptions = new();
 
-    // ─── Lifecycle ───────────────────────────────────────────────────────────
+    // ─── Lifecycle ────────────────────────────────────────────────────────────
 
     private void Awake()
     {
@@ -64,35 +62,37 @@ public class QuizUIManager : MonoBehaviour
             return;
         }
 
-        progressService = ServiceLocator.Instance.GetService(PROGRESS_KEY) as LevelProgressService;
-
-        // Suscribir eventos
         gameManager.OnSituationLoaded += HandleSituationLoaded;
         gameManager.OnAnswerResult    += HandleAnswerResult;
         gameManager.OnTimerUpdated    += HandleTimerUpdated;
         gameManager.OnTimeOut         += HandleTimeOut;
         gameManager.OnQuizComplete    += HandleQuizComplete;
 
-        // Suscribir botones de opciones
         for (int i = 0; i < optionButtons.Count; i++)
         {
-            int index = i; // closure
+            int index = i;
             optionButtons[i]?.onClick.AddListener(() => OnOptionClicked(index));
         }
 
         continueButton?.onClick.AddListener(OnContinueClicked);
         timeoutContinueButton?.onClick.AddListener(OnTimeoutContinueClicked);
-        endContinueButton?.onClick.AddListener(OnEndContinueClicked);
+        endContinueButton?.onClick.AddListener(() => SceneManager.LoadScene(SELECTOR_SCENE));
 
         SetResultPanelActive(false);
         SetTimeoutPanelActive(false);
         SetEndPanelActive(false);
+
+        // Texto del timeout
+        if (timeoutMessageText != null)
+            timeoutMessageText.text =
+                "Se acabó el tiempo, pero eso también es parte del aprendizaje.\n" +
+                "En el laboratorio real vas a recordar que cada segundo cuenta.\n" +
+                "¡Vamos por la siguiente!";
     }
 
     private void OnDestroy()
     {
         if (gameManager == null) return;
-
         gameManager.OnSituationLoaded -= HandleSituationLoaded;
         gameManager.OnAnswerResult    -= HandleAnswerResult;
         gameManager.OnTimerUpdated    -= HandleTimerUpdated;
@@ -100,28 +100,24 @@ public class QuizUIManager : MonoBehaviour
         gameManager.OnQuizComplete    -= HandleQuizComplete;
     }
 
-    // ─── Handlers de eventos ─────────────────────────────────────────────────
+    // ─── Handlers de eventos ──────────────────────────────────────────────────
 
     private void HandleSituationLoaded(QuizSituationSO situation)
     {
-        // Sobreescribir texto de situación
         if (situationText != null)
             situationText.text = situation.situationText;
 
-        // Cachear opciones y sobreescribir labels de botones
         currentOptions = situation.options;
 
         for (int i = 0; i < optionButtons.Count; i++)
         {
             bool hasOption = i < currentOptions.Count;
-
             if (optionButtons[i] != null)
             {
                 optionButtons[i].gameObject.SetActive(hasOption);
                 optionButtons[i].interactable = true;
             }
-
-            if (hasOption && optionLabels[i] != null)
+            if (hasOption && i < optionLabels.Count && optionLabels[i] != null)
                 optionLabels[i].text = currentOptions[i].optionText;
         }
 
@@ -131,7 +127,6 @@ public class QuizUIManager : MonoBehaviour
 
     private void HandleAnswerResult(QuizOptionSO option, bool correct)
     {
-        // Deshabilitar botones para que no puedan seguir clickeando
         SetOptionButtonsInteractable(false);
 
         if (resultTitleText != null)
@@ -165,19 +160,24 @@ public class QuizUIManager : MonoBehaviour
         SetTimeoutPanelActive(true);
     }
 
-    private void HandleQuizComplete(int correct, int total)
+    /// <summary>correct, total, score — nota ya reportada a GradeService por QuizGameManager.</summary>
+    private void HandleQuizComplete(int correct, int total, float score)
     {
-        progressService?.CompleteCurrentLevel();
-
         SetResultPanelActive(false);
         SetTimeoutPanelActive(false);
         SetEndPanelActive(true);
 
         if (endScoreText != null)
-            endScoreText.text = $"Respondiste correctamente {correct} de {total} situaciones";
+            endScoreText.text = $"Respondiste correctamente {correct} de {total} preguntas";
+
+        if (endGradeText != null)
+        {
+            float rounded = Mathf.Round(score * 10f) / 10f;
+            endGradeText.text = $"Tu nota: {rounded:F1} / 10  —  {(score >= LevelGrade.PassingScore ? "Aprobado ✓" : "Desaprobado ✗")}";
+        }
     }
 
-    // ─── Handlers de botones ─────────────────────────────────────────────────
+    // ─── Handlers de botones ──────────────────────────────────────────────────
 
     private void OnOptionClicked(int index)
     {
@@ -197,31 +197,15 @@ public class QuizUIManager : MonoBehaviour
         gameManager?.AdvanceToNext();
     }
 
-    private void OnEndContinueClicked()
-    {
-        SceneManager.LoadScene(SELECTOR_SCENE);
-    }
+    // ─── UI helpers ───────────────────────────────────────────────────────────
 
-    // ─── UI helpers ──────────────────────────────────────────────────────────
-
-    private void SetOptionButtonsInteractable(bool interactable)
+    private void SetOptionButtonsInteractable(bool value)
     {
         foreach (var btn in optionButtons)
-            if (btn != null) btn.interactable = interactable;
+            if (btn != null) btn.interactable = value;
     }
 
-    private void SetResultPanelActive(bool active)
-    {
-        if (resultPanel != null) resultPanel.SetActive(active);
-    }
-
-    private void SetTimeoutPanelActive(bool active)
-    {
-        if (timeoutPanel != null) timeoutPanel.SetActive(active);
-    }
-
-    private void SetEndPanelActive(bool active)
-    {
-        if (endPanel != null) endPanel.SetActive(active);
-    }
+    private void SetResultPanelActive(bool active)  { if (resultPanel   != null) resultPanel.SetActive(active); }
+    private void SetTimeoutPanelActive(bool active)  { if (timeoutPanel  != null) timeoutPanel.SetActive(active); }
+    private void SetEndPanelActive(bool active)      { if (endPanel      != null) endPanel.SetActive(active); }
 }

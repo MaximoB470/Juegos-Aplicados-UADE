@@ -9,4 +9,8 @@ public class StartButton : MonoBehaviour
     {
         SceneManager.LoadScene(levelSceneBuildIndex);
     }
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

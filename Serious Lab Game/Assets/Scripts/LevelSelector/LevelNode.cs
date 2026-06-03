@@ -4,84 +4,102 @@ using TMPro;
 
 /// <summary>
 /// Controla el estado visual de un nodo individual en el selector de niveles.
-/// Estados: Locked (bloqueado) | Current (activo/brillando) | Completed (tachado)
+///
+/// Estados:
+///   Locked    — no desbloqueado, no se puede jugar.
+///   Available — desbloqueado, sin intentar.
+///   Passed    — aprobado (nota >= 7), reintentar para mejorar.
+///   Failed    — desaprobado, debe reintentar para avanzar.
 /// </summary>
 public class LevelNode : MonoBehaviour
 {
-    public enum NodeState { Locked, Current, Completed }
+    public enum NodeState { Locked, Available, Passed, Failed }
 
     [Header("Datos")]
     public LevelData levelData;
-    public int levelIndex;
+    public int       levelIndex;
 
-    [Header("Referencias UI")]
-    [SerializeField] private Button button;
-    [SerializeField] private Image iconImage;
-    [SerializeField] private Image nodeBackground;
-    [SerializeField] private GameObject completedOverlay;   // sprite de tilde/tachado
-    [SerializeField] private GameObject glowEffect;         // partícula o imagen de glow
+    [Header("UI — nodo")]
+    [SerializeField] private Button   button;
+    [SerializeField] private Image    nodeBackground;
+    [SerializeField] private Image    iconImage;
     [SerializeField] private TMP_Text labelText;
 
-    [Header("Colores de estado")]
-    [SerializeField] private Color lockedColor    = new Color(0.3f, 0.3f, 0.3f, 1f);
-    [SerializeField] private Color currentColor   = Color.white;
-    [SerializeField] private Color completedColor = new Color(0.6f, 0.9f, 0.6f, 1f);
+    [Header("UI — overlays de estado")]
+    [SerializeField] private GameObject glowEffect;
+    [SerializeField] private GameObject passedOverlay;
+    [SerializeField] private GameObject failedOverlay;
+    [SerializeField] private GameObject lockedOverlay;
 
-    private NodeState currentState;
+    [Header("UI — nota y estado")]
+    [SerializeField] private TMP_Text gradeText;
+    [SerializeField] private TMP_Text statusText;
+    [SerializeField] private TMP_Text retryHintText;
 
-    // Evento que el LevelSelectorManager escucha para cargar la escena
+    [Header("Colores por estado")]
+    [SerializeField] private Color lockedColor    = new Color(0.25f, 0.25f, 0.25f, 1f);
+    [SerializeField] private Color availableColor = Color.white;
+    [SerializeField] private Color passedColor    = new Color(0.55f, 0.90f, 0.55f, 1f);
+    [SerializeField] private Color failedColor    = new Color(0.95f, 0.45f, 0.45f, 1f);
+
     public System.Action<LevelNode> OnNodeClicked;
 
     private void Awake()
     {
-        button.onClick.AddListener(HandleClick);
-        if (levelData != null && iconImage != null && levelData.levelIcon != null)
-            iconImage.sprite = levelData.levelIcon;
-        if (labelText != null && levelData != null)
-            labelText.text = levelData.levelName;
+        button.onClick.AddListener(() => OnNodeClicked?.Invoke(this));
+
+        if (levelData == null) return;
+        if (iconImage != null && levelData.levelIcon != null) iconImage.sprite = levelData.levelIcon;
+        if (labelText != null) labelText.text = levelData.levelName;
     }
 
-    // ─── API pública ─────────────────────────────────────────────────────────
+    // ─── API pública ──────────────────────────────────────────────────────────
 
-    public void SetState(NodeState state)
+    public void SetState(NodeState state, LevelGrade grade = null)
     {
-        currentState = state;
-        RefreshVisuals();
+        if (nodeBackground != null)
+            nodeBackground.color = state switch
+            {
+                NodeState.Locked    => lockedColor,
+                NodeState.Available => availableColor,
+                NodeState.Passed    => passedColor,
+                NodeState.Failed    => failedColor,
+                _                   => availableColor
+            };
+
+        SetActive(glowEffect,    state == NodeState.Available);
+        SetActive(passedOverlay, state == NodeState.Passed);
+        SetActive(failedOverlay, state == NodeState.Failed);
+        SetActive(lockedOverlay, state == NodeState.Locked);
+
+        button.interactable = state != NodeState.Locked;
+
+        RefreshGradeDisplay(state, grade);
     }
 
-    // ─── Privados ────────────────────────────────────────────────────────────
+    // ─── Privados ─────────────────────────────────────────────────────────────
 
-    private void RefreshVisuals()
+    private void RefreshGradeDisplay(NodeState state, LevelGrade grade)
     {
-        switch (currentState)
+        if (grade != null && grade.hasBeenAttempted)
         {
-            case NodeState.Locked:
-                nodeBackground.color = lockedColor;
-                button.interactable  = false;
-                SetActive(completedOverlay, false);
-                SetActive(glowEffect, false);
-                break;
+            if (gradeText  != null) gradeText.text  = grade.FormattedScore;
+            if (statusText != null) statusText.text  = grade.StatusText;
 
-            case NodeState.Current:
-                nodeBackground.color = currentColor;
-                button.interactable  = true;
-                SetActive(completedOverlay, false);
-                SetActive(glowEffect, true);
-                break;
-
-            case NodeState.Completed:
-                nodeBackground.color = completedColor;
-                button.interactable  = false;           // ya jugado, no se puede repetir
-                SetActive(completedOverlay, true);
-                SetActive(glowEffect, false);
-                break;
+            if (retryHintText != null)
+            {
+                retryHintText.gameObject.SetActive(true);
+                retryHintText.text = state == NodeState.Failed
+                    ? "Debés aprobar para avanzar"
+                    : "Podés reintentar para mejorar tu nota";
+            }
         }
-    }
-
-    private void HandleClick()
-    {
-        if (currentState != NodeState.Current) return;
-        OnNodeClicked?.Invoke(this);
+        else
+        {
+            if (gradeText  != null) gradeText.text  = "--";
+            if (statusText != null) statusText.text  = state == NodeState.Locked ? "Bloqueado" : "Sin intentar";
+            if (retryHintText != null) retryHintText.gameObject.SetActive(false);
+        }
     }
 
     private static void SetActive(GameObject go, bool value)

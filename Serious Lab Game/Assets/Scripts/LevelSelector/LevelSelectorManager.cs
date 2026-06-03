@@ -4,62 +4,60 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Orquestador de la escena del selector de niveles.
-/// - Lee el progreso desde LevelProgressService.
-/// - Instancia o configura los LevelNode del mapa.
-/// - Instancia los LevelConnector entre nodos.
-/// - Escucha el evento OnLevelProgressChanged para refrescarse en caliente
-///   (útil si se navega de vuelta al selector sin recargar la escena).
+/// Consulta LevelProgressService (desbloqueo) y GradeService (notas)
+/// para determinar el estado visual de cada nodo.
 /// </summary>
 public class LevelSelectorManager : MonoBehaviour
 {
-    [Header("Nodos — arrastrá los LevelNode de la escena en orden")]
+    [Header("Nodos — en orden de nivel")]
     [SerializeField] private List<LevelNode> nodes;
 
     [Header("Conector — prefab con LevelConnector + Image")]
-    [SerializeField] private GameObject connectorPrefab;
-
-    [Header("Parent donde se instancian los conectores")]
+    [SerializeField] private GameObject   connectorPrefab;
     [SerializeField] private RectTransform connectorsParent;
 
-    private LevelProgressService progressService;
-    private readonly List<LevelConnector> spawnedConnectors = new();
+    private LevelProgressService           progressService;
+    private GradeService                   gradeService;
+    private readonly List<LevelConnector>  spawnedConnectors = new();
+
+    // ─── Lifecycle ────────────────────────────────────────────────────────────
 
     private void Start()
     {
-        progressService = (LevelProgressService)ServiceLocator.Instance
-            .GetService("LevelProgressService");
+        progressService = ServiceLocator.Instance.GetService("LevelProgressService") as LevelProgressService;
+        gradeService    = ServiceLocator.Instance.GetService("GradeService")          as GradeService;
 
         if (progressService == null)
         {
-            Debug.LogError("[LevelSelectorManager] LevelProgressService no encontrado en ServiceLocator.");
+            Debug.LogError("[LevelSelectorManager] LevelProgressService no encontrado.");
             return;
         }
 
-        // Suscribirse para refrescar si el progreso cambia mientras la escena está abierta
         progressService.OnLevelProgressChanged += OnProgressChanged;
 
+        if (gradeService != null)
+            gradeService.OnGradeSubmitted += OnGradeSubmitted;
+
         BuildConnectors();
-        RefreshNodes(progressService.CurrentLevelIndex);
-        RefreshConnectors(progressService.CurrentLevelIndex);
+        Refresh();
     }
 
     private void OnDestroy()
     {
         if (progressService != null)
             progressService.OnLevelProgressChanged -= OnProgressChanged;
+
+        if (gradeService != null)
+            gradeService.OnGradeSubmitted -= OnGradeSubmitted;
     }
 
-    // ─── Callbacks ───────────────────────────────────────────────────────────
+    // ─── Callbacks ────────────────────────────────────────────────────────────
 
-    private void OnProgressChanged(int newIndex)
-    {
-        RefreshNodes(newIndex);
-        RefreshConnectors(newIndex);
-    }
+    private void OnProgressChanged(int _) => Refresh();
+    private void OnGradeSubmitted(int _, LevelGrade __) => Refresh();
 
-    // ─── Construcción ────────────────────────────────────────────────────────
+    // ─── Construcción ─────────────────────────────────────────────────────────
 
-    /// <summary>Crea los conectores una sola vez al iniciar la escena.</summary>
     private void BuildConnectors()
     {
         if (connectorPrefab == null || connectorsParent == null) return;
@@ -68,35 +66,53 @@ public class LevelSelectorManager : MonoBehaviour
         {
             var go        = Instantiate(connectorPrefab, connectorsParent);
             var connector = go.GetComponent<LevelConnector>();
-
-            if (connector == null) continue;
-
-            spawnedConnectors.Add(connector);
-            // Los conectores se posicionan al hacer el primer refresh
+            if (connector != null) spawnedConnectors.Add(connector);
         }
     }
 
-    // ─── Refresh ─────────────────────────────────────────────────────────────
+    // ─── Refresh ──────────────────────────────────────────────────────────────
 
-    private void RefreshNodes(int currentIndex)
+    private void Refresh()
     {
+        int currentIndex = progressService.CurrentLevelIndex;
+
         for (int i = 0; i < nodes.Count; i++)
         {
-            var node = nodes[i];
+            var node  = nodes[i];
             node.levelIndex = i;
 
-            LevelNode.NodeState state;
-            if      (i < currentIndex)  state = LevelNode.NodeState.Completed;
-            else if (i == currentIndex) state = LevelNode.NodeState.Current;
-            else                        state = LevelNode.NodeState.Locked;
+            LevelGrade grade = gradeService?.GetGrade(i);
+            LevelNode.NodeState state = ResolveState(i, currentIndex, grade);
 
-            node.SetState(state);
+            node.SetState(state, grade);
 
-            // Suscribir click (puede llamarse varias veces, limpiamos primero)
             node.OnNodeClicked -= HandleNodeClicked;
-            if (state == LevelNode.NodeState.Current)
+            if (state != LevelNode.NodeState.Locked)
                 node.OnNodeClicked += HandleNodeClicked;
         }
+
+        RefreshConnectors(currentIndex);
+    }
+
+    /// <summary>
+    /// Determina el estado del nodo i:
+    ///   i > unlocked        → Locked
+    ///   i == unlocked       → Available o Failed (si tuvo intento fallido)
+    ///   i menor a unlocked  → Passed (necesariamente aprobó para llegar acá)
+    /// </summary>
+    private LevelNode.NodeState ResolveState(int index, int currentUnlockedIndex, LevelGrade grade)
+    {
+        if (index > currentUnlockedIndex)
+            return LevelNode.NodeState.Locked;
+
+        if (index < currentUnlockedIndex)
+            return LevelNode.NodeState.Passed;
+
+        // index == currentUnlockedIndex
+        if (grade != null && grade.hasBeenAttempted && !grade.isPassed)
+            return LevelNode.NodeState.Failed;
+
+        return LevelNode.NodeState.Available;
     }
 
     private void RefreshConnectors(int currentIndex)
@@ -105,22 +121,23 @@ public class LevelSelectorManager : MonoBehaviour
         {
             if (i >= nodes.Count - 1) break;
 
+            var fromRect = nodes[i].GetComponent<RectTransform>();
+            var toRect   = nodes[i + 1].GetComponent<RectTransform>();
+
+            if (fromRect == null || toRect == null) continue;
+
             bool completed = i < currentIndex;
-            spawnedConnectors[i].Connect(
-                nodes[i].GetComponent<RectTransform>(),
-                nodes[i + 1].GetComponent<RectTransform>(),
-                completed
-            );
+            spawnedConnectors[i].Connect(fromRect, toRect, completed);
         }
     }
 
-    // ─── Navegación ──────────────────────────────────────────────────────────
+    // ─── Navegación ───────────────────────────────────────────────────────────
 
     private void HandleNodeClicked(LevelNode node)
     {
         if (node.levelData == null)
         {
-            Debug.LogWarning($"[LevelSelectorManager] El nodo {node.name} no tiene LevelData asignado.");
+            Debug.LogWarning($"[LevelSelectorManager] Nodo {node.name} sin LevelData.");
             return;
         }
 

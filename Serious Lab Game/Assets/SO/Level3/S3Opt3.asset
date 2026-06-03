@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
   optionText: Alejarte del recipiente, avisar al docente inmediatamente y ventilar
     el ambiente abriendo ventanas
-  isCorrect: 0
+  isCorrect: 1
   incorrectFeedback: 
   correctFeedback: "\xA1Correcto! Ante una reacci\xF3n qu\xEDmica inesperada, el
     protocolo \nes alejarse de la fuente, no intentar intervenir por cuenta \npropia,

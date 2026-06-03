@@ -31,7 +31,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color hintAvailableColor = new Color(0.2f, 0.7f, 1f);
     [Tooltip("Color del botón cuando se agotaron todas las pistas.")]
     [SerializeField] private Color hintExhaustedColor = new Color(0.4f, 0.4f, 0.4f);
-
+    [Header("Win Screen")]
+    [SerializeField] private TMP_Text winScoreText;
     public bool IsPaused { get; private set; }
 
     private ClickPoint currentPoint;
@@ -66,13 +67,26 @@ public class UIManager : MonoBehaviour
         PauseGame();
     }
 
-    public void ShowWin()
+    public void ShowWin(float score = -1f)
     {
         HideAll();
         SetActive(winCanvas, true);
         PauseGame();
-    }
 
+        if (winScoreText != null)
+        {
+            if (score >= 0f)
+            {
+                float rounded = Mathf.Round(score * 10f) / 10f;
+                winScoreText.text = $"Tu nota: {rounded:F1} / 10  —  {(score >= LevelGrade.PassingScore ? "Aprobado ✓" : "Desaprobado ✗")}";
+                winScoreText.gameObject.SetActive(true);
+            }
+            else
+            {
+                winScoreText.gameObject.SetActive(false);
+            }
+        }
+    }
     public void ShowLose()
     {
         HideAll();
