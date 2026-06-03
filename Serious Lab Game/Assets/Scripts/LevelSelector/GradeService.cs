@@ -31,10 +31,21 @@ public class GradeService : MonoBehaviour
     /// <summary>Se dispara cuando todos los niveles están aprobados.</summary>
     public event Action OnAllLevelsPassed;
 
+    private static GradeService _instance;
+
     // ─── Lifecycle ───────────────────────────────────────────────────────────
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+
         ServiceLocator.Instance.SetService(SERVICE_KEY, this);
     }
 
@@ -52,11 +63,18 @@ public class GradeService : MonoBehaviour
     /// </summary>
     public void SubmitGrade(int levelIndex, float score)
     {
+        Debug.Log($"[GradeService] SubmitGrade recibido: Nivel {levelIndex} | Score: {score}");
+
         if (!grades.ContainsKey(levelIndex))
+        {
             grades[levelIndex] = new LevelGrade { levelIndex = levelIndex };
+            Debug.Log($"[GradeService] Creada nueva entrada LevelGrade para Nivel {levelIndex}.");
+        }
 
         float roundedScore = Mathf.Round(score * 10f) / 10f; // 1 decimal
         grades[levelIndex].TryUpdateScore(roundedScore);
+
+        Debug.Log($"[GradeService] TryUpdateScore ejecutado. Mejor nota actual: {grades[levelIndex].bestScore}, ¿Aprobado?: {grades[levelIndex].isPassed}");
 
         OnGradeSubmitted?.Invoke(levelIndex, grades[levelIndex]);
 
@@ -65,7 +83,16 @@ public class GradeService : MonoBehaviour
         {
             var progress = ServiceLocator.Instance.GetService("LevelProgressService")
                            as LevelProgressService;
-            progress?.UnlockLevel(levelIndex + 1);
+            
+            if (progress != null)
+            {
+                Debug.Log($"[GradeService] Intentando desbloquear el nivel {levelIndex + 1} a través de LevelProgressService.");
+                progress.UnlockLevel(levelIndex + 1);
+            }
+            else
+            {
+                Debug.LogWarning("[GradeService] No se encontró LevelProgressService para desbloquear el siguiente nivel.");
+            }
         }
 
         // Verificar condición de diploma

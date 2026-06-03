@@ -1,58 +1,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class ServiceLocator : MonoBehaviour
+public class ServiceLocator : MonoBehaviour
+{
+    private Dictionary<string, MonoBehaviour> servicesByName = new();
+
+    private static ServiceLocator _instance;
+    public static ServiceLocator Instance
     {
-        private Dictionary<string, MonoBehaviour> servicesByName = new();
-
-        private static ServiceLocator _instance;
-        public static ServiceLocator Instance
+        get
         {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = FindFirstObjectByType<ServiceLocator>();
-                }
-
-                if (_instance == null)
-                {
-                    var newGO = new GameObject("ServiceLocator");
-                    _instance = newGO.AddComponent<ServiceLocator>();
-                }
-
-                return _instance;
-            }
-        }
-
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-            {
-                Destroy(this.gameObject);
-                return;
+                _instance = FindFirstObjectByType<ServiceLocator>();
             }
 
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-
-        public MonoBehaviour GetService(string serviceName)
-        {
-            servicesByName.TryGetValue(serviceName, out var service);
-            return service;
-        }
-
-        public void SetService(string serviceName, MonoBehaviour value)
-        {
-            if (!servicesByName.ContainsKey(serviceName))
+            if (_instance == null)
             {
-                servicesByName.Add(serviceName, value);
+                var newGO = new GameObject("ServiceLocator");
+                _instance = newGO.AddComponent<ServiceLocator>();
             }
-        }
 
-        public bool IsInitialized()
-        {
-            return _instance != null;
+            return _instance;
         }
     }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public MonoBehaviour GetService(string serviceName)
+    {
+        servicesByName.TryGetValue(serviceName, out var service);
+        return service;
+    }
+
+    public void SetService(string serviceName, MonoBehaviour value)
+    {
+        // Sobrescribimos el valor si ya existe para limpiar referencias a objetos destruidos
+        servicesByName[serviceName] = value;
+    }
+
+    public bool IsInitialized()
+    {
+        return _instance != null;
+    }
+}

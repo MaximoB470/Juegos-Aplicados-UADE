@@ -30,13 +30,24 @@ public class LevelSelectorManager : MonoBehaviour
         if (progressService == null)
         {
             Debug.LogError("[LevelSelectorManager] LevelProgressService no encontrado.");
-            return;
+            // No hacemos return para que al menos las notas se puedan leer si falta el progreso
+        }
+        else
+        {
+            Debug.Log("[LevelSelectorManager] LevelProgressService encontrado correctamente.");
         }
 
         progressService.OnLevelProgressChanged += OnProgressChanged;
 
         if (gradeService != null)
+        {
+            Debug.Log("[LevelSelectorManager] GradeService encontrado correctamente.");
             gradeService.OnGradeSubmitted += OnGradeSubmitted;
+        }
+        else
+        {
+            Debug.LogWarning("[LevelSelectorManager] GradeService no encontrado. Los nodos no reflejarán las notas previas.");
+        }
 
         BuildConnectors();
         Refresh();
@@ -74,7 +85,8 @@ public class LevelSelectorManager : MonoBehaviour
 
     private void Refresh()
     {
-        int currentIndex = progressService.CurrentLevelIndex;
+        int currentIndex = progressService != null ? progressService.CurrentLevelIndex : 0;
+        Debug.Log($"[LevelSelectorManager] Refresh() - Nivel desbloqueado actual (currentIndex): {currentIndex}");
 
         for (int i = 0; i < nodes.Count; i++)
         {
@@ -82,7 +94,14 @@ public class LevelSelectorManager : MonoBehaviour
             node.levelIndex = i;
 
             LevelGrade grade = gradeService?.GetGrade(i);
+            
+            if (grade != null)
+                Debug.Log($"[LevelSelectorManager] Nodo {i}: Grade.bestScore={grade.bestScore}, hasAttempted={grade.hasBeenAttempted}, isPassed={grade.isPassed}");
+            else
+                Debug.LogWarning($"[LevelSelectorManager] Nodo {i}: GetGrade devolvió null.");
+
             LevelNode.NodeState state = ResolveState(i, currentIndex, grade);
+            Debug.Log($"[LevelSelectorManager] Nodo {i} resuelto como estado: {state}");
 
             node.SetState(state, grade);
 

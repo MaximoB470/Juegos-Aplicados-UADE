@@ -719,6 +719,7 @@ MonoBehaviour:
   hintButton: {fileID: 1813736799}
   hintAvailableColor: {r: 0.2, g: 0.7, b: 1, a: 1}
   hintExhaustedColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+  winScoreText: {fileID: 0}
 --- !u!1 &103534359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,7 +1438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66971195, y: 0.17027526}
   m_AnchorMax: {x: 0.869, y: 0.23137623}
-  m_AnchoredPosition: {x: 3, y: -2.0000076}
+  m_AnchoredPosition: {x: 3, y: -2}
   m_SizeDelta: {x: 6, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220497065
@@ -4819,6 +4820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bebfd5e4aff1b49aa5643889a23fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  levelIndex: 1
   allClickPoints:
   - {fileID: 647173032}
   - {fileID: 1798965781}

@@ -3973,9 +3973,11 @@ MonoBehaviour:
   resultBodyText: {fileID: 1517034467}
   continueButton: {fileID: 504604909}
   timeoutPanel: {fileID: 647611589}
+  timeoutMessageText: {fileID: 0}
   timeoutContinueButton: {fileID: 1481197179}
   endPanel: {fileID: 1498001109}
   endScoreText: {fileID: 1218548549}
+  endGradeText: {fileID: 0}
   endContinueButton: {fileID: 1372267651}
 --- !u!1 &1869294462
 GameObject:
@@ -4674,6 +4676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caf847592319264da57e6add971837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizGameManager
+  levelIndex: 3
   situations:
   - {fileID: 11400000, guid: ba0212c3e68b7c54abd4a28ccbe1bc56, type: 2}
   - {fileID: 11400000, guid: 652282c2fa1c3e34ea27628841071d5e, type: 2}

@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
     {
         gameRunning  = false;
         float score  = CalculateScore();
+        Debug.Log($"[GameManager] WinGame! Score calculado: {score}");
         SubmitGrade(score);
         GetUI().ShowWin(score);
     }
@@ -160,6 +161,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
     {
         gameRunning  = false;
         float score  = CalculateScore();
+        Debug.Log($"[GameManager] LoseGame! Score calculado: {score}");
         SubmitGrade(score);
         GetUI().ShowLose();
     }
@@ -167,6 +169,15 @@ public class GameManager : MonoBehaviour, ILevelScorer
     private void SubmitGrade(float score)
     {
         var gradeService = ServiceLocator.Instance.GetService("GradeService") as GradeService;
+        if (gradeService == null)
+        {
+            Debug.LogError($"[GameManager] CRÍTICO: No se encontró GradeService en el ServiceLocator para enviar la nota del nivel {levelIndex}.");
+        }
+        else
+        {
+            Debug.Log($"[GameManager] GradeService encontrado. Enviando nota {score} para el nivel {levelIndex}.");
+        }
+        
         gradeService?.SubmitGrade(levelIndex, score);
     }
 }
