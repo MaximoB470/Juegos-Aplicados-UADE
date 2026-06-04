@@ -105,7 +105,23 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
 
         OnScenarioLoaded?.Invoke(scenarios[currentScenarioIndex]);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            DebugWin();
+        }
+    }
+    private void DebugWin()
+    {
+        const float debugScore = 10f;
 
+        SubmitGrade(debugScore);
+
+        Debug.Log("[DEBUG] EPP completado con nota 10.");
+
+        OnLevelComplete?.Invoke(1, 1, debugScore);
+    }
     private EPPResult EvaluateAnswer(
         EPPScenarioSO scenario,
         int headIndex, int bodyIndex, int handsIndex, int feetIndex)

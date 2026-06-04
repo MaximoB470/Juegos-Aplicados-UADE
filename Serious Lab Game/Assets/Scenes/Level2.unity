@@ -5906,7 +5906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1531c215c06758849ab327d760de5f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EPPGameManager
-  levelIndex: 2
+  levelIndex: 1
   scenarios:
   - {fileID: 11400000, guid: 98055b243b42df34da7837dc25eda560, type: 2}
   - {fileID: 11400000, guid: aa014bb992ca9b14a8d28ff6ae3331c6, type: 2}

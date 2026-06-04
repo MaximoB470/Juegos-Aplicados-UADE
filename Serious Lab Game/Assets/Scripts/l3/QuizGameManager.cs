@@ -59,21 +59,42 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
 
     private void Start()
     {
+        Time.timeScale = 1f;
+        
         LoadCurrentSituation();
     }
 
     private void Update()
     {
-        if (!questionActive) return;
-
-        currentTime -= Time.deltaTime;
-        OnTimerUpdated?.Invoke(currentTime, timePerQuestion);
-
-        if (currentTime <= 0f)
+        if (questionActive)
         {
-            questionActive = false;
-            OnTimeOut?.Invoke();
+            currentTime -= Time.deltaTime;
+            OnTimerUpdated?.Invoke(currentTime, timePerQuestion);
+
+            if (currentTime <= 0f)
+            {
+                questionActive = false;
+                OnTimeOut?.Invoke();
+            }
         }
+
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            DebugWin();
+        }
+    }
+
+    private void DebugWin()
+    {
+        questionActive = false;
+
+        const float debugScore = 10f;
+
+        SubmitGrade(debugScore);
+
+        Debug.Log("[DEBUG] Quiz completado con nota 10.");
+
+        OnQuizComplete?.Invoke(1, 1, debugScore);
     }
 
     private void OnDestroy()

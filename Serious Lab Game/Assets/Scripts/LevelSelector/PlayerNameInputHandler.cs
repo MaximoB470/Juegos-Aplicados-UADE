@@ -4,46 +4,60 @@ using TMPro;
 
 /// <summary>
 /// Maneja el input de nombre del jugador en el menú principal.
-/// Al confirmar, guarda el nombre en PlayerProfileService y habilita
-/// el botón de inicio.
+/// Guarda el nombre en tiempo real mientras el jugador escribe,
+/// sin depender del orden de ejecución del botón de inicio.
 /// </summary>
 public class PlayerNameInputHandler : MonoBehaviour
 {
     [Header("Referencias UI")]
     [SerializeField] private TMP_InputField nameInputField;
-    [SerializeField] private Button         startButton;
-    [Tooltip("Texto placeholder del input.")]
-    [SerializeField] private string         placeholderText = "Ingresá tu nombre...";
+    [SerializeField] private Button startButton;
+    [SerializeField] private string placeholderText = "Ingresá tu nombre...";
+
+    private PlayerProfileService profileService;
 
     private void Start()
     {
+        profileService = ServiceLocator.Instance.GetService("PlayerProfileService")
+                         as PlayerProfileService;
+
         if (nameInputField != null)
         {
             nameInputField.onValueChanged.AddListener(OnNameChanged);
-            nameInputField.placeholder.GetComponent<TMP_Text>().text = placeholderText;
+
+            var placeholder = nameInputField.placeholder.GetComponent<TMP_Text>();
+            if (placeholder != null)
+                placeholder.text = placeholderText;
         }
 
-        // El botón de inicio empieza deshabilitado hasta que haya un nombre
+        // Empieza deshabilitado hasta que haya un nombre
         SetStartButtonInteractable(false);
     }
 
+    // ─── Callbacks ────────────────────────────────────────────────────────────
+
     private void OnNameChanged(string value)
     {
-        SetStartButtonInteractable(!string.IsNullOrWhiteSpace(value));
+        bool hasName = !string.IsNullOrWhiteSpace(value);
+        SetStartButtonInteractable(hasName);
+
+        // Guardar en tiempo real — así no importa si ConfirmName() se llama o no
+        profileService?.SetPlayerName(value);
     }
 
+    // ─── API pública ──────────────────────────────────────────────────────────
+
     /// <summary>
-    /// Llamado por el botón "Confirmar" o al presionar Enter.
-    /// Guarda el nombre y habilita el inicio del juego.
+    /// Puede seguir llamándose desde el botón Start para garantizar
+    /// que el nombre esté guardado, pero ya no es el único punto de guardado.
     /// </summary>
     public void ConfirmName()
     {
-        if (nameInputField == null) return;
-
-        var profile = ServiceLocator.Instance.GetService("PlayerProfileService")
-                      as PlayerProfileService;
-        profile?.SetPlayerName(nameInputField.text);
+        if (nameInputField != null)
+            profileService?.SetPlayerName(nameInputField.text);
     }
+
+    // ─── Helpers ─────────────────────────────────────────────────────────────
 
     private void SetStartButtonInteractable(bool value)
     {

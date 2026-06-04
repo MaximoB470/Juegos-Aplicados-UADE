@@ -76,9 +76,28 @@ public class GameManager : MonoBehaviour, ILevelScorer
 
         currentTime -= Time.deltaTime;
         GetUI().UpdateTimerDisplay(currentTime);
-        if (currentTime <= 0f) LoseGame();
 
-        if (Input.GetKeyDown(KeyCode.F1)) LoseGame();
+        if (currentTime <= 0f)
+            LoseGame();
+
+        if (Input.GetKeyDown(KeyCode.F1))
+            LoseGame();
+
+        if (Input.GetKeyDown(KeyCode.F12))
+            DebugWin();
+    }
+
+    private void DebugWin()
+    {
+        gameRunning = false;
+
+        const float debugScore = 10f;
+
+        SubmitGrade(debugScore);
+
+        Debug.Log("[DEBUG] Victoria forzada con nota 10.");
+
+        GetUI().ShowWin(debugScore);
     }
 
     // ─── API pública ──────────────────────────────────────────────────────────

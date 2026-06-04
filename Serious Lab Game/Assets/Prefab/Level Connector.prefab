@@ -33,10 +33,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4044792, y: 0.67800003}
-  m_AnchorMax: {x: 0.5, y: 0.68548214}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: -84, y: 92}
+  m_AnchorMin: {x: 0.4044792, y: 0.679}
+  m_AnchorMax: {x: 0.5, y: 0.68177855}
+  m_AnchoredPosition: {x: 0, y: 0.20680237}
+  m_SizeDelta: {x: -84, y: 33.7063}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1836228812234072570
 CanvasRenderer:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -66,8 +66,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243ae4bcb06d2f3419995a09533c8aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelConnector
-  connectorColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.8}
-  connectorCompletedColor: {r: 0.4, g: 0.85, b: 0.4, a: 1}
-  lineWidth: 6
+  completedSprite: {fileID: 0}
+  pendingSprite: {fileID: 0}
+  completedColor: {r: 0.35, g: 0.85, b: 0.35, a: 1}
+  pendingColor: {r: 0.55, g: 0.55, b: 0.55, a: 0.6}
