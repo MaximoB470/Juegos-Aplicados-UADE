@@ -38,7 +38,7 @@ public class LevelConnector : MonoBehaviour
     // ─── API pública ──────────────────────────────────────────────────────────
 
     /// <summary>
-    /// completed = true  → línea sólida verde.
+    /// completed = true  → línea punteada verde.
     /// completed = false → línea punteada gris.
     /// </summary>
     public void Refresh(bool completed)
@@ -47,22 +47,16 @@ public class LevelConnector : MonoBehaviour
 
         float totalLength = rt.rect.width;
         float height = rt.rect.height;
+
+        // Asignamos el color correspondiente según el estado
         Color color = completed ? completedColor : pendingColor;
 
-        if (completed)
+        // Bucle unificado: dibuja los segmentos punteados en ambos casos
+        float x = 0f;
+        while (x + dashLength <= totalLength)
         {
-            // Un solo segmento sólido que cubre todo el largo
-            SpawnSegment(0f, totalLength, height, color);
-        }
-        else
-        {
-            // Segmentos cortos con espacios entre ellos
-            float x = 0f;
-            while (x + dashLength <= totalLength)
-            {
-                SpawnSegment(x, dashLength, height, color);
-                x += dashLength + gapLength;
-            }
+            SpawnSegment(x, dashLength, height, color);
+            x += dashLength + gapLength;
         }
     }
 

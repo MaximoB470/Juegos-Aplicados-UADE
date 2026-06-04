@@ -850,6 +850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelNode (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8961372685588921893, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_text
+      value: Jugar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1412,6 +1416,10 @@ PrefabInstance:
     - target: {fileID: 7066949889087173478, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Name
       value: LevelNode (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961372685588921893, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_text
+      value: Jugar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2255,6 +2263,10 @@ PrefabInstance:
     - target: {fileID: 7066949889087173478, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Name
       value: LevelNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961372685588921893, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_text
+      value: Jugar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
