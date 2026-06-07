@@ -19,7 +19,10 @@ public class UIManager : MonoBehaviour
 
     [Header("HUD")]
     [SerializeField] private TMP_Text progressText;
-    [SerializeField] private TMP_Text timerText;
+
+    [Header("Timer")]
+ 
+    [SerializeField] private Image timerFillImage;
 
     [Header("Click Counter")]
     [Tooltip("Texto que muestra los clicks incorrectos usados / máximo.")]
@@ -27,12 +30,18 @@ public class UIManager : MonoBehaviour
 
     [Header("Hint Button")]
     [SerializeField] private Button hintButton;
-    [Tooltip("Color del botón cuando quedan pistas disponibles.")]
     [SerializeField] private Color hintAvailableColor = new Color(0.2f, 0.7f, 1f);
-    [Tooltip("Color del botón cuando se agotaron todas las pistas.")]
     [SerializeField] private Color hintExhaustedColor = new Color(0.4f, 0.4f, 0.4f);
+
+    [Header("Hints Display")]
+    [SerializeField] private TMP_Text hintsRemainingText;
+    [SerializeField] private Image[] hintIcons;
+    [SerializeField] private Color hintIconAvailableColor = Color.white;
+    [SerializeField] private Color hintIconSpentColor = Color.gray;
+
     [Header("Win Screen")]
     [SerializeField] private TMP_Text winScoreText;
+
     public bool IsPaused { get; private set; }
 
     private ClickPoint currentPoint;
@@ -58,7 +67,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // ─── Pantallas principales ───────────────────────────────────────────────
+    // ─────────────────────────────────────────────
+    // Pantallas principales
+    // ─────────────────────────────────────────────
 
     public void ShowMenu()
     {
@@ -78,7 +89,11 @@ public class UIManager : MonoBehaviour
             if (score >= 0f)
             {
                 float rounded = Mathf.Round(score * 10f) / 10f;
-                winScoreText.text = $"Tu nota: {rounded:F1} / 10  —  {(score >= LevelGrade.PassingScore ? "Aprobado ✓" : "Desaprobado ✗")}";
+
+                winScoreText.text =
+                    $"Tu nota: {rounded:F1} / 10  —  " +
+                    $"{(score >= LevelGrade.PassingScore ? "Aprobado ✓" : "Desaprobado ✗")}";
+
                 winScoreText.gameObject.SetActive(true);
             }
             else
@@ -87,6 +102,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
     public void ShowLose()
     {
         HideAll();
@@ -94,7 +110,9 @@ public class UIManager : MonoBehaviour
         PauseGame();
     }
 
-    // ─── Info / Hint Panel ───────────────────────────────────────────────────
+    // ─────────────────────────────────────────────
+    // Info / Hint Panel
+    // ─────────────────────────────────────────────
 
     public void ShowInfoPanel(ClickPoint point)
     {
@@ -102,8 +120,11 @@ public class UIManager : MonoBehaviour
 
         currentPoint = point;
 
-        if (infoPanelTitle != null) infoPanelTitle.text = point.ErrorTitle;
-        if (infoPanelDescription != null) infoPanelDescription.text = point.ErrorDescription;
+        if (infoPanelTitle != null)
+            infoPanelTitle.text = point.ErrorTitle;
+
+        if (infoPanelDescription != null)
+            infoPanelDescription.text = point.ErrorDescription;
 
         infoPanel.SetActive(true);
         PauseGame();
@@ -115,8 +136,11 @@ public class UIManager : MonoBehaviour
 
         currentPoint = null;
 
-        if (infoPanelTitle != null) infoPanelTitle.text = "Pista";
-        if (infoPanelDescription != null) infoPanelDescription.text = point.HintText;
+        if (infoPanelTitle != null)
+            infoPanelTitle.text = "Pista";
+
+        if (infoPanelDescription != null)
+            infoPanelDescription.text = point.HintText;
 
         infoPanel.SetActive(true);
         PauseGame();
@@ -145,7 +169,9 @@ public class UIManager : MonoBehaviour
         SetActive(infoPanel, false);
     }
 
-    // ─── HUD Updates ─────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────
+    // HUD
+    // ─────────────────────────────────────────────
 
     public void UpdateProgressDisplay(int found, int total)
     {
@@ -153,21 +179,28 @@ public class UIManager : MonoBehaviour
             progressText.text = $"{found} / {total} errores encontrados";
     }
 
-    public void UpdateTimerDisplay(float seconds)
+    /// <summary>
+    /// Actualiza texto y reloj radial.
+    /// currentTime = tiempo restante.
+    /// maxTime = tiempo total del nivel.
+    /// </summary>
+  public void UpdateTimerDisplay(float currentTime, float maxTime)
+{
+
+    if (timerFillImage != null)
     {
-        if (timerText == null) return;
-        int m = Mathf.FloorToInt(seconds / 60f);
-        int s = Mathf.FloorToInt(seconds % 60f);
-        timerText.text = $"{m}:{s:D2}";
+            timerFillImage.fillAmount =
+        1f - Mathf.Clamp01(currentTime / maxTime);
     }
+}
 
     /// <summary>
-    /// Actualiza el texto del contador de clicks incorrectos.
-    /// Si maxClicks es 0 (sin límite) oculta el texto.
+    /// Actualiza contador de clicks incorrectos.
     /// </summary>
     public void UpdateClickDisplay(int wrongClicks, int maxClicks)
     {
-        if (clickCounterText == null) return;
+        if (clickCounterText == null)
+            return;
 
         if (maxClicks <= 0)
         {
@@ -179,25 +212,31 @@ public class UIManager : MonoBehaviour
         clickCounterText.text = $"Clicks: {wrongClicks} / {maxClicks}";
     }
 
-    /// <summary>
-    /// Actualiza el color y el estado interactivo del botón de pistas.
-    /// </summary>
+    // ─────────────────────────────────────────────
+    // Pistas
+    // ─────────────────────────────────────────────
+
     public void UpdateHintButton(int hintsUsed, int maxHints)
     {
-        if (hintButton == null) return;
+        if (hintButton == null)
+            return;
 
         bool exhausted = hintsUsed >= maxHints;
 
-        // Bloquear interacción
         hintButton.interactable = !exhausted;
 
-        // Cambiar color de la imagen del botón
-        var img = hintButton.GetComponent<Image>();
-        if (img != null)
-            img.color = exhausted ? hintExhaustedColor : hintAvailableColor;
+        Image img = hintButton.GetComponent<Image>();
 
-        // Cambiar texto del botón si tiene un TMP_Text hijo
-        var label = hintButton.GetComponentInChildren<TMP_Text>();
+        if (img != null)
+        {
+            img.color = exhausted
+                ? hintExhaustedColor
+                : hintAvailableColor;
+        }
+
+        TMP_Text label =
+            hintButton.GetComponentInChildren<TMP_Text>();
+
         if (label != null)
         {
             label.text = exhausted
@@ -206,15 +245,71 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // ─── Botones ─────────────────────────────────────────────────────────────
+    /// <summary>
+    /// Actualiza el texto e iconos visuales de pistas.
+    /// </summary>
+    public void UpdateHintsDisplay(int hintsUsed, int maxHints)
+    {
+        int remaining = Mathf.Max(0, maxHints - hintsUsed);
 
-    public void StartGameButton() => GetSceneController()?.StartGame();
-    public void HintButton() => GameManager.Instance?.ShowHint();
-    public void ReloadSceneButton() => GetSceneController()?.ReloadScene();
-    public void LoadMenuButton() => GetSceneController()?.LoadMenu();
-    public void LoadLevelTwo() => GetSceneController()?.LoadSecondLevel();
+        if (hintsRemainingText != null)
+        {
+            hintsRemainingText.text =
+                $"{remaining}/{maxHints}";
+        }
 
-    // ─── Pause / Resume ──────────────────────────────────────────────────────
+        if (hintIcons == null)
+            return;
+
+        for (int i = 0; i < hintIcons.Length; i++)
+        {
+            if (hintIcons[i] == null)
+                continue;
+
+            hintIcons[i].color =
+                i < remaining
+                ? hintIconAvailableColor
+                : hintIconSpentColor;
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // Botones
+    // ─────────────────────────────────────────────
+
+    public void StartGameButton()
+    {
+        GetSceneController()?.StartGame();
+    }
+
+    public void HintButton()
+    {
+        GameManager.Instance?.ShowHint();
+    }
+
+    public void ReloadSceneButton()
+    {
+        GetSceneController()?.ReloadScene();
+    }
+
+    public void LoadMenuButton()
+    {
+        GetSceneController()?.LoadMenu();
+    }
+
+    public void LoadLevelTwo()
+    {
+        GetSceneController()?.LoadSecondLevel();
+    }
+
+    public void LoadLevelSelector()
+    {
+        SceneManager.LoadScene("LevelSelector");
+    }
+
+    // ─────────────────────────────────────────────
+    // Pause / Resume
+    // ─────────────────────────────────────────────
 
     public void PauseGame()
     {
@@ -228,15 +323,13 @@ public class UIManager : MonoBehaviour
         IsPaused = false;
     }
 
-    // ─── Util ────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────
+    // Util
+    // ─────────────────────────────────────────────
 
     private static void SetActive(GameObject go, bool value)
     {
-        if (go != null) go.SetActive(value);
-    }
-
-    public void LoadLevelSelector()
-    {
-       SceneManager.LoadScene("LevelSelector"); 
+        if (go != null)
+            go.SetActive(value);
     }
 }

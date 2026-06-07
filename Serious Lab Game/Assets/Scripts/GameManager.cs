@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour, ILevelScorer
     [Header("Límite de Pistas")]
     [SerializeField] private int maxHints = 3;
 
+    [SerializeField] private float timeLimit = 120f;
+
     private int   foundCount      = 0;
     private int   wrongClickCount = 0;
     private int   hintsUsed       = 0;
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
         if (!gameRunning || !useTimer || GetUI().IsPaused) return;
 
         currentTime -= Time.deltaTime;
-        GetUI().UpdateTimerDisplay(currentTime);
+        GetUI().UpdateTimerDisplay(currentTime, timeLimit);
 
         if (currentTime <= 0f)
             LoseGame();
