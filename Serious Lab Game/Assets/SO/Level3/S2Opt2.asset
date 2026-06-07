@@ -18,7 +18,7 @@ MonoBehaviour:
   incorrectFeedback: "Esperar a que un corte de laboratorio cese espont\xE1neamente
     es \npeligroso por dos razones. Primero, los cortes con vidrio suelen \nser m\xE1s
     profundos de lo que parecen y pueden requerir atenci\xF3n \nm\xE9dica. Segundo,
-    en un laboratorio existe riesgo de contaminaci\xF3n \nde la herida con sustancias
+    en un laboratorio existe riesgo de contaminaci\xF3n de la herida con sustancias
     qu\xEDmicas presentes en la mesada. \nSiempre se debe aplicar presi\xF3n, avisar
     al docente y buscar el \nbotiqu\xEDn de primeros auxilios de forma inmediata."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

@@ -15,9 +15,9 @@ MonoBehaviour:
   optionText: Ir a la canilla de la mesada y enjuagarte con agua
   isCorrect: 0
   incorrectFeedback: "Aunque el instinto de usar la canilla m\xE1s cercana es comprensible,
-    \nlas canillas comunes de laboratorio no est\xE1n dise\xF1adas para emergencias
-    \noculares. La presi\xF3n del agua puede ser demasiado alta y causar da\xF1o
-    \nadicional en la c\xF3rnea, y la posici\xF3n inc\xF3moda impide un lavado \ncompleto
-    y uniforme. Las estaciones de lavado ocular regulan el flujo \ny la presi\xF3n
-    espec\xEDficamente para este tipo de emergencia."
+    las canillas comunes de laboratorio no est\xE1n dise\xF1adas para emergencias
+    oculares. La presi\xF3n del agua puede ser demasiado alta y causar da\xF1o adicional
+    en la c\xF3rnea, y la posici\xF3n inc\xF3moda impide un lavado completo y uniforme.
+    Las estaciones de lavado ocular regulan el flujo y la presi\xF3n espec\xEDficamente
+    para este tipo de emergencia."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."
