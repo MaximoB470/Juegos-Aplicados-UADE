@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6133982, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -983,9 +983,25 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 457233837}
+    - target: {fileID: 5689661003915603953, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.5411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689661003915603953, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.8980392
+      objectReference: {fileID: 0}
     - target: {fileID: 7066949889087173478, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Name
       value: LevelNode (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761946520130314477, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -433
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761946520130314477, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 371
       objectReference: {fileID: 0}
     - target: {fileID: 8961372685588921893, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_text
@@ -1551,9 +1567,25 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 1309679924}
+    - target: {fileID: 5689661003915603953, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.5411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689661003915603953, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.8980392
+      objectReference: {fileID: 0}
     - target: {fileID: 7066949889087173478, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Name
       value: LevelNode (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761946520130314477, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -433
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761946520130314477, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 377
       objectReference: {fileID: 0}
     - target: {fileID: 8961372685588921893, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_text
@@ -1850,15 +1882,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.92670536, b: 0.5235849, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -954155327080191944, guid: 91e8cf10aa44c3d458e68eb4629a8fd3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2398,9 +2430,29 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 1075315836219614651}
+    - target: {fileID: 5242634560185725113, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5424528
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242634560185725113, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.g
+      value: 0.897893
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242634560185725113, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7066949889087173478, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Name
       value: LevelNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761946520130314477, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -433
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761946520130314477, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 374
       objectReference: {fileID: 0}
     - target: {fileID: 8961372685588921893, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_text

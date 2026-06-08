@@ -189,8 +189,7 @@ public class UIManager : MonoBehaviour
 
     if (timerFillImage != null)
     {
-            timerFillImage.fillAmount =
-        1f - Mathf.Clamp01(currentTime / maxTime);
+            timerFillImage.fillAmount = 1f - Mathf.Clamp01(currentTime / maxTime);
     }
 }
 
