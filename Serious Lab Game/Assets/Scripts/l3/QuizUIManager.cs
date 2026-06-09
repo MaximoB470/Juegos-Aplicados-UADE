@@ -55,12 +55,12 @@ public class QuizUIManager : MonoBehaviour
 
     // ─── Colores y estado original de botones ─────────────────────────────────
 
-    private Color buttonDefaultColor = new Color(0.15f, 0.15f, 0.25f, 1f); // ajustá al color real de tus botones
-    private Color buttonSelectedColor = new Color(1f, 0.85f, 0.1f, 1f); // amarillo (suspense)
-    private Color buttonCorrectColor = new Color(0.1f, 0.85f, 0.3f, 1f); // verde
-    private Color buttonIncorrectColor = new Color(0.85f, 0.1f, 0.1f, 1f); // rojo
-    private Color timerNormalColor = Color.white;
-    private Color timerWarningColor = new Color(1f, 0.35f, 0.1f, 1f);
+    [SerializeField] private Color buttonDefaultColor = new Color(0.15f, 0.15f, 0.25f, 1f); // ajustá al color real de tus botones
+    [SerializeField] private Color buttonSelectedColor = new Color(1f, 0.85f, 0.1f, 1f); // amarillo (suspense)
+    [SerializeField] private Color buttonCorrectColor = new Color(0.1f, 0.85f, 0.3f, 1f); // verde
+    [SerializeField] private Color buttonIncorrectColor = new Color(0.85f, 0.1f, 0.1f, 1f); // rojo
+    [SerializeField] private Color timerNormalColor = Color.white;
+    [SerializeField] private Color timerWarningColor = new Color(1f, 0.35f, 0.1f, 1f);
 
     // Imágenes de los botones para colorear (CanvasRenderer / Image)
     private List<Image> optionButtonImages = new();
