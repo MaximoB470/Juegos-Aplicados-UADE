@@ -999,6 +999,22 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 457233837}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7061542726652786433, guid: 8c8c5b668d38f70408ecf99cccb5349b, type: 3}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5242634560185725113, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Color.b
       value: 0.6
@@ -1040,7 +1056,8 @@ PrefabInstance:
       value: Jugar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3704830013260919570, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
@@ -1608,6 +1625,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a9d53f2f50971484ebe88fa20d5f39b4, type: 2}
     - target: {fileID: 4678834010378229766, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: glowEffect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678834010378229766, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: levelIndex
       value: 2
       objectReference: {fileID: 0}
@@ -1615,6 +1636,22 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 1309679924}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ead11a0950ae6a1438bed025e3a95ddc, type: 3}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5689661003915603953, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
@@ -1640,7 +1677,8 @@ PrefabInstance:
       value: Jugar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3704830013260919570, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
@@ -2418,6 +2456,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 3704830013260919570, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3771340562935005276, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2498,6 +2540,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4037567927718808681, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.a
+      value: 0.23529412
+      objectReference: {fileID: 0}
     - target: {fileID: 4678834010378229766, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: gradeText
       value: 
@@ -2510,6 +2556,26 @@ PrefabInstance:
       propertyPath: statusText
       value: 
       objectReference: {fileID: 1075315836219614651}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5118350282411809809, guid: fae1eb81662130a4ea6db74659d7546d, type: 3}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201163745433931153, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5242634560185725113, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
       propertyPath: m_Color.b
       value: 0.6
@@ -2539,7 +2605,8 @@ PrefabInstance:
       value: Jugar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3704830013260919570, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddcf90ef45260ac47aecacbfc8867840, type: 3}

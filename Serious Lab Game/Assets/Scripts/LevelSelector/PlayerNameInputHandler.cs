@@ -4,8 +4,9 @@ using TMPro;
 
 /// <summary>
 /// Maneja el input de nombre del jugador en el menú principal.
-/// Guarda el nombre en tiempo real mientras el jugador escribe,
-/// sin depender del orden de ejecución del botón de inicio.
+/// Si el jugador ya tiene un nombre guardado, pre-rellena el campo
+/// y habilita el botón de inicio directamente.
+/// Un nombre vacío nunca sobreescribe uno ya guardado.
 /// </summary>
 public class PlayerNameInputHandler : MonoBehaviour
 {
@@ -23,15 +24,27 @@ public class PlayerNameInputHandler : MonoBehaviour
 
         if (nameInputField != null)
         {
-            nameInputField.onValueChanged.AddListener(OnNameChanged);
-
             var placeholder = nameInputField.placeholder.GetComponent<TMP_Text>();
             if (placeholder != null)
                 placeholder.text = placeholderText;
-        }
 
-        // Empieza deshabilitado hasta que haya un nombre
-        SetStartButtonInteractable(false);
+            // Si ya hay un nombre guardado, pre-rellenar el campo
+            if (profileService != null && profileService.HasName)
+            {
+                nameInputField.SetTextWithoutNotify(profileService.PlayerName);
+                SetStartButtonInteractable(true);
+            }
+            else
+            {
+                SetStartButtonInteractable(false);
+            }
+
+            nameInputField.onValueChanged.AddListener(OnNameChanged);
+        }
+        else
+        {
+            SetStartButtonInteractable(false);
+        }
     }
 
     // ─── Callbacks ────────────────────────────────────────────────────────────
@@ -41,19 +54,21 @@ public class PlayerNameInputHandler : MonoBehaviour
         bool hasName = !string.IsNullOrWhiteSpace(value);
         SetStartButtonInteractable(hasName);
 
-        // Guardar en tiempo real — así no importa si ConfirmName() se llama o no
-        profileService?.SetPlayerName(value);
+        // Solo guarda si el nuevo valor no está vacío —
+        // si borra el campo, el nombre anterior se conserva en el servicio
+        if (hasName)
+            profileService?.SetPlayerName(value);
     }
 
     // ─── API pública ──────────────────────────────────────────────────────────
 
     /// <summary>
-    /// Puede seguir llamándose desde el botón Start para garantizar
-    /// que el nombre esté guardado, pero ya no es el único punto de guardado.
+    /// Puede llamarse desde el botón Start para garantizar
+    /// que el nombre esté guardado antes de cambiar de escena.
     /// </summary>
     public void ConfirmName()
     {
-        if (nameInputField != null)
+        if (nameInputField != null && !string.IsNullOrWhiteSpace(nameInputField.text))
             profileService?.SetPlayerName(nameInputField.text);
     }
 
