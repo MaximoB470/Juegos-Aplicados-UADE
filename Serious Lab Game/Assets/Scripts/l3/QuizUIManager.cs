@@ -195,6 +195,10 @@ public class QuizUIManager : MonoBehaviour
                 if (hasOption)
                     optionButtons[i].transform.localScale = Vector3.zero;
             }
+
+            // Limpiar el label antes de animar para que no se vea el texto viejo
+            if (optionLabels != null && i < optionLabels.Count && optionLabels[i] != null)
+                optionLabels[i].text = string.Empty;
         }
 
         if (situationText != null)
@@ -211,9 +215,6 @@ public class QuizUIManager : MonoBehaviour
         {
             if (i >= currentOptions.Count) break;
 
-            if (optionLabels != null && i < optionLabels.Count && optionLabels[i] != null)
-                optionLabels[i].text = currentOptions[i].optionText;
-
             if (i < optionButtonImages.Count && optionButtonImages[i] != null)
                 optionButtonImages[i].color = buttonDefaultColor;
 
@@ -221,6 +222,10 @@ public class QuizUIManager : MonoBehaviour
                 optionButtons[i].transform,
                 optionOriginalScales[i],
                 optionRevealDuration));
+
+            // Poner el texto recién cuando el botón terminó de aparecer
+            if (optionLabels != null && i < optionLabels.Count && optionLabels[i] != null)
+                optionLabels[i].text = currentOptions[i].optionText;
 
             yield return new WaitForSeconds(optionStaggerDelay);
         }
