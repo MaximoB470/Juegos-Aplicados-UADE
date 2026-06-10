@@ -55,6 +55,7 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
 
     private void Start()
     {
+        Time.timeScale = 1f;
         LoadCurrentScenario();
     }
 
