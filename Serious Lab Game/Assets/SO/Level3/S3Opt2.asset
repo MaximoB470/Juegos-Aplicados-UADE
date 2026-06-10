@@ -16,9 +16,9 @@ MonoBehaviour:
     que se derrame"
   isCorrect: 0
   incorrectFeedback: "Tapar un recipiente con una reacci\xF3n activa e inesperada
-    es \nextremadamente peligroso. La acumulaci\xF3n de gases bajo presi\xF3n puede
-    causar una explosi\xF3n o proyecci\xF3n violenta del contenido. \nTampoco deb\xE9s
-    intentar enfriar el recipiente con agua ni moverlo \nsi la reacci\xF3n es intensa.
-    La acci\xF3n correcta es alejarse, ventilar \ny notificar al docente para que
-    eval\xFAe la situaci\xF3n con el \nconocimiento y el equipo adecuados."
+    es extremadamente peligroso. La acumulaci\xF3n de gases bajo presi\xF3n puede
+    causar una explosi\xF3n o proyecci\xF3n violenta del contenido. \r\nTampoco deb\xE9s
+    intentar enfriar el recipiente con agua ni moverlo si la reacci\xF3n es intensa.
+    La acci\xF3n correcta es alejarse, ventilar y notificar al docente para que eval\xFAe
+    la situaci\xF3n con el conocimiento y el equipo adecuados."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

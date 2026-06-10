@@ -16,8 +16,8 @@ MonoBehaviour:
     de atenderte
   isCorrect: 0
   incorrectFeedback: "Nunca deb\xE9s recoger vidrios rotos de laboratorio con las
-    manos, ni siquiera con guantes finos, ya que los fragmentos pueden \natravesarlos.
-    Adem\xE1s, con una herida activa, tu prioridad es la \natenci\xF3n inmediata,
-    no la limpieza. Los vidrios rotos deben \nrecogerse con escoba y pala, nunca
-    manualmente, y esa tarea \nla realiza otra persona mientras vos recib\xEDs atenci\xF3n."
+    manos, ni siquiera con guantes finos, ya que los fragmentos pueden atravesarlos.
+    Adem\xE1s, con una herida activa, tu prioridad es la atenci\xF3n inmediata, no
+    la limpieza. Los vidrios rotos deben recogerse con escoba y pala, nunca manualmente,
+    y esa tarea la realiza otra persona mientras vos recib\xEDs atenci\xF3n."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

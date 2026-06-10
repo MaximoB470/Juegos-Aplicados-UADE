@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class QuizUIManager : MonoBehaviour
     private const string SELECTOR_SCENE = "LevelSelector";
 
     private QuizGameManager gameManager;
+    private QuizAudioManager audioManager;
 
     [Header("Panel de pregunta")]
     [SerializeField] private TMP_Text situationText;
@@ -55,27 +57,33 @@ public class QuizUIManager : MonoBehaviour
 
     // ─── Colores y estado original de botones ─────────────────────────────────
 
-    [SerializeField] private Color buttonDefaultColor = new Color(0.15f, 0.15f, 0.25f, 1f); // ajustá al color real de tus botones
-    [SerializeField] private Color buttonSelectedColor = new Color(1f, 0.85f, 0.1f, 1f); // amarillo (suspense)
-    [SerializeField] private Color buttonCorrectColor = new Color(0.1f, 0.85f, 0.3f, 1f); // verde
-    [SerializeField] private Color buttonIncorrectColor = new Color(0.85f, 0.1f, 0.1f, 1f); // rojo
+    [SerializeField] private Color buttonDefaultColor = new Color(0.15f, 0.15f, 0.25f, 1f);
+    [SerializeField] private Color buttonSelectedColor = new Color(1f, 0.85f, 0.1f, 1f);
+    [SerializeField] private Color buttonCorrectColor = new Color(0.1f, 0.85f, 0.3f, 1f);
+    [SerializeField] private Color buttonIncorrectColor = new Color(0.85f, 0.1f, 0.1f, 1f);
     [SerializeField] private Color timerNormalColor = Color.white;
     [SerializeField] private Color timerWarningColor = new Color(1f, 0.35f, 0.1f, 1f);
 
-    // Imágenes de los botones para colorear (CanvasRenderer / Image)
     private List<Image> optionButtonImages = new();
-
-    // Valores originales para restaurar
     private List<Vector3> optionOriginalScales = new();
     private Color situationOriginalColor;
     private Color timerLabelOriginalColor;
 
     private List<QuizOptionSO> currentOptions = new();
-    private bool timerEnabled = false; // el timer solo corre después de que aparecen las opciones
+    private bool timerEnabled = false;
 
-    // Coroutine handles para cancelar si hace falta
     private Coroutine timerPulseCoroutine;
     private Coroutine revealCoroutine;
+
+    // ─── Evento para el audio manager ─────────────────────────────────────────
+
+    /// <summary>
+    /// Se dispara en el momento exacto en que se muestra el panel de resultado,
+    /// después de toda la animación de suspenso y reveal de color.
+    /// El QuizAudioManager se suscribe a esto para reproducir correcto/incorrecto
+    /// sin ningún delay hardcodeado.
+    /// </summary>
+    public event Action<bool> OnResultRevealed;
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
 
@@ -83,7 +91,6 @@ public class QuizUIManager : MonoBehaviour
     {
         ServiceLocator.Instance.SetService(SERVICE_KEY, this);
 
-        // Cachear imágenes de botones y escalas originales
         foreach (var btn in optionButtons)
         {
             if (btn != null)
@@ -98,7 +105,6 @@ public class QuizUIManager : MonoBehaviour
             }
         }
 
-        // Colores originales del texto
         if (situationText != null)
             situationOriginalColor = situationText.color;
 
@@ -109,6 +115,7 @@ public class QuizUIManager : MonoBehaviour
     private void Start()
     {
         gameManager = ServiceLocator.Instance.GetService(GAME_MANAGER_KEY) as QuizGameManager;
+        audioManager = GetComponent<QuizAudioManager>();
 
         if (gameManager == null)
         {
@@ -157,38 +164,27 @@ public class QuizUIManager : MonoBehaviour
 
     private void HandleSituationLoaded(QuizSituationSO situation)
     {
-        // Cancelar coroutines anteriores
         if (revealCoroutine != null) StopCoroutine(revealCoroutine);
         if (timerPulseCoroutine != null) StopCoroutine(timerPulseCoroutine);
 
-        timerEnabled = false; // el timer no corre hasta que terminen las animaciones
+        timerEnabled = false;
 
         SetResultPanelActive(false);
         SetTimeoutPanelActive(false);
 
-        // Resetear todos los botones a estado original antes de la nueva ronda
         ResetAllOptionsToDefault();
 
-        // Resetear timer UI
         if (timerSlider != null)
-        {
             timerSlider.value = timerSlider.maxValue;
-        }
         if (timerLabel != null)
-        {
             timerLabel.color = timerLabelOriginalColor;
-        }
 
         currentOptions = situation.options;
         revealCoroutine = StartCoroutine(RevealSituationSequence(situation));
     }
 
-    /// <summary>
-    /// Secuencia principal: fade texto → pausa lectura → aparecen opciones una a una → timer ON
-    /// </summary>
     private IEnumerator RevealSituationSequence(QuizSituationSO situation)
     {
-        // 1. Ocultar opciones (escala 0 o alpha 0 para animarlas)
         for (int i = 0; i < optionButtons.Count; i++)
         {
             if (optionButtons[i] != null)
@@ -197,14 +193,10 @@ public class QuizUIManager : MonoBehaviour
                 optionButtons[i].gameObject.SetActive(hasOption);
                 optionButtons[i].interactable = false;
                 if (hasOption)
-                {
-                    // Empezar con escala 0 para el punch de entrada
                     optionButtons[i].transform.localScale = Vector3.zero;
-                }
             }
         }
 
-        // 2. Fade IN del texto de situación
         if (situationText != null)
         {
             situationText.text = situation.situationText;
@@ -213,10 +205,8 @@ public class QuizUIManager : MonoBehaviour
             yield return StartCoroutine(FadeTextAlpha(situationText, 0f, 1f, situationFadeDuration));
         }
 
-        // 3. Pausa de lectura
         yield return new WaitForSeconds(readingPause);
 
-        // 4. Opciones aparecen una por una con ScalePunch
         for (int i = 0; i < optionButtons.Count; i++)
         {
             if (i >= currentOptions.Count) break;
@@ -224,7 +214,6 @@ public class QuizUIManager : MonoBehaviour
             if (optionLabels != null && i < optionLabels.Count && optionLabels[i] != null)
                 optionLabels[i].text = currentOptions[i].optionText;
 
-            // Restablecer color del botón
             if (i < optionButtonImages.Count && optionButtonImages[i] != null)
                 optionButtonImages[i].color = buttonDefaultColor;
 
@@ -236,10 +225,8 @@ public class QuizUIManager : MonoBehaviour
             yield return new WaitForSeconds(optionStaggerDelay);
         }
 
-        // 5. Pequeña pausa extra antes de habilitar interacción y timer
         yield return new WaitForSeconds(0.15f);
 
-        // 6. Habilitar botones y activar timer
         for (int i = 0; i < optionButtons.Count; i++)
         {
             if (i < currentOptions.Count && optionButtons[i] != null)
@@ -259,9 +246,6 @@ public class QuizUIManager : MonoBehaviour
         StartCoroutine(SuspenseAndReveal(selectedIndex, correct, option));
     }
 
-    /// <summary>
-    /// 1. Pulsar el botón elegido en amarillo (suspense) → esperar → revelar correcta en verde.
-    /// </summary>
     private IEnumerator SuspenseAndReveal(int selectedIndex, bool correct, QuizOptionSO option)
     {
         // Paso 1: Iluminar el seleccionado en amarillo
@@ -273,7 +257,6 @@ public class QuizUIManager : MonoBehaviour
                 buttonSelectedColor,
                 0.25f));
 
-            // Pequeño pulso de escala en el seleccionado
             yield return StartCoroutine(ScalePunch(optionButtons[selectedIndex].transform,
                                                    optionOriginalScales[selectedIndex], 0.2f, 1.12f));
         }
@@ -281,14 +264,13 @@ public class QuizUIManager : MonoBehaviour
         // Paso 2: Suspenso
         yield return new WaitForSeconds(suspenseDuration);
 
-        // Paso 3: Revelar la correcta en verde (y la incorrecta en rojo si la eligió)
+        // Paso 3: Revelar la correcta en verde
         int correctIndex = -1;
         for (int i = 0; i < currentOptions.Count; i++)
         {
             if (currentOptions[i].isCorrect) correctIndex = i;
         }
 
-        // Colorear la correcta en verde con animación
         if (correctIndex >= 0 && correctIndex < optionButtonImages.Count && optionButtonImages[correctIndex] != null)
         {
             Color fromColor = (correctIndex == selectedIndex) ? buttonSelectedColor : buttonDefaultColor;
@@ -298,7 +280,6 @@ public class QuizUIManager : MonoBehaviour
                 buttonCorrectColor,
                 correctRevealDuration));
 
-            // Punch de escala en la correcta
             yield return StartCoroutine(ScalePunch(optionButtons[correctIndex].transform,
                                                    optionOriginalScales[correctIndex], 0.3f, 1.15f));
         }
@@ -316,7 +297,9 @@ public class QuizUIManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // Paso 4: Mostrar result panel con datos
+        // Paso 4: Avisar al audio manager y mostrar el panel en el mismo momento
+        OnResultRevealed?.Invoke(correct);
+
         if (resultTitleText != null)
         {
             resultTitleText.text = correct ? "¡Correcto!" : "Incorrecto";
@@ -327,15 +310,12 @@ public class QuizUIManager : MonoBehaviour
 
         SetResultPanelActive(true);
 
-        // Flash del título del resultado
         if (resultTitleText != null)
             StartCoroutine(FlashText(resultTitleText, 3, 0.12f));
     }
 
     private void HandleTimerUpdated(float remaining, float total)
     {
-        // El slider siempre se actualiza (el GameManager lo manda), pero solo
-        // dejamos que cuente visualmente cuando timerEnabled es true.
         if (timerSlider != null)
         {
             timerSlider.minValue = 0f;
@@ -348,7 +328,6 @@ public class QuizUIManager : MonoBehaviour
         if (timerLabel != null)
             timerLabel.text = Mathf.CeilToInt(remaining).ToString();
 
-        // Advertencia cuando queda poco tiempo
         if (remaining <= timerWarningThreshold)
         {
             if (timerLabel != null) timerLabel.color = timerWarningColor;
@@ -372,7 +351,6 @@ public class QuizUIManager : MonoBehaviour
         SetTimeoutPanelActive(true);
     }
 
-    /// <summary>correct, total, score — nota ya reportada a GradeService por QuizGameManager.</summary>
     private void HandleQuizComplete(int correct, int total, float score)
     {
         timerEnabled = false;
@@ -397,7 +375,10 @@ public class QuizUIManager : MonoBehaviour
     private void OnOptionClicked(int index)
     {
         if (index >= currentOptions.Count) return;
-        if (!timerEnabled) return; // evitar doble click durante animaciones
+        if (!timerEnabled) return;
+
+        audioManager?.PlayClickOption();
+
         gameManager.SubmitAnswer(currentOptions[index]);
     }
 
@@ -425,10 +406,6 @@ public class QuizUIManager : MonoBehaviour
     private void SetTimeoutPanelActive(bool active) { if (timeoutPanel != null) timeoutPanel.SetActive(active); }
     private void SetEndPanelActive(bool active) { if (endPanel != null) endPanel.SetActive(active); }
 
-    /// <summary>
-    /// Vuelve todos los botones a su estado visual original (color, escala, interactable).
-    /// Se llama al cargar cada nueva situación.
-    /// </summary>
     private void ResetAllOptionsToDefault()
     {
         for (int i = 0; i < optionButtons.Count; i++)
@@ -440,7 +417,6 @@ public class QuizUIManager : MonoBehaviour
                 optionButtonImages[i].color = buttonDefaultColor;
         }
 
-        // Resetear color del timer
         if (timerLabel != null)
         {
             timerLabel.color = timerLabelOriginalColor;
@@ -452,7 +428,6 @@ public class QuizUIManager : MonoBehaviour
             if (fillImage != null) fillImage.color = timerNormalColor;
         }
 
-        // Restaurar alpha del situation text
         if (situationText != null)
             situationText.color = new Color(situationOriginalColor.r, situationOriginalColor.g,
                                             situationOriginalColor.b, 1f);
@@ -460,7 +435,6 @@ public class QuizUIManager : MonoBehaviour
 
     // ─── Coroutines de animación ──────────────────────────────────────────────
 
-    /// <summary>Fade del alpha de un TMP_Text de 'from' a 'to' en 'duration' segundos.</summary>
     private IEnumerator FadeTextAlpha(TMP_Text text, float from, float to, float duration)
     {
         float elapsed = 0f;
@@ -469,7 +443,6 @@ public class QuizUIManager : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            // Ease in-out suave
             t = t * t * (3f - 2f * t);
             c.a = Mathf.Lerp(from, to, t);
             text.color = c;
@@ -479,26 +452,21 @@ public class QuizUIManager : MonoBehaviour
         text.color = c;
     }
 
-    /// <summary>
-    /// Revela un objeto con un punch de escala: va de 0 → overshoot → escala original.
-    /// </summary>
     private IEnumerator ScalePunchReveal(Transform target, Vector3 finalScale, float duration)
     {
         float overshoot = 1.15f;
         float halfTime = duration * 0.65f;
         float elapsed = 0f;
 
-        // Fase 1: 0 → finalScale * overshoot
         while (elapsed < halfTime)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / halfTime);
-            t = 1f - Mathf.Pow(1f - t, 3f); // ease out cubic
+            t = 1f - Mathf.Pow(1f - t, 3f);
             target.localScale = Vector3.LerpUnclamped(Vector3.zero, finalScale * overshoot, t);
             yield return null;
         }
 
-        // Fase 2: overshoot → finalScale
         float secondPhase = duration - halfTime;
         elapsed = 0f;
         while (elapsed < secondPhase)
@@ -512,9 +480,6 @@ public class QuizUIManager : MonoBehaviour
         target.localScale = finalScale;
     }
 
-    /// <summary>
-    /// Pequeño punch de escala sobre la escala actual (sin partir de cero).
-    /// </summary>
     private IEnumerator ScalePunch(Transform target, Vector3 baseScale, float duration, float peakMultiplier = 1.15f)
     {
         float half = duration * 0.5f;
@@ -538,10 +503,6 @@ public class QuizUIManager : MonoBehaviour
         target.localScale = baseScale;
     }
 
-    /// <summary>
-    /// Pulso continuo de escala (para el timer en modo warning).
-    /// Si loop=true corre indefinidamente hasta que se cancele la coroutine.
-    /// </summary>
     private IEnumerator PulseScale(Transform target, Vector3 baseScale, float duration,
                                    float peakMultiplier = 1.2f, bool loop = false)
     {
@@ -552,7 +513,6 @@ public class QuizUIManager : MonoBehaviour
         } while (loop);
     }
 
-    /// <summary>Lerp de color de una Image de A a B en 'duration' segundos.</summary>
     private IEnumerator LerpButtonColor(Image image, Color from, Color to, float duration)
     {
         float elapsed = 0f;
@@ -567,7 +527,6 @@ public class QuizUIManager : MonoBehaviour
         image.color = to;
     }
 
-    /// <summary>Flash de alpha en un TMP_Text (parpadeo rápido). Útil para el título de resultado.</summary>
     private IEnumerator FlashText(TMP_Text text, int times, float halfPeriod)
     {
         Color original = text.color;

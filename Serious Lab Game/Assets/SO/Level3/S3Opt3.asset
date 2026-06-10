@@ -17,9 +17,9 @@ MonoBehaviour:
   isCorrect: 1
   incorrectFeedback: 
   correctFeedback: "\xA1Correcto! Ante una reacci\xF3n qu\xEDmica inesperada, el
-    protocolo \nes alejarse de la fuente, no intentar intervenir por cuenta \npropia,
-    y notificar de inmediato al docente o responsable del \nlaboratorio. Ventilar
-    el espacio abriendo ventanas y puertas \nayuda a disipar posibles vapores t\xF3xicos.
-    Si la situaci\xF3n escala \n(humo denso, llamas, olor muy intenso) se debe activar
-    el \nprotocolo de evacuaci\xF3n. Record\xE1: en laboratorio, ante la duda, \nalejarse
+    protocolo es alejarse de la fuente, no intentar intervenir por cuenta propia,
+    y notificar de inmediato al docente o responsable del laboratorio. Ventilar el
+    espacio abriendo ventanas y puertas ayuda a disipar posibles vapores t\xF3xicos.
+    Si la situaci\xF3n escala (humo denso, llamas, olor muy intenso) se debe activar
+    el protocolo de evacuaci\xF3n. Record\xE1: en laboratorio, ante la duda, alejarse
     y avisar siempre es la respuesta correcta."

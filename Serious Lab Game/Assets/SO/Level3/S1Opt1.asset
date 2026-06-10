@@ -15,8 +15,8 @@ MonoBehaviour:
   optionText: "Frotarte los ojos con las manos para sacar el l\xEDquido"
   isCorrect: 0
   incorrectFeedback: "Frotarse los ojos es uno de los errores m\xE1s peligrosos en
-    esta \nsituaci\xF3n. El movimiento mec\xE1nico dispersa el qu\xEDmico hacia zonas
-    no afectadas de la c\xF3rnea y puede introducir part\xEDculas adicionales. \nAdem\xE1s,
-    las manos suelen tener restos de otras sustancias del \nlaboratorio. La acci\xF3n
-    correcta es dirigirse inmediatamente a la \nestaci\xF3n de lavado ocular"
+    esta situaci\xF3n. El movimiento mec\xE1nico dispersa el qu\xEDmico hacia zonas
+    no afectadas de la c\xF3rnea y puede introducir part\xEDculas adicionales. \r\nAdem\xE1s,
+    las manos suelen tener restos de otras sustancias del laboratorio. La acci\xF3n
+    correcta es dirigirse inmediatamente a la estaci\xF3n de lavado ocular."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

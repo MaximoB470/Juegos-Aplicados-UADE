@@ -15,10 +15,10 @@ MonoBehaviour:
   optionText: Acercar la nariz al recipiente para identificar mejor el olor del vapor
   isCorrect: 0
   incorrectFeedback: "Nunca deb\xE9s inhalar directamente vapores de laboratorio,
-    \nespecialmente de una reacci\xF3n no controlada. Muchos gases \nproducidos en
-    reacciones inesperadas son t\xF3xicos, irritantes \no incluso asfixiantes a concentraciones
-    que el olfato no puede \nadvertir a tiempo. Si necesit\xE1s percibir un olor
-    en laboratorio, \nla t\xE9cnica correcta es abanicar suavemente con la mano para
-    \ndirigir una peque\xF1a cantidad de vapor hacia la nariz, nunca \naspirar directamente
-    del recipiente."
+    especialmente de una reacci\xF3n no controlada. Muchos gases producidos en reacciones
+    inesperadas son t\xF3xicos, irritantes o incluso asfixiantes a concentraciones
+    que el olfato no puede advertir a tiempo. Si necesit\xE1s percibir un olor en
+    laboratorio, la t\xE9cnica correcta es abanicar suavemente con la mano para dirigir
+    una peque\xF1a cantidad de vapor hacia la nariz, nunca aspirar directamente del
+    recipiente."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

@@ -17,9 +17,8 @@ MonoBehaviour:
   isCorrect: 1
   incorrectFeedback: 
   correctFeedback: "\xA1Correcto! El protocolo ante un corte en laboratorio es: aplicar
-    \npresi\xF3n directa sobre la herida con un material limpio para \ncontrolar
-    el sangrado, notificar al docente o responsable \ninmediatamente, y acceder al
-    botiqu\xEDn de primeros auxilios. \nSi el corte es profundo o no cede el sangrado,
-    se debe buscar \natenci\xF3n m\xE9dica. Record\xE1 que los vidrios del piso deben
-    se\xF1alizarse \npara que nadie los pise y limpiarse con escoba, nunca con las
-    manos."
+    presi\xF3n directa sobre la herida con un material limpio para controlar el sangrado,
+    notificar al docente o responsable inmediatamente, y acceder al botiqu\xEDn de
+    primeros auxilios. \r\nSi el corte es profundo o no cede el sangrado, se debe
+    buscar atenci\xF3n m\xE9dica. Record\xE1 que los vidrios del piso deben se\xF1alizarse
+    para que nadie los pise y limpiarse con escoba, nunca con las manos."
