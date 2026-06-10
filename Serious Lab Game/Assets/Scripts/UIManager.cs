@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color hintIconAvailableColor = Color.white;
     [SerializeField] private Color hintIconSpentColor = Color.gray;
 
+    [SerializeField] private AudioSource buttonAudioHint;
+
+
     [Header("Win Screen")]
     [SerializeField] private TMP_Text winScoreText;
 
@@ -65,6 +68,11 @@ public class UIManager : MonoBehaviour
             HideAll();
             ResumeGame();
         }
+    }
+
+    public void OnHintButtonPressed()
+    {
+        buttonAudioHint.Play();
     }
 
     // ─────────────────────────────────────────────
@@ -102,6 +110,8 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+
 
     public void ShowLose()
     {

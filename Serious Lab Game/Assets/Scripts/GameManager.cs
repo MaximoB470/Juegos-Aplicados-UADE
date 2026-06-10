@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour, ILevelScorer
 
     [SerializeField] private float timeLimit = 120f;
 
+    [SerializeField] private AudioSource GoodTick;
+    [SerializeField] private AudioSource BadTick;
+
     private int   foundCount      = 0;
     private int   wrongClickCount = 0;
     private int   hintsUsed       = 0;
@@ -134,6 +137,8 @@ public class GameManager : MonoBehaviour, ILevelScorer
         if (!gameRunning || GetUI().IsPaused) return;
         if (maxWrongClicks <= 0) return;
 
+        BadTick.Play();
+
         wrongClickCount++;
         GetUI().UpdateClickDisplay(wrongClickCount, maxWrongClicks);
 
@@ -145,6 +150,8 @@ public class GameManager : MonoBehaviour, ILevelScorer
     {
         foundCount++;
         GetUI().UpdateProgressDisplay(foundCount, TotalPoints);
+
+        GoodTick.Play();
 
         if (foundCount >= TotalPoints)
             Invoke(nameof(WinGame), 0.15f);
