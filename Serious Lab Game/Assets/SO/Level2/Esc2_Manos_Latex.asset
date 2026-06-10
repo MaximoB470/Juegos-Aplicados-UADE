@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Esc2_Manos_Latex
   m_EditorClassIdentifier: Assembly-CSharp::EPPOptionSO
   optionLabel: Manos con guantes de latex
-  optionIcon: {fileID: 2816145710086585501, guid: 9adb578c67818084e83495e5b66fbf31, type: 3}
+  optionIcon: {fileID: 4991795906937069285, guid: 56c30a20f7f659e4cb098d70c155814f, type: 3}
   isCorrect: 1
