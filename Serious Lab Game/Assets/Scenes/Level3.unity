@@ -2323,7 +2323,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.505
+  m_Volume: 0.339
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3464,7 +3464,7 @@ MonoBehaviour:
   clipQuizComplete: {fileID: 0}
   clipBgMusic: {fileID: 0}
   sfxVolume: 1
-  suspenseVolume: 0.75
+  suspenseVolume: 0.192
   bgVolume: 0.4
 --- !u!4 &1490777985
 Transform:
@@ -4611,7 +4611,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.188
   m_Pitch: 1
   Loop: 0
   Mute: 0
