@@ -88,6 +88,14 @@ public class EPPUIManager : MonoBehaviour
     private List<EPPOptionSO> currentHandsOptions;
     private List<EPPOptionSO> currentFeetOptions;
 
+    [Header("Sonidos de seccion de suspenso")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip correctClip;
+    [SerializeField] private AudioClip wrongClip;
+
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip drumLoop;
+
     // ─── Lifecycle ────────────────────────────────────────────────────────────
 
     private void Awake()
@@ -203,6 +211,13 @@ public class EPPUIManager : MonoBehaviour
     /// </summary>
     private IEnumerator RevealCategoriesSequence(EPPResult result)
     {
+        if (musicSource != null && drumLoop != null)
+        {
+            musicSource.clip = drumLoop;
+            musicSource.loop = true;
+            musicSource.Play();
+        }
+
         var categories = new (Image overlay, bool correct)[]
         {
             (headResultOverlay,  result.headCorrect),
@@ -216,14 +231,29 @@ public class EPPUIManager : MonoBehaviour
             if (overlay == null) continue;
 
             yield return new WaitForSeconds(suspensePause);
+
+            if (sfxSource != null)
+            {
+                sfxSource.PlayOneShot(
+                    correct ? correctClip : wrongClip
+                );
+            }
+
             yield return PopOverlay(overlay, correct);
+
             yield return new WaitForSeconds(pauseAfterReveal);
+        }
+
+        if (musicSource != null)
+        {
+            musicSource.Stop();
         }
 
         yield return new WaitForSeconds(finalPause);
 
         BuildAndShowResultPanel(result);
         currentRevealCoroutine = null;
+
     }
 
     /// <summary>
