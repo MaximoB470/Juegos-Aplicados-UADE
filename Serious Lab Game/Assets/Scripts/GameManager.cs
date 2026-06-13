@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
         const float debugScore = 10f;
         SubmitGrade(debugScore);
         Debug.Log("[DEBUG] Victoria forzada con nota 10.");
-        GetUI().ShowWin(debugScore);
+        GetUI().ShowWin(debugScore, foundCount, TotalPoints);
     }
 
     // ─── API pública ──────────────────────────────────────────────────────────
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
         float score = CalculateScore();
         Debug.Log($"[GameManager] WinGame! Score calculado: {score}");
         SubmitGrade(score);
-        GetUI().ShowWin(score);
+        GetUI().ShowWin(score, foundCount, TotalPoints);
     }
 
     private void LoseGame()
@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
         float score = CalculateScore();
         Debug.Log($"[GameManager] LoseGame! Score calculado: {score}");
         SubmitGrade(score);
-        GetUI().ShowLose();
+        GetUI().ShowLose(score, foundCount, TotalPoints);
     }
 
     private void SubmitGrade(float score)

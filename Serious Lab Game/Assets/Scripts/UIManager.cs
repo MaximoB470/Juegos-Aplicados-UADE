@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text progressText;
 
     [Header("Timer")]
- 
+
     [SerializeField] private Image timerFillImage;
 
     [Header("Click Counter")]
@@ -44,6 +44,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Win Screen")]
     [SerializeField] private TMP_Text winScoreText;
+    [SerializeField] private TMP_Text winGradeText;
+
+    [Header("Lose Screen")]
+    [SerializeField] private TMP_Text loseGradeText;
 
     public bool IsPaused { get; private set; }
 
@@ -86,7 +90,7 @@ public class UIManager : MonoBehaviour
         PauseGame();
     }
 
-    public void ShowWin(float score = -1f)
+    public void ShowWin(float score = -1f, int found = -1, int total = -1)
     {
         HideAll();
         SetActive(winCanvas, true);
@@ -109,15 +113,58 @@ public class UIManager : MonoBehaviour
                 winScoreText.gameObject.SetActive(false);
             }
         }
+
+        UpdateGradeText(winGradeText, score, found, total);
     }
 
 
 
-    public void ShowLose()
+    public void ShowLose(float score = -1f, int found = -1, int total = -1)
     {
         HideAll();
         SetActive(loseCanvas, true);
         PauseGame();
+
+        UpdateGradeText(loseGradeText, score, found, total);
+    }
+
+    /// <summary>
+    /// Muestra cuántas fallas se encontraron de un total, junto a un dato
+    /// adicional según el puntaje, pensado para complementar (sin repetir)
+    /// los textos fijos ya existentes en las pantallas de Win y Lose:
+    /// - score &lt; 7  -> recuerda el puntaje mínimo para aprobar.
+    /// - score &gt;= 7 y faltan fallas -> aclara que aprobó y puede avanzar,
+    ///   aunque queden fallas pendientes.
+    /// - encontraste todas las fallas -> resumen breve del resultado.
+    /// </summary>
+    private void UpdateGradeText(TMP_Text targetText, float score, int found, int total)
+    {
+        if (targetText == null) return;
+
+        if (score < 0f || found < 0 || total <= 0)
+        {
+            targetText.gameObject.SetActive(false);
+            return;
+        }
+
+        string foundLine = $"Encontraste {found} de {total} fallas.";
+
+        string message;
+        if (score < LevelGrade.PassingScore)
+        {
+            message = "Para aprobar este nivel necesitás encontrar al menos 7 de 10.";
+        }
+        else if (found < total)
+        {
+            message = "Alcanzaste el puntaje necesario y podés avanzar al siguiente nivel.";
+        }
+        else
+        {
+            message = "¡Nivel completado al 100%!";
+        }
+
+        targetText.text = $"{foundLine} {message}";
+        targetText.gameObject.SetActive(true);
     }
 
     // ─────────────────────────────────────────────
@@ -194,14 +241,14 @@ public class UIManager : MonoBehaviour
     /// currentTime = tiempo restante.
     /// maxTime = tiempo total del nivel.
     /// </summary>
-  public void UpdateTimerDisplay(float currentTime, float maxTime)
-{
-
-    if (timerFillImage != null)
+    public void UpdateTimerDisplay(float currentTime, float maxTime)
     {
+
+        if (timerFillImage != null)
+        {
             timerFillImage.fillAmount = 1f - Mathf.Clamp01(currentTime / maxTime);
+        }
     }
-}
 
     /// <summary>
     /// Actualiza contador de clicks incorrectos.
