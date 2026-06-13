@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba59874f1bb3d3647b62a1a0b18df633, type: 3}
+  m_Name: QuizSituation6
+  m_EditorClassIdentifier: Assembly-CSharp::QuizSituationSO
+  situationText: "Sin darte cuenta, agarr\xE1s con la mano sin guante un recipiente
+    de vidrio que estuvo en contacto con el mechero. Sent\xEDs un dolor agudo inmediato
+    y ves que la piel de tus dedos est\xE1 enrojecida. \xBFCu\xE1l es la respuesta
+    correcta?"
+  options:
+  - {fileID: 11400000, guid: 94bc49e62b378ab47a41fe725fbc6f6f, type: 2}
+  - {fileID: 11400000, guid: 80315a64e5e518c4ba451865792b96ec, type: 2}
+  - {fileID: 11400000, guid: 922742c07047db541bdd4b1572b91253, type: 2}

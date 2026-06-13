@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S6Opt3
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: "Envolver la mano en un papel de aluminio o tela para protegerla y
+    continuar la pr\xE1ctica"
+  isCorrect: 0
+  incorrectFeedback: "Envolver una quemadura sin enfriarla primero es contraproducente:
+    el calor queda atrapado y contin\xFAa da\xF1ando los tejidos. Cubrir la herida
+    con materiales no est\xE9riles tambi\xE9n aumenta el riesgo de infecci\xF3n.
+    Y continuar la pr\xE1ctica con una herida activa no solo es peligroso para vos,
+    sino que compromete la seguridad del experimento. Siempre se prioriza la atenci\xF3n
+    de la persona."
+  correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

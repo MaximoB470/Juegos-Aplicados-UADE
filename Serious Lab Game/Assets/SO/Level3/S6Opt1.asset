@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S6Opt1
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: "Poner manteca o pasta dental sobre la zona quemada para calmar el ardor"
+  isCorrect: 0
+  incorrectFeedback: "Aplicar manteca, pasta dental u otros productos caseros sobre
+    una quemadura es una pr\xE1ctica peligrosa y desaconsejada por los protocolos
+    m\xE9dicos. Estos productos retienen el calor en la piel, favorecen infecciones
+    y dificultan la evaluaci\xF3n de la quemadura. El tratamiento correcto es enfriar
+    la zona con agua fresca corriente durante al menos 10 minutos y luego buscar
+    atenci\xF3n."
+  correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

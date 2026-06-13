@@ -179,7 +179,8 @@ public class QuizUIManager : MonoBehaviour
         if (timerLabel != null)
             timerLabel.color = timerLabelOriginalColor;
 
-        currentOptions = situation.options;
+        // Usamos las opciones ya mezcladas del GameManager, no las del asset directamente
+        currentOptions = new List<QuizOptionSO>(gameManager.GetCurrentOptions());
         revealCoroutine = StartCoroutine(RevealSituationSequence(situation));
     }
 
@@ -371,7 +372,7 @@ public class QuizUIManager : MonoBehaviour
         if (endGradeText != null)
         {
             float rounded = Mathf.Round(score * 10f) / 10f;
-            endGradeText.text = $"Tu nota: {rounded:F1} / 10  —  {(score >= LevelGrade.PassingScore ? "Aprobado ✓" : "Desaprobado ✗")}";
+            endGradeText.text = $"Tu nota: {rounded:F1} / 10  —  {(score >= LevelGrade.PassingScore ? "Aprobado, pasa al siguiente nivel" : "Desaprobado, sigue intentado que estamos acá para aprender")}";
         }
     }
 

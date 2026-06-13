@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S6Opt2
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: "Enfriar la zona bajo agua fresca corriente por al menos 10 minutos
+    y avisar al docente"
+  isCorrect: 1
+  incorrectFeedback: 
+  correctFeedback: "\xA1Correcto! Ante una quemadura t\xE9rmica, el primer paso es
+    enfriar la zona afectada con agua fresca (no helada) corriente durante un m\xEDnimo
+    de 10 minutos. Esto detiene el proceso de quemadura en las capas m\xE1s profundas
+    de la piel. No uses hielo ya que puede causar una crioquemadura. Luego avis\xE1
+    al docente y evaluatela quemadura: si hay ampollas, p\xE9rdida de piel o la zona
+    es extensa, requer\xEDs atenci\xF3n m\xE9dica."

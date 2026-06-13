@@ -220,7 +220,7 @@ public class EPPUIManager : MonoBehaviour
         {
             float rounded = Mathf.Round(score * 10f) / 10f;
             endLevelGradeText.text = $"Tu nota: {rounded:F1} / 10  —  " +
-                                     $"{(score >= LevelGrade.PassingScore ? "Aprobado " : "Desaprobado ")}";
+                                     $"{(score >= LevelGrade.PassingScore ? "Aprobado, pasa al siguiente nivel " : "Desaprobado, sigue intentado que estamos acá para aprender ")}";
         }
     }
 

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba59874f1bb3d3647b62a1a0b18df633, type: 3}
+  m_Name: QuizSituation7
+  m_EditorClassIdentifier: Assembly-CSharp::QuizSituationSO
+  situationText: "Tu compa\xF1ero tropieza con un cable en el suelo y cae golpe\xE1ndose
+    la cabeza contra la mesada. Queda en el suelo, consciente pero aturdido y dice
+    que ve todo borroso. \xBFQu\xE9 hac\xE9s?"
+  options:
+  - {fileID: 11400000, guid: a99cc9cec007aec40a4c6147d06fc49b, type: 2}
+  - {fileID: 11400000, guid: acdb2ef05da642e40b9e1bf6d2c5efd4, type: 2}
+  - {fileID: 11400000, guid: 1da37a6a099defa468069eee1091700b, type: 2}

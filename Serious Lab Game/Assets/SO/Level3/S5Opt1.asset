@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S5Opt1
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: "Soplar la llama con fuerza para apagarla r\xE1pidamente"
+  isCorrect: 0
+  incorrectFeedback: "Soplar una llama en el laboratorio es extremadamente peligroso.
+    El aire puede dispersar el fuego hacia otros materiales inflamables de la mesada,
+    propagar brasas o intensificar la combusti\xF3n si hay vapores presentes. Nunca
+    se debe soplar sobre fuego en un entorno qu\xEDmico. La acci\xF3n correcta es
+    apagar el mechero, cubrir la llama si es posible y alertar al docente."
+  correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

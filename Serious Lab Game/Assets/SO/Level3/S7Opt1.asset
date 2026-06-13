@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
+  m_Name: S7Opt1
+  m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
+  optionText: "Ayudarlo a levantarse r\xE1pidamente para que no siga en el piso"
+  isCorrect: 0
+  incorrectFeedback: "Mover a una persona que acaba de recibir un golpe en la cabeza
+    sin evaluaci\xF3n previa puede ser muy peligroso. Existe riesgo de lesi\xF3n cervical
+    o de empeorar una posible conmoci\xF3n cerebral. La visi\xF3n borrosa es un s\xEDntoma
+    de alerta. Lo correcto es mantenerlo en reposo en el lugar, sin moverlo, avisar
+    al docente y pedir asistencia m\xE9dica si los s\xEDntomas persisten."
+  correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

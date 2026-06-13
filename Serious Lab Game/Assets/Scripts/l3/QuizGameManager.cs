@@ -15,16 +15,19 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
     [Tooltip("Debe coincidir con el índice del nodo en LevelSelectorManager (base 0).")]
     [SerializeField] private int levelIndex = 2;
 
-    [Header("Preguntas del quiz (en orden)")]
+    [Header("Preguntas del quiz (se mezclan al iniciar)")]
     [SerializeField] private List<QuizSituationSO> situations;
+
+    // Orden mezclado de opciones para la pregunta actual (no modifica el asset)
+    private List<QuizOptionSO> _shuffledOptions;
 
     [Header("Timer por pregunta")]
     [SerializeField] private float timePerQuestion = 15f;
 
-    private int   currentIndex   = 0;
-    private int   correctCount   = 0;
-    private float currentTime    = 0f;
-    private bool  questionActive = false;
+    private int currentIndex = 0;
+    private int correctCount = 0;
+    private float currentTime = 0f;
+    private bool questionActive = false;
 
     // ─── ILevelScorer ─────────────────────────────────────────────────────────
 
@@ -42,13 +45,13 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
 
     // ─── Eventos ──────────────────────────────────────────────────────────────
 
-    public event Action<QuizSituationSO>   OnSituationLoaded;
+    public event Action<QuizSituationSO> OnSituationLoaded;
     public event Action<QuizOptionSO, bool> OnAnswerResult;
-    public event Action<float, float>      OnTimerUpdated;
-    public event Action                    OnTimeOut;
+    public event Action<float, float> OnTimerUpdated;
+    public event Action OnTimeOut;
 
     /// <summary>correct, total, score 0-10</summary>
-    public event Action<int, int, float>   OnQuizComplete;
+    public event Action<int, int, float> OnQuizComplete;
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
 
@@ -60,7 +63,8 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
     private void Start()
     {
         Time.timeScale = 1f;
-        
+
+        ShuffleList(situations);
         LoadCurrentSituation();
     }
 
@@ -100,10 +104,10 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
     private void OnDestroy()
     {
         OnSituationLoaded = null;
-        OnAnswerResult    = null;
-        OnTimerUpdated    = null;
-        OnTimeOut         = null;
-        OnQuizComplete    = null;
+        OnAnswerResult = null;
+        OnTimerUpdated = null;
+        OnTimeOut = null;
+        OnQuizComplete = null;
     }
 
     // ─── API pública ──────────────────────────────────────────────────────────
@@ -145,7 +149,11 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
             return;
         }
 
-        currentTime    = timePerQuestion;
+        // Copia las opciones del asset y las mezcla sin modificar el ScriptableObject
+        _shuffledOptions = new List<QuizOptionSO>(situations[currentIndex].options);
+        ShuffleList(_shuffledOptions);
+
+        currentTime = timePerQuestion;
         questionActive = true;
 
         OnSituationLoaded?.Invoke(situations[currentIndex]);
@@ -156,5 +164,23 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
     {
         var gradeService = ServiceLocator.Instance.GetService("GradeService") as GradeService;
         gradeService?.SubmitGrade(levelIndex, score);
+    }
+
+    /// <summary>
+    /// Devuelve las opciones de la pregunta actual ya mezcladas.
+    /// El UI debe usar esta lista en lugar de situation.options directamente.
+    /// </summary>
+    public IReadOnlyList<QuizOptionSO> GetCurrentOptions() => _shuffledOptions;
+
+    /// <summary>
+    /// Fisher-Yates shuffle genérico. Modifica la lista in-place.
+    /// </summary>
+    private static void ShuffleList<T>(List<T> list)
+    {
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            (list[i], list[j]) = (list[j], list[i]);
+        }
     }
 }

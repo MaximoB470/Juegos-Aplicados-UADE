@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bb0a40ca8f753a64baaa2642066b4aa9
+guid: 4eeb1ebb222673b4bb9f9cc82367c1cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9104136478300700862
-    second: Diploma_0
+      213: 7554170858056208738
+    second: DiplomaFinal_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Diploma_0
+      name: DiplomaFinal_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2000
-        height: 1414
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24ff538db1c97a180800000000000000
-      internalID: -9104136478300700862
+      spriteID: 2615c072f5ec5d860800000000000000
+      internalID: 7554170858056208738
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Diploma_0: -9104136478300700862
+      DiplomaFinal_0: 7554170858056208738
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
