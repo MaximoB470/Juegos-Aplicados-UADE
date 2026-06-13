@@ -31,4 +31,5 @@ MonoBehaviour:
   feedbackCorrect: "\xA1Exacto! Aunque no seas vos quien mezcla, los anteojos son
     obligatorios. Un salpicado puede llegar a cualquiera que est\xE9 cerca."
   feedbackIncorrect: "Aunque no manipules nada, si est\xE1s cerca de una mezcla de
-    reactivos necesit\xE1s anteojos de seguridad siempre."
+    reactivos necesit\xE1s medidas de seguridad como anteojos, calzado cerrado y
+    guantes siempre."

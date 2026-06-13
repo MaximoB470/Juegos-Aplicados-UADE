@@ -23,8 +23,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a2784992b192f42418ed607cc5233d3a, type: 2}
   - {fileID: 11400000, guid: e0387426ebc28ff4cb090802c71e671d, type: 2}
   handsOptions:
-  - {fileID: 11400000, guid: 3b78251f27a50854295730f3a89f099b, type: 2}
-  - {fileID: 11400000, guid: 097fd5c8d1e6f0f4d8cb7ec2b9f038d0, type: 2}
+  - {fileID: 11400000, guid: 8c02443cb43c0b64db6d516f9c71f42a, type: 2}
+  - {fileID: 11400000, guid: 2eb1e439326f9cc4f8f3778f8665711d, type: 2}
   feetOptions:
   - {fileID: 11400000, guid: 3ab8b43ed7419844ea6a557285dd4a0d, type: 2}
   - {fileID: 11400000, guid: 7eeb5290971c8e4488b5d367c5b90f09, type: 2}

@@ -23,11 +23,21 @@ public class EPPUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scenarioTitleText;
     [SerializeField] private TextMeshProUGUI scenarioContextText;
 
-    [Header("Sliders de EPP")]
-    [SerializeField] private Slider headSlider;
-    [SerializeField] private Slider bodySlider;
-    [SerializeField] private Slider handsSlider;
-    [SerializeField] private Slider feetSlider;
+    [Header("Botones de EPP - Cabeza")]
+    [SerializeField] private Button headPrevButton;
+    [SerializeField] private Button headNextButton;
+
+    [Header("Botones de EPP - Cuerpo")]
+    [SerializeField] private Button bodyPrevButton;
+    [SerializeField] private Button bodyNextButton;
+
+    [Header("Botones de EPP - Manos")]
+    [SerializeField] private Button handsPrevButton;
+    [SerializeField] private Button handsNextButton;
+
+    [Header("Botones de EPP - Pies")]
+    [SerializeField] private Button feetPrevButton;
+    [SerializeField] private Button feetNextButton;
 
     [Header("Labels de opción actual")]
     [SerializeField] private TextMeshProUGUI headOptionLabel;
@@ -88,6 +98,12 @@ public class EPPUIManager : MonoBehaviour
     private List<EPPOptionSO> currentHandsOptions;
     private List<EPPOptionSO> currentFeetOptions;
 
+    // Índice de la opción seleccionada actualmente en cada categoría
+    private int currentHeadIndex;
+    private int currentBodyIndex;
+    private int currentHandsIndex;
+    private int currentFeetIndex;
+
     [Header("Sonidos de seccion de suspenso")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip correctClip;
@@ -95,6 +111,10 @@ public class EPPUIManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioClip drumLoop;
+
+    [Header("Sonido de botones (anterior/siguiente)")]
+    [SerializeField] private AudioSource optionButtonAudioSource;
+    [SerializeField] private AudioClip optionButtonClip;
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
 
@@ -121,10 +141,17 @@ public class EPPUIManager : MonoBehaviour
         continueButton?.onClick.AddListener(OnContinueClicked);
         endLevelContinueButton?.onClick.AddListener(() => SceneManager.LoadScene(SELECTOR_SCENE));
 
-        headSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(headSlider, currentHeadOptions, headOptionLabel, headOptionImage));
-        bodySlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(bodySlider, currentBodyOptions, bodyOptionLabel, bodyOptionImage));
-        handsSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(handsSlider, currentHandsOptions, handsOptionLabel, handsOptionImage));
-        feetSlider?.onValueChanged.AddListener(_ => RefreshSliderLabel(feetSlider, currentFeetOptions, feetOptionLabel, feetOptionImage));
+        headPrevButton?.onClick.AddListener(() => StepOption(ref currentHeadIndex, currentHeadOptions, -1, headOptionLabel, headOptionImage));
+        headNextButton?.onClick.AddListener(() => StepOption(ref currentHeadIndex, currentHeadOptions, 1, headOptionLabel, headOptionImage));
+
+        bodyPrevButton?.onClick.AddListener(() => StepOption(ref currentBodyIndex, currentBodyOptions, -1, bodyOptionLabel, bodyOptionImage));
+        bodyNextButton?.onClick.AddListener(() => StepOption(ref currentBodyIndex, currentBodyOptions, 1, bodyOptionLabel, bodyOptionImage));
+
+        handsPrevButton?.onClick.AddListener(() => StepOption(ref currentHandsIndex, currentHandsOptions, -1, handsOptionLabel, handsOptionImage));
+        handsNextButton?.onClick.AddListener(() => StepOption(ref currentHandsIndex, currentHandsOptions, 1, handsOptionLabel, handsOptionImage));
+
+        feetPrevButton?.onClick.AddListener(() => StepOption(ref currentFeetIndex, currentFeetOptions, -1, feetOptionLabel, feetOptionImage));
+        feetNextButton?.onClick.AddListener(() => StepOption(ref currentFeetIndex, currentFeetOptions, 1, feetOptionLabel, feetOptionImage));
 
         HideAllOverlays();
         SetResultPanelActive(false);
@@ -159,15 +186,10 @@ public class EPPUIManager : MonoBehaviour
         currentHandsOptions = scenario.handsOptions;
         currentFeetOptions = scenario.feetOptions;
 
-        ConfigureSlider(headSlider, currentHeadOptions);
-        ConfigureSlider(bodySlider, currentBodyOptions);
-        ConfigureSlider(handsSlider, currentHandsOptions);
-        ConfigureSlider(feetSlider, currentFeetOptions);
-
-        ResetSlider(headSlider, currentHeadOptions, headOptionLabel, headOptionImage);
-        ResetSlider(bodySlider, currentBodyOptions, bodyOptionLabel, bodyOptionImage);
-        ResetSlider(handsSlider, currentHandsOptions, handsOptionLabel, handsOptionImage);
-        ResetSlider(feetSlider, currentFeetOptions, feetOptionLabel, feetOptionImage);
+        ResetOption(ref currentHeadIndex, currentHeadOptions, headOptionLabel, headOptionImage);
+        ResetOption(ref currentBodyIndex, currentBodyOptions, bodyOptionLabel, bodyOptionImage);
+        ResetOption(ref currentHandsIndex, currentHandsOptions, handsOptionLabel, handsOptionImage);
+        ResetOption(ref currentFeetIndex, currentFeetOptions, feetOptionLabel, feetOptionImage);
 
         if (confirmButton != null) confirmButton.interactable = true;
 
@@ -198,7 +220,7 @@ public class EPPUIManager : MonoBehaviour
         {
             float rounded = Mathf.Round(score * 10f) / 10f;
             endLevelGradeText.text = $"Tu nota: {rounded:F1} / 10  —  " +
-                                     $"{(score >= LevelGrade.PassingScore ? "Aprobado ✓" : "Desaprobado ✗")}";
+                                     $"{(score >= LevelGrade.PassingScore ? "Aprobado " : "Desaprobado ")}";
         }
     }
 
@@ -293,12 +315,7 @@ public class EPPUIManager : MonoBehaviour
     {
         if (gameManager == null) return;
 
-        int headIndex = Mathf.RoundToInt(headSlider != null ? headSlider.value : 0);
-        int bodyIndex = Mathf.RoundToInt(bodySlider != null ? bodySlider.value : 0);
-        int handsIndex = Mathf.RoundToInt(handsSlider != null ? handsSlider.value : 0);
-        int feetIndex = Mathf.RoundToInt(feetSlider != null ? feetSlider.value : 0);
-
-        gameManager.SubmitAnswer(headIndex, bodyIndex, handsIndex, feetIndex);
+        gameManager.SubmitAnswer(currentHeadIndex, currentBodyIndex, currentHandsIndex, currentFeetIndex);
     }
 
     private void OnContinueClicked() => gameManager?.AdvanceToNextScenario();
@@ -350,29 +367,54 @@ public class EPPUIManager : MonoBehaviour
         SetResultPanelActive(true);
     }
 
-    private void ConfigureSlider(Slider slider, List<EPPOptionSO> options)
-    {
-        if (slider == null || options == null) return;
-        slider.minValue = 0;
-        slider.maxValue = Mathf.Max(0, options.Count - 1);
-        slider.wholeNumbers = true;
-    }
-
-    private void ResetSlider(Slider slider, List<EPPOptionSO> options,
+    /// <summary>
+    /// Reinicia el índice de una categoría a 0 y actualiza su label/imagen.
+    /// </summary>
+    private void ResetOption(ref int currentIndex, List<EPPOptionSO> options,
                               TextMeshProUGUI label, Image image)
     {
-        if (slider == null) return;
-        slider.value = 0;
-        RefreshSliderLabel(slider, options, label, image);
+        currentIndex = 0;
+        RefreshOptionDisplay(currentIndex, options, label, image);
     }
 
-    private void RefreshSliderLabel(Slider slider, List<EPPOptionSO> options,
-                                    TextMeshProUGUI label, Image image)
+    /// <summary>
+    /// Avanza o retrocede el índice de una categoría (con wrap-around)
+    /// y actualiza su label/imagen.
+    /// direction = -1 (botón "atrás") o +1 (botón "adelante").
+    /// </summary>
+    private void StepOption(ref int currentIndex, List<EPPOptionSO> options, int direction,
+                             TextMeshProUGUI label, Image image)
     {
-        if (slider == null || options == null || label == null) return;
-        int index = Mathf.Clamp(Mathf.RoundToInt(slider.value), 0, options.Count - 1);
+        if (options == null || options.Count == 0) return;
+
+        currentIndex = (currentIndex + direction + options.Count) % options.Count;
+        RefreshOptionDisplay(currentIndex, options, label, image);
+
+        PlayOptionButtonSound();
+    }
+
+    /// <summary>
+    /// Reproduce el sonido asignado para los botones de anterior/siguiente.
+    /// </summary>
+    private void PlayOptionButtonSound()
+    {
+        if (optionButtonAudioSource != null && optionButtonClip != null)
+            optionButtonAudioSource.PlayOneShot(optionButtonClip);
+    }
+
+    /// <summary>
+    /// Actualiza el texto y la imagen para mostrar la opción en currentIndex.
+    /// </summary>
+    private void RefreshOptionDisplay(int currentIndex, List<EPPOptionSO> options,
+                                       TextMeshProUGUI label, Image image)
+    {
+        if (options == null || options.Count == 0 || label == null) return;
+
+        int index = Mathf.Clamp(currentIndex, 0, options.Count - 1);
         EPPOptionSO opt = options[index];
+
         label.text = opt != null ? opt.optionLabel : "—";
+
         if (image != null && opt != null)
         {
             image.sprite = opt.optionIcon;
