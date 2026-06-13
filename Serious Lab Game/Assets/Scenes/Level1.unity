@@ -1382,7 +1382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66971195, y: 0.18436167}
   m_AnchorMax: {x: 0.9204239, y: 0.34172332}
-  m_AnchoredPosition: {x: -1.1694031, y: -0.96629333}
+  m_AnchoredPosition: {x: -1.1694336, y: -0.9662781}
   m_SizeDelta: {x: 4.0789986, y: 1.8889999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220497065
@@ -3395,8 +3395,8 @@ GameObject:
   m_Component:
   - component: {fileID: 734461894}
   - component: {fileID: 734461895}
-  - component: {fileID: 734461896}
   - component: {fileID: 734461897}
+  - component: {fileID: 734461898}
   m_Layer: 0
   m_Name: Point Frasco
   m_TagString: Untagged
@@ -3479,8 +3479,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &734461896
-CircleCollider2D:
+--- !u!114 &734461897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734461893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237c3e393399a6e4584d9a02de8b2468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
+  errorTitle: Frascos sin etiqueta
+  errorDescription: "\xA1Reactivo no identificado! Nunca uses un frasco sin etiqueta.
+    Todos los reactivos deben estar correctamente rotulados con nombre, concentraci\xF3n,
+    fecha y s\xEDmbolo de peligro antes de utilizarse."
+  foundMarker: {fileID: 7871677}
+  hintText: "No deber\xEDan utilizarse si no se puede leer la info."
+  highlightRenderer: {fileID: 734461895}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!70 &734461898
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3513,28 +3533,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &734461897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734461893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 237c3e393399a6e4584d9a02de8b2468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
-  errorTitle: Frascos sin etiqueta
-  errorDescription: "\xA1Reactivo no identificado! Nunca uses un frasco sin etiqueta.
-    Todos los reactivos deben estar correctamente rotulados con nombre, concentraci\xF3n,
-    fecha y s\xEDmbolo de peligro antes de utilizarse."
-  foundMarker: {fileID: 7871677}
-  hintText: "No deber\xEDan utilizarse si no se puede leer la info."
-  highlightRenderer: {fileID: 734461895}
-  highlightColor: {r: 1, g: 1, b: 1, a: 0}
+  m_Offset: {x: 0.0000004881625, y: 0.05891302}
+  m_Size: {x: 1, y: 1.7970536}
+  m_Direction: 0
 --- !u!1 &807386126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3569,7 +3570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05213582, y: 0.4245534}
   m_AnchorMax: {x: 0.9538642, y: 0.734}
-  m_AnchoredPosition: {x: 0, y: 0.2635002}
+  m_AnchoredPosition: {x: 0, y: 0.26350403}
   m_SizeDelta: {x: 0.000061035156, y: -2.4908981}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807386128
@@ -3924,8 +3925,8 @@ GameObject:
   m_Component:
   - component: {fileID: 950607075}
   - component: {fileID: 950607078}
-  - component: {fileID: 950607077}
   - component: {fileID: 950607076}
+  - component: {fileID: 950607079}
   m_Layer: 0
   m_Name: Point Extintor
   m_TagString: Untagged
@@ -3942,7 +3943,7 @@ Transform:
   m_GameObject: {fileID: 950607074}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.56, y: 3.99, z: 0}
+  m_LocalPosition: {x: -3.74, y: 3.99, z: 0}
   m_LocalScale: {x: 1.31, y: 1.31, z: 1.31}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3969,42 +3970,6 @@ MonoBehaviour:
   hintText: "Siempre chequear que no est\xE1n vencidos."
   highlightRenderer: {fileID: 950607078}
   highlightColor: {r: 1, g: 1, b: 1, a: 0}
---- !u!58 &950607077
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950607074}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
 --- !u!212 &950607078
 SpriteRenderer:
   serializedVersion: 2
@@ -4064,6 +4029,43 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!70 &950607079
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950607074}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.07463084, y: 0.034444842}
+  m_Size: {x: 0.804812, y: 1.8266797}
+  m_Direction: 0
 --- !u!1 &960393482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,6 +4078,7 @@ GameObject:
   - component: {fileID: 960393484}
   - component: {fileID: 960393485}
   - component: {fileID: 960393486}
+  - component: {fileID: 960393487}
   m_Layer: 0
   m_Name: Point Salida
   m_TagString: Untagged
@@ -4165,7 +4168,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960393482}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -4214,6 +4217,60 @@ MonoBehaviour:
   hintText: "Nunca deber\xEDa estar tapada."
   highlightRenderer: {fileID: 960393484}
   highlightColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!60 &960393487
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960393482}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.51273334, y: -0.67800105}
+      - {x: 0.6409326, y: 1.2120936}
+      - {x: 0.32715508, y: 1.2090954}
+      - {x: 0.09729958, y: 0.35709125}
+      - {x: -0.14322193, y: 0.38447848}
+      - {x: -0.50885224, y: 0.32936913}
+      - {x: -0.57261807, y: -0.6252961}
+  m_UseDelaunayMesh: 1
 --- !u!1 &1038252919
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4653,7 @@ GameObject:
   - component: {fileID: 1170019881}
   - component: {fileID: 1170019880}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: ClockImage (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5342,7 +5399,7 @@ MonoBehaviour:
   useTimer: 1
   gameDuration: 60
   timeLimit: 120
-  maxWrongClicks: 10
+  maxWrongClicks: 5
   maxHints: 3
   goodTick: {fileID: 362786591}
   badTick: {fileID: 1156104609}
@@ -6542,8 +6599,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1798965778}
   - component: {fileID: 1798965779}
-  - component: {fileID: 1798965780}
   - component: {fileID: 1798965781}
+  - component: {fileID: 1798965782}
   m_Layer: 0
   m_Name: Point Mechero
   m_TagString: Untagged
@@ -6626,8 +6683,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &1798965780
-CircleCollider2D:
+--- !u!114 &1798965781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798965777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237c3e393399a6e4584d9a02de8b2468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
+  errorTitle: "Mechero de Bunsen sin supervisi\xF3n"
+  errorDescription: "\xA1Llama desatendida! Nunca se debe dejar un mechero encendido
+    sin supervisi\xF3n activa. Si no est\xE1s trabajando con \xE9l, apagalo cortando
+    el suministro de gas."
+  foundMarker: {fileID: 1584577730}
+  hintText: Algo que no deberia dejarse encendido.
+  highlightRenderer: {fileID: 1798965779}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!70 &1798965782
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6660,28 +6737,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.47727072}
-  m_Radius: 0.9772707
---- !u!114 &1798965781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798965777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 237c3e393399a6e4584d9a02de8b2468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
-  errorTitle: "Mechero de Bunsen sin supervisi\xF3n"
-  errorDescription: "\xA1Llama desatendida! Nunca se debe dejar un mechero encendido
-    sin supervisi\xF3n activa. Si no est\xE1s trabajando con \xE9l, apagalo cortando
-    el suministro de gas."
-  foundMarker: {fileID: 1584577730}
-  hintText: Algo que no deberia dejarse encendido.
-  highlightRenderer: {fileID: 1798965779}
-  highlightColor: {r: 1, g: 1, b: 1, a: 0}
+  m_Offset: {x: 0, y: -0.5373776}
+  m_Size: {x: 1, y: 4.2581167}
+  m_Direction: 0
 --- !u!1 &1813736797
 GameObject:
   m_ObjectHideFlags: 0
@@ -7032,8 +7090,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1998515169}
   - component: {fileID: 1998515170}
-  - component: {fileID: 1998515171}
   - component: {fileID: 1998515172}
+  - component: {fileID: 1998515173}
   m_Layer: 0
   m_Name: Point Cabello
   m_TagString: Untagged
@@ -7116,8 +7174,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &1998515171
-CircleCollider2D:
+--- !u!114 &1998515172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998515168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237c3e393399a6e4584d9a02de8b2468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
+  errorTitle: Cabello suelto cerca del mechero
+  errorDescription: "\xA1Riesgo de incendio! El cabello largo debe estar siempre
+    recogido en el laboratorio, especialmente cerca de llamas abiertas. Un descuido
+    puede provocar quemaduras graves en segundos."
+  foundMarker: {fileID: 506447438}
+  hintText: "Algo que no deber\xEDa dejarse suelto."
+  highlightRenderer: {fileID: 1998515170}
+  highlightColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!60 &1998515173
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7150,28 +7228,30 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.37418628, y: -0.34753156}
-  m_Radius: 1.4632467
---- !u!114 &1998515172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998515168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 237c3e393399a6e4584d9a02de8b2468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
-  errorTitle: Cabello suelto cerca del mechero
-  errorDescription: "\xA1Riesgo de incendio! El cabello largo debe estar siempre
-    recogido en el laboratorio, especialmente cerca de llamas abiertas. Un descuido
-    puede provocar quemaduras graves en segundos."
-  foundMarker: {fileID: 506447438}
-  hintText: "Algo que no deber\xEDa dejarse suelto."
-  highlightRenderer: {fileID: 1998515170}
-  highlightColor: {r: 1, g: 1, b: 1, a: 0}
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.6076118, y: -3.0139055}
+      - {x: -1.0104648, y: -3.333585}
+      - {x: 0.66013694, y: -0.12871659}
+      - {x: 0.7320266, y: 0.19869137}
+      - {x: 1.0336323, y: 0.8217139}
+      - {x: 0.57089806, y: 1.2125576}
+      - {x: -0.06836629, y: 1.7201478}
+      - {x: -0.4784212, y: 1.4315917}
+      - {x: -0.72342217, y: 1.2544658}
+      - {x: -1.4916544, y: -0.4800905}
+      - {x: -1.8694336, y: -1.710026}
+  m_UseDelaunayMesh: 1
 --- !u!1 &2104822142
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour, ILevelScorer
     [SerializeField] private float timeLimit = 120f;
 
     [Header("Límite de Clicks incorrectos")]
-    [Tooltip("0 = sin límite.")]
-    [SerializeField] private int maxWrongClicks = 10;
+    [Tooltip("0 = sin límite. Se reinicia cada vez que se encuentra una falla correcta.")]
+    [SerializeField] private int maxWrongClicks = 5;
 
     [Header("Límite de Pistas")]
     [SerializeField] private int maxHints = 3;
@@ -146,6 +146,10 @@ public class GameManager : MonoBehaviour, ILevelScorer
     {
         foundCount++;
         GetUI().UpdateProgressDisplay(foundCount, TotalPoints);
+
+        // Reiniciar el contador de clicks incorrectos al acertar
+        wrongClickCount = 0;
+        GetUI().UpdateClickDisplay(wrongClickCount, maxWrongClicks);
 
         if (foundCount >= TotalPoints)
             Invoke(nameof(WinGame), 0.15f);
