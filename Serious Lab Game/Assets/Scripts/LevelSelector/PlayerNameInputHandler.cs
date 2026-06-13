@@ -13,7 +13,10 @@ public class PlayerNameInputHandler : MonoBehaviour
     [Header("Referencias UI")]
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private Button startButton;
+    [SerializeField] private Button levelsButton;
     [SerializeField] private string placeholderText = "Ingresá tu nombre...";
+
+    private const int MAX_NAME_LENGTH = 15;
 
     private PlayerProfileService profileService;
 
@@ -24,6 +27,10 @@ public class PlayerNameInputHandler : MonoBehaviour
 
         if (nameInputField != null)
         {
+            // Límite de caracteres y sin saltos de línea
+            nameInputField.characterLimit = MAX_NAME_LENGTH;
+            nameInputField.lineType = TMP_InputField.LineType.SingleLine;
+
             var placeholder = nameInputField.placeholder.GetComponent<TMP_Text>();
             if (placeholder != null)
                 placeholder.text = placeholderText;
@@ -32,18 +39,18 @@ public class PlayerNameInputHandler : MonoBehaviour
             if (profileService != null && profileService.HasName)
             {
                 nameInputField.SetTextWithoutNotify(profileService.PlayerName);
-                SetStartButtonInteractable(true);
+                SetButtonsInteractable(true);
             }
             else
             {
-                SetStartButtonInteractable(false);
+                SetButtonsInteractable(false);
             }
 
             nameInputField.onValueChanged.AddListener(OnNameChanged);
         }
         else
         {
-            SetStartButtonInteractable(false);
+            SetButtonsInteractable(false);
         }
     }
 
@@ -52,7 +59,7 @@ public class PlayerNameInputHandler : MonoBehaviour
     private void OnNameChanged(string value)
     {
         bool hasName = !string.IsNullOrWhiteSpace(value);
-        SetStartButtonInteractable(hasName);
+        SetButtonsInteractable(hasName);
 
         // Solo guarda si el nuevo valor no está vacío —
         // si borra el campo, el nombre anterior se conserva en el servicio
@@ -74,9 +81,11 @@ public class PlayerNameInputHandler : MonoBehaviour
 
     // ─── Helpers ─────────────────────────────────────────────────────────────
 
-    private void SetStartButtonInteractable(bool value)
+    private void SetButtonsInteractable(bool value)
     {
         if (startButton != null)
             startButton.interactable = value;
+        if (levelsButton != null)
+            levelsButton.interactable = value;
     }
 }

@@ -1782,6 +1782,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 3713025276412853407, guid: 2ed378d79c780824898228a34619421e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5043592331925936137, guid: 2ed378d79c780824898228a34619421e, type: 3}
       propertyPath: m_Name
       value: MenuButton
