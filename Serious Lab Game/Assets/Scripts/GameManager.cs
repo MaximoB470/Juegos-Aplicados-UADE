@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
         if (currentTime <= 0f) LoseGame();
 
         if (Input.GetKeyDown(KeyCode.F1)) LoseGame();
-        if (Input.GetKeyDown(KeyCode.F12)) DebugWin();
+        if (Input.GetKeyDown(KeyCode.F8)) DebugWin();
     }
 
     private void DebugWin()

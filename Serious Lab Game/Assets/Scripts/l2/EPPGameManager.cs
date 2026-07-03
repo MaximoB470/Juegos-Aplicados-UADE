@@ -90,7 +90,7 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.F8))
         {
             DebugWin();
         }

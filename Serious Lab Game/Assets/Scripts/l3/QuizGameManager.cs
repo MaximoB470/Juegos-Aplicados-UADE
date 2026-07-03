@@ -71,7 +71,7 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.F8))
         {
             DebugWin();
         }
