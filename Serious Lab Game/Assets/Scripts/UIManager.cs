@@ -79,9 +79,7 @@ public class UIManager : MonoBehaviour
         buttonAudioHint.Play();
     }
 
-    // ─────────────────────────────────────────────
     // Pantallas principales
-    // ─────────────────────────────────────────────
 
     public void ShowMenu()
     {
@@ -128,15 +126,6 @@ public class UIManager : MonoBehaviour
         UpdateGradeText(loseGradeText, score, found, total);
     }
 
-    /// <summary>
-    /// Muestra cuántas fallas se encontraron de un total, junto a un dato
-    /// adicional según el puntaje, pensado para complementar (sin repetir)
-    /// los textos fijos ya existentes en las pantallas de Win y Lose:
-    /// - score &lt; 7  -> recuerda el puntaje mínimo para aprobar.
-    /// - score &gt;= 7 y faltan fallas -> aclara que aprobó y puede avanzar,
-    ///   aunque queden fallas pendientes.
-    /// - encontraste todas las fallas -> resumen breve del resultado.
-    /// </summary>
     private void UpdateGradeText(TMP_Text targetText, float score, int found, int total)
     {
         if (targetText == null) return;
@@ -167,9 +156,7 @@ public class UIManager : MonoBehaviour
         targetText.gameObject.SetActive(true);
     }
 
-    // ─────────────────────────────────────────────
     // Info / Hint Panel
-    // ─────────────────────────────────────────────
 
     public void ShowInfoPanel(ClickPoint point)
     {
@@ -226,9 +213,7 @@ public class UIManager : MonoBehaviour
         SetActive(infoPanel, false);
     }
 
-    // ─────────────────────────────────────────────
     // HUD
-    // ─────────────────────────────────────────────
 
     public void UpdateProgressDisplay(int found, int total)
     {
@@ -236,11 +221,7 @@ public class UIManager : MonoBehaviour
             progressText.text = $"{found} / {total} errores encontrados";
     }
 
-    /// <summary>
-    /// Actualiza texto y reloj radial.
-    /// currentTime = tiempo restante.
-    /// maxTime = tiempo total del nivel.
-    /// </summary>
+
     public void UpdateTimerDisplay(float currentTime, float maxTime)
     {
 
@@ -250,9 +231,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Actualiza contador de clicks incorrectos.
-    /// </summary>
+
     public void UpdateClickDisplay(int wrongClicks, int maxClicks)
     {
         if (clickCounterText == null)
@@ -268,9 +247,7 @@ public class UIManager : MonoBehaviour
         clickCounterText.text = $"Clicks: {wrongClicks} / {maxClicks}";
     }
 
-    // ─────────────────────────────────────────────
     // Pistas
-    // ─────────────────────────────────────────────
 
     public void UpdateHintButton(int hintsUsed, int maxHints)
     {
@@ -301,9 +278,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Actualiza el texto e iconos visuales de pistas.
-    /// </summary>
     public void UpdateHintsDisplay(int hintsUsed, int maxHints)
     {
         int remaining = Mathf.Max(0, maxHints - hintsUsed);
@@ -329,9 +303,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────────
     // Botones
-    // ─────────────────────────────────────────────
 
     public void StartGameButton()
     {
@@ -363,9 +335,7 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("LevelSelector");
     }
 
-    // ─────────────────────────────────────────────
     // Pause / Resume
-    // ─────────────────────────────────────────────
 
     public void PauseGame()
     {
@@ -378,10 +348,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         IsPaused = false;
     }
-
-    // ─────────────────────────────────────────────
-    // Util
-    // ─────────────────────────────────────────────
 
     private static void SetActive(GameObject go, bool value)
     {

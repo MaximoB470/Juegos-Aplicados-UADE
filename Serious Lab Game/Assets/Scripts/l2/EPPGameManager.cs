@@ -2,12 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Manager de lógica del Nivel 2 (EPP - vestimenta correcta).
-/// Implementa ILevelScorer con crédito parcial por categoría:
-///   nota = (categorías correctas / categorías posibles) * 10
-/// Esto asegura que agregar situaciones o categorías no rompa el cálculo.
-/// </summary>
 public class EPPGameManager : MonoBehaviour, ILevelScorer
 {
     private const string SERVICE_KEY = "EPPGameManager";
@@ -23,27 +17,18 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
     private int totalCorrectCategories   = 0;
     private int totalPossibleCategories  = 0;
 
-    // ─── ILevelScorer ─────────────────────────────────────────────────────────
-
     public int LevelIndex => levelIndex;
 
-    /// <summary>
-    /// Nota = (categorías correctas acumuladas / categorías posibles acumuladas) * 10.
-    /// Crédito parcial: acertar cabeza y cuerpo pero no manos ni pies
-    /// da una nota proporcional, no cero.
-    /// </summary>
     public float CalculateScore()
     {
         if (totalPossibleCategories == 0) return 0f;
         return ((float)totalCorrectCategories / totalPossibleCategories) * 10f;
     }
 
-    // ─── Eventos ──────────────────────────────────────────────────────────────
 
     public event Action<EPPScenarioSO>  OnScenarioLoaded;
     public event Action<EPPResult>      OnResultReady;
 
-    /// <summary>correct, total, score 0-10</summary>
     public event Action<int, int, float> OnLevelComplete;
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
@@ -65,8 +50,6 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
         OnResultReady    = null;
         OnLevelComplete  = null;
     }
-
-    // ─── API pública ──────────────────────────────────────────────────────────
 
     public void SubmitAnswer(int headIndex, int bodyIndex, int handsIndex, int feetIndex)
     {
@@ -94,7 +77,6 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
         }
     }
 
-    // ─── Privados ─────────────────────────────────────────────────────────────
 
     private void LoadCurrentScenario()
     {
@@ -134,7 +116,6 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
         result.handsCorrect = EvaluateCategory(scenario.handsOptions, handsIndex, "Manos",  result);
         result.feetCorrect  = EvaluateCategory(scenario.feetOptions,  feetIndex,  "Pies",   result);
 
-        // Acumular crédito parcial por categoría
         AccumulateCategories(scenario, result);
 
         result.scenarioFeedback = result.allCorrect
@@ -166,10 +147,6 @@ public class EPPGameManager : MonoBehaviour, ILevelScorer
         return false;
     }
 
-    /// <summary>
-    /// Suma al acumulador global solo las categorías no vacías.
-    /// Así agregar o quitar categorías no rompe el cálculo.
-    /// </summary>
     private void AccumulateCategories(EPPScenarioSO scenario, EPPResult result)
     {
         CountCategory(scenario.headOptions,  result.headCorrect);

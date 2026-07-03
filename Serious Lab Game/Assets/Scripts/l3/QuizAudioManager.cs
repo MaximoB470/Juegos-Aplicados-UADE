@@ -1,18 +1,6 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Maneja todos los sonidos del Nivel 3 (Quiz estilo ¿Quién quiere ser millonario?).
-///
-/// SETUP:
-///  1. Agrega este componente al mismo GameObject que QuizUIManager.
-///  2. Asigna los AudioClip desde el Inspector.
-///  3. El script se suscribe automáticamente a los eventos de QuizGameManager y QuizUIManager.
-///
-/// SOURCES:
-///  - sfxSource: efectos puntuales (clic, correcto, incorrecto, timeout).
-///  - suspenseSource: AudioSource separado para el loop de suspenso.
-///  - bgSource: AudioSource separado para la música de fondo en loop.
-/// </summary>
+
 public class QuizAudioManager : MonoBehaviour
 {
     private const string GAME_MANAGER_KEY = "QuizGameManager";
@@ -117,9 +105,7 @@ public class QuizAudioManager : MonoBehaviour
 
     private void HandleAnswerResult(QuizOptionSO option, bool correct)
     {
-        // Solo arranca el suspenso. El sonido de resultado lo dispara
-        // OnResultRevealed, que viene del UI en el momento exacto en que
-        // aparece el panel — sin ningún delay hardcodeado.
+
         PlaySuspense();
     }
 
@@ -142,9 +128,7 @@ public class QuizAudioManager : MonoBehaviour
         PlaySFX(clipQuizComplete);
     }
 
-    // ─── API pública ──────────────────────────────────────────────────────────
 
-    /// <summary>Llamado por QuizUIManager al hacer clic en una opción.</summary>
     public void PlayClickOption()
     {
         PlaySFX(clipClickOption);

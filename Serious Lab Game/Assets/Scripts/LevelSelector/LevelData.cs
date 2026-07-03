@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// ScriptableObject que define los datos estáticos de un nivel.
-/// Creá uno por nivel: clic derecho → Create → LevelSystem → LevelData
-/// </summary>
 [CreateAssetMenu(fileName = "LevelData", menuName = "LevelSystem/LevelData")]
 public class LevelData : ScriptableObject
 {

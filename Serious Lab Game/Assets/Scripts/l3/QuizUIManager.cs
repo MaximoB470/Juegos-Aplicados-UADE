@@ -6,11 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-/// <summary>
-/// Manager de UI del Nivel 3 (Quiz) — estilo ¿Quién quiere ser millonario?
-/// Todas las animaciones son por script (Coroutines).
-/// Solo presenta datos y delega acciones al QuizGameManager.
-/// </summary>
 public class QuizUIManager : MonoBehaviour
 {
     private const string SERVICE_KEY = "QuizUIManager";
@@ -77,12 +72,6 @@ public class QuizUIManager : MonoBehaviour
 
     // ─── Evento para el audio manager ─────────────────────────────────────────
 
-    /// <summary>
-    /// Se dispara en el momento exacto en que se muestra el panel de resultado,
-    /// después de toda la animación de suspenso y reveal de color.
-    /// El QuizAudioManager se suscribe a esto para reproducir correcto/incorrecto
-    /// sin ningún delay hardcodeado.
-    /// </summary>
     public event Action<bool> OnResultRevealed;
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
@@ -179,7 +168,6 @@ public class QuizUIManager : MonoBehaviour
         if (timerLabel != null)
             timerLabel.color = timerLabelOriginalColor;
 
-        // Usamos las opciones ya mezcladas del GameManager, no las del asset directamente
         currentOptions = new List<QuizOptionSO>(gameManager.GetCurrentOptions());
         revealCoroutine = StartCoroutine(RevealSituationSequence(situation));
     }
@@ -197,7 +185,6 @@ public class QuizUIManager : MonoBehaviour
                     optionButtons[i].transform.localScale = Vector3.zero;
             }
 
-            // Limpiar el label antes de animar para que no se vea el texto viejo
             if (optionLabels != null && i < optionLabels.Count && optionLabels[i] != null)
                 optionLabels[i].text = string.Empty;
         }
@@ -224,7 +211,6 @@ public class QuizUIManager : MonoBehaviour
                 optionOriginalScales[i],
                 optionRevealDuration));
 
-            // Poner el texto recién cuando el botón terminó de aparecer
             if (optionLabels != null && i < optionLabels.Count && optionLabels[i] != null)
                 optionLabels[i].text = currentOptions[i].optionText;
 
@@ -254,7 +240,6 @@ public class QuizUIManager : MonoBehaviour
 
     private IEnumerator SuspenseAndReveal(int selectedIndex, bool correct, QuizOptionSO option)
     {
-        // Paso 1: Iluminar el seleccionado en amarillo
         if (selectedIndex >= 0 && selectedIndex < optionButtonImages.Count && optionButtonImages[selectedIndex] != null)
         {
             yield return StartCoroutine(LerpButtonColor(
@@ -267,10 +252,8 @@ public class QuizUIManager : MonoBehaviour
                                                    optionOriginalScales[selectedIndex], 0.2f, 1.12f));
         }
 
-        // Paso 2: Suspenso
         yield return new WaitForSeconds(suspenseDuration);
 
-        // Paso 3: Revelar la correcta en verde
         int correctIndex = -1;
         for (int i = 0; i < currentOptions.Count; i++)
         {
@@ -290,7 +273,6 @@ public class QuizUIManager : MonoBehaviour
                                                    optionOriginalScales[correctIndex], 0.3f, 1.15f));
         }
 
-        // Si eligió incorrecta, pintarla en rojo
         if (!correct && selectedIndex >= 0 && selectedIndex != correctIndex &&
             selectedIndex < optionButtonImages.Count && optionButtonImages[selectedIndex] != null)
         {
@@ -303,7 +285,6 @@ public class QuizUIManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // Paso 4: Avisar al audio manager y mostrar el panel en el mismo momento
         OnResultRevealed?.Invoke(correct);
 
         if (resultTitleText != null)

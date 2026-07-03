@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Define una situación/pregunta del quiz.
-/// Creá uno por pregunta: clic derecho → Create → Quiz → QuizSituation
-/// </summary>
+
 [CreateAssetMenu(fileName = "QuizSituation", menuName = "Quiz/QuizSituation")]
 public class QuizSituationSO : ScriptableObject
 {

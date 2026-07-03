@@ -2,15 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Controla el estado visual de un nodo individual en el selector de niveles.
-///
-/// Estados:
-///   Locked    — no desbloqueado, no se puede jugar.
-///   Available — desbloqueado, sin intentar.
-///   Passed    — aprobado (nota >= 7), reintentar para mejorar.
-///   Failed    — desaprobado, debe reintentar para avanzar.
-/// </summary>
 public class LevelNode : MonoBehaviour
 {
     public enum NodeState { Locked, Available, Passed, Failed }
@@ -53,8 +44,6 @@ public class LevelNode : MonoBehaviour
         if (labelText != null) labelText.text = levelData.levelName;
     }
 
-    // ─── API pública ──────────────────────────────────────────────────────────
-
     public void SetState(NodeState state, LevelGrade grade = null)
     {
         if (nodeBackground != null)
@@ -76,8 +65,6 @@ public class LevelNode : MonoBehaviour
 
         RefreshGradeDisplay(state, grade);
     }
-
-    // ─── Privados ─────────────────────────────────────────────────────────────
 
     private void RefreshGradeDisplay(NodeState state, LevelGrade grade)
     {

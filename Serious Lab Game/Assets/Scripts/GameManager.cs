@@ -2,11 +2,6 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
-/// <summary>
-/// Manager de lógica del Nivel 1 (encontrar fallas).
-/// Implementa ILevelScorer: calcula la nota dinámicamente
-/// en base a fallas encontradas / fallas totales existentes.
-/// </summary>
 public class GameManager : MonoBehaviour, ILevelScorer
 {
     public static GameManager Instance { get; private set; }
@@ -71,7 +66,6 @@ public class GameManager : MonoBehaviour, ILevelScorer
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
 
-        // Asegurar que el sonido de acierto no se corte con Time.timeScale = 0
         if (goodTick != null) goodTick.ignoreListenerPause = true;
         if (badTick != null) badTick.ignoreListenerPause = true;
     }
@@ -99,7 +93,7 @@ public class GameManager : MonoBehaviour, ILevelScorer
         GetUI().ShowWin(debugScore, foundCount, TotalPoints);
     }
 
-    // ─── API pública ──────────────────────────────────────────────────────────
+    // ─── API ──────────────────────────────────────────────────────────
 
     public void StartGame()
     {
@@ -124,7 +118,6 @@ public class GameManager : MonoBehaviour, ILevelScorer
         if (!gameRunning || GetUI().IsPaused) return;
         if (point.IsFound) return;
 
-        // Reproducir sonido y abrir el panel después del delay
         StartCoroutine(PlaySoundThenShowPanel(point));
     }
 
@@ -147,7 +140,6 @@ public class GameManager : MonoBehaviour, ILevelScorer
         foundCount++;
         GetUI().UpdateProgressDisplay(foundCount, TotalPoints);
 
-        // Reiniciar el contador de clicks incorrectos al acertar
         wrongClickCount = 0;
         GetUI().UpdateClickDisplay(wrongClickCount, maxWrongClicks);
 
@@ -174,11 +166,6 @@ public class GameManager : MonoBehaviour, ILevelScorer
 
     // ─── Audio + Panel ────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Reproduce el sonido de acierto y espera el delay antes de
-    /// abrir el panel de info. Usa WaitForSecondsRealtime para que
-    /// el audio no se corte cuando Time.timeScale pasa a 0.
-    /// </summary>
     private IEnumerator PlaySoundThenShowPanel(ClickPoint point)
     {
         if (goodTick != null) goodTick.Play();
@@ -188,7 +175,6 @@ public class GameManager : MonoBehaviour, ILevelScorer
         GetUI().ShowInfoPanel(point);
     }
 
-    // ─── Fin de partida ───────────────────────────────────────────────────────
 
     private void WinGame()
     {

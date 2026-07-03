@@ -2,12 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Conector visual entre dos nodos del selector de niveles.
-/// Se coloca manualmente en la escena.
-/// Genera segmentos hijos como Images para el efecto punteado —
-/// sin depender de Image.Type.Tiled ni sprites externos.
-/// </summary>
 [RequireComponent(typeof(RectTransform))]
 public class LevelConnector : MonoBehaviour
 {
@@ -24,23 +18,15 @@ public class LevelConnector : MonoBehaviour
     private RectTransform rt;
     private readonly List<GameObject> segments = new();
 
-    // ─── Lifecycle ────────────────────────────────────────────────────────────
-
     private void Awake()
     {
         rt = GetComponent<RectTransform>();
 
-        // Ocultar la Image base — solo usamos los hijos
         var baseImage = GetComponent<Image>();
         if (baseImage != null) baseImage.color = Color.clear;
     }
 
-    // ─── API pública ──────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// completed = true  → línea punteada verde.
-    /// completed = false → línea punteada gris.
-    /// </summary>
     public void Refresh(bool completed)
     {
         ClearSegments();
@@ -48,10 +34,8 @@ public class LevelConnector : MonoBehaviour
         float totalLength = rt.rect.width;
         float height = rt.rect.height;
 
-        // Asignamos el color correspondiente según el estado
         Color color = completed ? completedColor : pendingColor;
 
-        // Bucle unificado: dibuja los segmentos punteados en ambos casos
         float x = 0f;
         while (x + dashLength <= totalLength)
         {
@@ -59,8 +43,6 @@ public class LevelConnector : MonoBehaviour
             x += dashLength + gapLength;
         }
     }
-
-    // ─── Privados ─────────────────────────────────────────────────────────────
 
     private void SpawnSegment(float xOffset, float width, float height, Color color)
     {

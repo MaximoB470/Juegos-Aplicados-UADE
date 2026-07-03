@@ -5,11 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-/// <summary>
-/// Manager de UI del Nivel 2 (EPP).
-/// Antes de mostrar el panel de resultado, revela una por una
-/// las categorías con tilde o cruz animada para generar suspenso.
-/// </summary>
 public class EPPUIManager : MonoBehaviour
 {
     private const string SERVICE_KEY = "EPPUIManager";
@@ -98,7 +93,6 @@ public class EPPUIManager : MonoBehaviour
     private List<EPPOptionSO> currentHandsOptions;
     private List<EPPOptionSO> currentFeetOptions;
 
-    // Índice de la opción seleccionada actualmente en cada categoría
     private int currentHeadIndex;
     private int currentBodyIndex;
     private int currentHandsIndex;
@@ -197,9 +191,7 @@ public class EPPUIManager : MonoBehaviour
         SetEndLevelPanelActive(false);
     }
 
-    /// <summary>
-    /// En vez de mostrar el panel inmediatamente, arranca la secuencia animada.
-    /// </summary>
+
     private void HandleResultReady(EPPResult result)
     {
         if (confirmButton != null) confirmButton.interactable = false;
@@ -226,11 +218,6 @@ public class EPPUIManager : MonoBehaviour
 
     // ─── Animación de reveal ──────────────────────────────────────────────────
 
-    /// <summary>
-    /// Recorre las 4 categorías una por una con pausa de suspenso.
-    /// Muestra tilde o cruz con animación de pop sobre cada imagen.
-    /// Al terminar la última, muestra el panel de resultado.
-    /// </summary>
     private IEnumerator RevealCategoriesSequence(EPPResult result)
     {
         if (musicSource != null && drumLoop != null)
@@ -278,10 +265,7 @@ public class EPPUIManager : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Activa el overlay con sprite y color correctos.
-    /// Anima escala 0 → overshoot → 1 para dar sensación de impacto.
-    /// </summary>
+
     private IEnumerator PopOverlay(Image overlay, bool correct)
     {
         overlay.sprite = correct ? correctSprite : incorrectSprite;
@@ -301,7 +285,6 @@ public class EPPUIManager : MonoBehaviour
         overlay.transform.localScale = Vector3.one;
     }
 
-    /// <summary>Easing con overshoot — da sensación de "stamp" al aparecer.</summary>
     private static float EaseOutBack(float t)
     {
         const float c1 = 1.70158f;
@@ -367,9 +350,6 @@ public class EPPUIManager : MonoBehaviour
         SetResultPanelActive(true);
     }
 
-    /// <summary>
-    /// Reinicia el índice de una categoría a 0 y actualiza su label/imagen.
-    /// </summary>
     private void ResetOption(ref int currentIndex, List<EPPOptionSO> options,
                               TextMeshProUGUI label, Image image)
     {
@@ -377,11 +357,6 @@ public class EPPUIManager : MonoBehaviour
         RefreshOptionDisplay(currentIndex, options, label, image);
     }
 
-    /// <summary>
-    /// Avanza o retrocede el índice de una categoría (con wrap-around)
-    /// y actualiza su label/imagen.
-    /// direction = -1 (botón "atrás") o +1 (botón "adelante").
-    /// </summary>
     private void StepOption(ref int currentIndex, List<EPPOptionSO> options, int direction,
                              TextMeshProUGUI label, Image image)
     {
@@ -393,18 +368,13 @@ public class EPPUIManager : MonoBehaviour
         PlayOptionButtonSound();
     }
 
-    /// <summary>
-    /// Reproduce el sonido asignado para los botones de anterior/siguiente.
-    /// </summary>
     private void PlayOptionButtonSound()
     {
         if (optionButtonAudioSource != null && optionButtonClip != null)
             optionButtonAudioSource.PlayOneShot(optionButtonClip);
     }
 
-    /// <summary>
-    /// Actualiza el texto y la imagen para mostrar la opción en currentIndex.
-    /// </summary>
+
     private void RefreshOptionDisplay(int currentIndex, List<EPPOptionSO> options,
                                        TextMeshProUGUI label, Image image)
     {

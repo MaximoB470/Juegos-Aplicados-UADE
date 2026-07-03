@@ -1,9 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Define una opción de respuesta dentro de una situación del quiz.
-/// Creá uno por opción: clic derecho → Create → Quiz → QuizOption
-/// </summary>
+
 [CreateAssetMenu(fileName = "QuizOption", menuName = "Quiz/QuizOption")]
 public class QuizOptionSO : ScriptableObject
 {

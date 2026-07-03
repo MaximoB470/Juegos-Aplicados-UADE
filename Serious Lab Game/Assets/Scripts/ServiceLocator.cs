@@ -45,7 +45,6 @@ public class ServiceLocator : MonoBehaviour
 
     public void SetService(string serviceName, MonoBehaviour value)
     {
-        // Sobrescribimos el valor si ya existe para limpiar referencias a objetos destruidos
         servicesByName[serviceName] = value;
     }
 

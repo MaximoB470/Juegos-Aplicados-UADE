@@ -31,14 +31,11 @@ public class BackgroundClickDetector : MonoBehaviour
             wrongClickFeedback.gameObject.SetActive(false);
         }
     }
-
-    // BackgroundClickDetector.cs
     private void Update()
     {
         if (!Input.GetMouseButtonDown(0)) return;
         if (UIManager.Instance.IsPaused) return;
 
-        // Si el click fue sobre un elemento de UI (botón, panel, etc.), lo ignoramos
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 
@@ -64,10 +61,6 @@ public class BackgroundClickDetector : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────────
-    // Feedback visual de click incorrecto
-    // ─────────────────────────────────────────────
-
     private void ShowWrongClickFeedback(Vector2 screenPosition)
     {
         if (wrongClickFeedback == null || canvas == null) return;
@@ -83,7 +76,6 @@ public class BackgroundClickDetector : MonoBehaviour
 
         wrongClickFeedback.localPosition = localPoint;
 
-        // Si ya hay una animación en curso, la cortamos para reiniciarla en la nueva posición
         if (feedbackCoroutine != null)
             StopCoroutine(feedbackCoroutine);
 
@@ -96,7 +88,6 @@ public class BackgroundClickDetector : MonoBehaviour
         wrongClickFeedback.localScale = Vector3.zero;
         feedbackCanvasGroup.alpha = 1f;
 
-        // Aparece y se agranda
         float t = 0f;
         while (t < growTime)
         {
@@ -107,10 +98,8 @@ public class BackgroundClickDetector : MonoBehaviour
         }
         wrongClickFeedback.localScale = Vector3.one * maxScale;
 
-        // Se mantiene visible un momento
         yield return new WaitForSecondsRealtime(holdTime);
 
-        // Desaparece (fade out)
         t = 0f;
         while (t < fadeTime)
         {

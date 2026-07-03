@@ -2,11 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Manager de lógica del Nivel 3 (Quiz).
-/// Implementa ILevelScorer:
-///   nota = (respuestas correctas / total de preguntas) * 10
-/// </summary>
+
 public class QuizGameManager : MonoBehaviour, ILevelScorer
 {
     private const string SERVICE_KEY = "QuizGameManager";
@@ -18,7 +14,6 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
     [Header("Preguntas del quiz (se mezclan al iniciar)")]
     [SerializeField] private List<QuizSituationSO> situations;
 
-    // Orden mezclado de opciones para la pregunta actual (no modifica el asset)
     private List<QuizOptionSO> _shuffledOptions;
 
     [Header("Timer por pregunta")]
@@ -33,10 +28,6 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
 
     public int LevelIndex => levelIndex;
 
-    /// <summary>
-    /// Nota = (respuestas correctas / total de preguntas) * 10.
-    /// Las preguntas no respondidas (timeout) cuentan como incorrectas.
-    /// </summary>
     public float CalculateScore()
     {
         if (situations == null || situations.Count == 0) return 0f;
@@ -49,8 +40,6 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
     public event Action<QuizOptionSO, bool> OnAnswerResult;
     public event Action<float, float> OnTimerUpdated;
     public event Action OnTimeOut;
-
-    /// <summary>correct, total, score 0-10</summary>
     public event Action<int, int, float> OnQuizComplete;
 
     // ─── Lifecycle ────────────────────────────────────────────────────────────
@@ -110,7 +99,6 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
         OnQuizComplete = null;
     }
 
-    // ─── API pública ──────────────────────────────────────────────────────────
 
     public void SubmitAnswer(QuizOptionSO option)
     {
@@ -139,7 +127,6 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
         }
     }
 
-    // ─── Privados ─────────────────────────────────────────────────────────────
 
     private void LoadCurrentSituation()
     {
@@ -149,7 +136,6 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
             return;
         }
 
-        // Copia las opciones del asset y las mezcla sin modificar el ScriptableObject
         _shuffledOptions = new List<QuizOptionSO>(situations[currentIndex].options);
         ShuffleList(_shuffledOptions);
 
@@ -166,15 +152,8 @@ public class QuizGameManager : MonoBehaviour, ILevelScorer
         gradeService?.SubmitGrade(levelIndex, score);
     }
 
-    /// <summary>
-    /// Devuelve las opciones de la pregunta actual ya mezcladas.
-    /// El UI debe usar esta lista en lugar de situation.options directamente.
-    /// </summary>
     public IReadOnlyList<QuizOptionSO> GetCurrentOptions() => _shuffledOptions;
 
-    /// <summary>
-    /// Fisher-Yates shuffle genérico. Modifica la lista in-place.
-    /// </summary>
     private static void ShuffleList<T>(List<T> list)
     {
         for (int i = list.Count - 1; i > 0; i--)

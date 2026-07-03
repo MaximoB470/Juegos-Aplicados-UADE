@@ -2,11 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Controla el panel del diploma en la escena del selector de niveles.
-/// Se activa cuando todos los niveles están aprobados.
-/// Completa automáticamente el nombre del jugador en el diploma.
-/// </summary>
 public class DiplomaController : MonoBehaviour
 {
     [Header("Botón de diploma (en el mapa)")]
@@ -22,7 +17,6 @@ public class DiplomaController : MonoBehaviour
     private GradeService         gradeService;
     private PlayerProfileService profileService;
 
-    // ─── Lifecycle ───────────────────────────────────────────────────────────
 
     private void Start()
     {
@@ -37,7 +31,6 @@ public class DiplomaController : MonoBehaviour
 
         diplomaPanel?.SetActive(false);
 
-        // Estado inicial del botón
         RefreshDiplomaButton();
     }
 
@@ -67,7 +60,6 @@ public class DiplomaController : MonoBehaviour
         diplomaPanel?.SetActive(false);
     }
 
-    // ─── Helpers ─────────────────────────────────────────────────────────────
 
     private void RefreshDiplomaButton()
     {
