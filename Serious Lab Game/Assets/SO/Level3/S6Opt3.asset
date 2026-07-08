@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S6Opt3
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Envolver la mano en un papel de aluminio o tela para protegerla y
-    continuar la pr\xE1ctica"
+  optionText: Envolver la mano y seguir la practica
   isCorrect: 0
-  incorrectFeedback: "Envolver una quemadura sin enfriarla primero es contraproducente:
-    el calor queda atrapado y contin\xFAa da\xF1ando los tejidos. Cubrir la herida
-    con materiales no est\xE9riles tambi\xE9n aumenta el riesgo de infecci\xF3n.
-    Y continuar la pr\xE1ctica con una herida activa no solo es peligroso para vos,
-    sino que compromete la seguridad del experimento. Siempre se prioriza la atenci\xF3n
-    de la persona."
+  incorrectFeedback: "Si la envolves sin enfriar, el calor sigue da\xF1ando la piel.
+    Primero agua fresca; la practica se detiene."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

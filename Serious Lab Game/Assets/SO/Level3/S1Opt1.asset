@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S1Opt1
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Frotarte los ojos con las manos para sacar el l\xEDquido"
+  optionText: Frotarte los ojos para sacar el liquido
   isCorrect: 0
-  incorrectFeedback: "Frotarse los ojos es uno de los errores m\xE1s peligrosos en
-    esta situaci\xF3n. El movimiento mec\xE1nico dispersa el qu\xEDmico hacia zonas
-    no afectadas de la c\xF3rnea y puede introducir part\xEDculas adicionales. \r\nAdem\xE1s,
-    las manos suelen tener restos de otras sustancias del laboratorio. La acci\xF3n
-    correcta es dirigirse inmediatamente a la estaci\xF3n de lavado ocular."
+  incorrectFeedback: "No te frotes: podes expandir el quimico y lastimar mas el
+    ojo. Anda directo al lavaojos."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

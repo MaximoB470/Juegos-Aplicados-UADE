@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S2Opt1
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: Juntar los vidrios rotos con la mano sana para limpiar la zona antes
-    de atenderte
+  optionText: Juntar los vidrios con la mano sana
   isCorrect: 0
-  incorrectFeedback: "Nunca deb\xE9s recoger vidrios rotos de laboratorio con las
-    manos, ni siquiera con guantes finos, ya que los fragmentos pueden atravesarlos.
-    Adem\xE1s, con una herida activa, tu prioridad es la atenci\xF3n inmediata, no
-    la limpieza. Los vidrios rotos deben recogerse con escoba y pala, nunca manualmente,
-    y esa tarea la realiza otra persona mientras vos recib\xEDs atenci\xF3n."
+  incorrectFeedback: "Nunca juntes vidrio con la mano. Primero atende la herida;
+    los vidrios se limpian con escoba y pala."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

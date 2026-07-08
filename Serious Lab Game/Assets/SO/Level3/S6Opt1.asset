@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S6Opt1
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Poner manteca o pasta dental sobre la zona quemada para calmar el ardor"
+  optionText: Poner manteca o pasta dental
   isCorrect: 0
-  incorrectFeedback: "Aplicar manteca, pasta dental u otros productos caseros sobre
-    una quemadura es una pr\xE1ctica peligrosa y desaconsejada por los protocolos
-    m\xE9dicos. Estos productos retienen el calor en la piel, favorecen infecciones
-    y dificultan la evaluaci\xF3n de la quemadura. El tratamiento correcto es enfriar
-    la zona con agua fresca corriente durante al menos 10 minutos y luego buscar
-    atenci\xF3n."
+  incorrectFeedback: "No uses remedios caseros: pueden retener calor e infectar.
+    Enfria con agua fresca y avisa."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

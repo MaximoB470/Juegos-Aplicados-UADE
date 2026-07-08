@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S2Opt2
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: Sacarte el guante, revisarte el corte y esperar a que deje de sangrar
-    solo
+  optionText: Revisar el corte y esperar a que pare solo
   isCorrect: 0
-  incorrectFeedback: "Esperar a que un corte de laboratorio cese espont\xE1neamente
-    es peligroso por dos razones. Primero, los cortes con vidrio suelen ser m\xE1s
-    profundos de lo que parecen y pueden requerir atenci\xF3n m\xE9dica. Segundo,
-    en un laboratorio existe riesgo de contaminaci\xF3n de la herida con sustancias
-    qu\xEDmicas presentes en la mesada. Siempre se debe aplicar presi\xF3n, avisar
-    al docente y buscar el botiqu\xEDn de primeros auxilios de forma inmediata."
+  incorrectFeedback: "No esperes: un corte con vidrio puede ser profundo o contaminarse.
+    Presiona la herida y avisa al docente."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

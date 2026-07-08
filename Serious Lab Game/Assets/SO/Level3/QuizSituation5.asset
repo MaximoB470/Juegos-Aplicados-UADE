@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba59874f1bb3d3647b62a1a0b18df633, type: 3}
   m_Name: QuizSituation5
   m_EditorClassIdentifier: Assembly-CSharp::QuizSituationSO
-  situationText: "Al calentar una sustancia con mechero, los vapores se inflaman
-    y se genera una llama peque\xF1a sobre el recipiente en la mesada. La llama es
-    visible pero todav\xEDa es controlable. El resto del grupo est\xE1 trabajando
-    cerca. \xBFC\xF3mo respond\xE9s?"
+  situationText: "Al calentar una sustancia, aparece una llama chica sobre el recipiente.
+    Todavia parece controlable y hay gente cerca. \xBFComo respondes?"
   options:
   - {fileID: 11400000, guid: d2a9a7f7aa1a74347a06210796ca65eb, type: 2}
   - {fileID: 11400000, guid: 90d5b3e5d5bedf24a8d9b46faab6e577, type: 2}

@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S7Opt3
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Mantenerlo en reposo sin moverlo, avisar al docente y pedir asistencia
-    m\xE9dica de inmediato"
+  optionText: No moverlo, avisar y pedir asistencia medica
   isCorrect: 1
   incorrectFeedback: 
-  correctFeedback: "\xA1Correcto! Ante un golpe en la cabeza con s\xEDntomas como
-    visi\xF3n borrosa o aturdimiento, la regla es no mover a la persona hasta que
-    un profesional lo eval\xFAe. Mant\xE9nelo tranquilo, en reposo, y asegurate de
-    que su v\xEDa a\xE9rea est\xE9 despejada. Avis\xE1 al docente de forma inmediata
-    y solicit\xE1 asistencia m\xE9dica. Este tipo de s\xEDntomas puede indicar una
-    conmoci\xF3n cerebral y nunca debe subestimarse."
+  correctFeedback: "\xA1Correcto! No lo muevas, mantenelo tranquilo y avisa al docente.
+    Vision borrosa o aturdimiento requieren asistencia medica."

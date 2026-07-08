@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S2Opt3
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Presionar la herida con un pa\xF1o limpio, avisar al docente y dirigirte
-    al botiqu\xEDn de primeros auxilios"
+  optionText: Presionar la herida, avisar y usar el botiquin
   isCorrect: 1
   incorrectFeedback: 
-  correctFeedback: "\xA1Correcto! El protocolo ante un corte en laboratorio es: aplicar
-    presi\xF3n directa sobre la herida con un material limpio para controlar el sangrado,
-    notificar al docente o responsable inmediatamente, y acceder al botiqu\xEDn de
-    primeros auxilios. \r\nSi el corte es profundo o no cede el sangrado, se debe
-    buscar atenci\xF3n m\xE9dica. Record\xE1 que los vidrios del piso deben se\xF1alizarse
-    para que nadie los pise y limpiarse con escoba, nunca con las manos."
+  correctFeedback: "\xA1Correcto! Presiona con material limpio, avisa al docente
+    y usa el botiquin. Si no deja de sangrar, se busca atencion medica."

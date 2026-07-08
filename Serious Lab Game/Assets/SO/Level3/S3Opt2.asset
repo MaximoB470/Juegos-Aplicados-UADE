@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S3Opt2
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Tapar el recipiente con la mano para detener la reacci\xF3n y evitar
-    que se derrame"
+  optionText: Tapar el recipiente con la mano
   isCorrect: 0
-  incorrectFeedback: "Tapar un recipiente con una reacci\xF3n activa e inesperada
-    es extremadamente peligroso. La acumulaci\xF3n de gases bajo presi\xF3n puede
-    causar una explosi\xF3n o proyecci\xF3n violenta del contenido. \r\nTampoco deb\xE9s
-    intentar enfriar el recipiente con agua ni moverlo si la reacci\xF3n es intensa.
-    La acci\xF3n correcta es alejarse, ventilar y notificar al docente para que eval\xFAe
-    la situaci\xF3n con el conocimiento y el equipo adecuados."
+  incorrectFeedback: "No lo tapes: los gases pueden acumular presion y hacer saltar
+    el contenido. Alejate y avisa al docente."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

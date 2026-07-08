@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S5Opt1
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Soplar la llama con fuerza para apagarla r\xE1pidamente"
+  optionText: Soplar la llama para apagarla rapido
   isCorrect: 0
-  incorrectFeedback: "Soplar una llama en el laboratorio es extremadamente peligroso.
-    El aire puede dispersar el fuego hacia otros materiales inflamables de la mesada,
-    propagar brasas o intensificar la combusti\xF3n si hay vapores presentes. Nunca
-    se debe soplar sobre fuego en un entorno qu\xEDmico. La acci\xF3n correcta es
-    apagar el mechero, cubrir la llama si es posible y alertar al docente."
+  incorrectFeedback: "No soples fuego en el laboratorio: podes esparcir la llama
+    o encender vapores. Corta el calor y avisa."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

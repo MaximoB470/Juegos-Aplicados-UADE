@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S7Opt2
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Darle agua y decirle que respire hondo hasta que se le pase"
+  optionText: Darle agua y esperar que se le pase
   isCorrect: 0
-  incorrectFeedback: "Aunque la intenci\xF3n es buena, darle agua o pedirle que respire
-    hondo no atiende el problema real: un posible traumatismo cr\xE1neo. La visi\xF3n
-    borrosa puede indicar una conmoci\xF3n cerebral u otras lesiones que requieren
-    evaluaci\xF3n m\xE9dica. No se debe minimizar el incidente esperando que se recupere
-    solo. Es imprescindible avisar al docente y solicitar atenci\xF3n m\xE9dica."
+  incorrectFeedback: "Agua y respiracion no resuelven un golpe en la cabeza. La vision
+    borrosa es alerta: avisa y pedi asistencia."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

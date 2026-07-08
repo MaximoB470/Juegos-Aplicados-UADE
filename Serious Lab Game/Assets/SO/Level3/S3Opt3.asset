@@ -12,14 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S3Opt3
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: Alejarte del recipiente, avisar al docente inmediatamente y ventilar
-    el ambiente abriendo ventanas
+  optionText: Alejarte, avisar al docente y ventilar
   isCorrect: 1
   incorrectFeedback: 
-  correctFeedback: "\xA1Correcto! Ante una reacci\xF3n qu\xEDmica inesperada, el
-    protocolo es alejarse de la fuente, no intentar intervenir por cuenta propia,
-    y notificar de inmediato al docente o responsable del laboratorio. Ventilar el
-    espacio abriendo ventanas y puertas ayuda a disipar posibles vapores t\xF3xicos.
-    Si la situaci\xF3n escala (humo denso, llamas, olor muy intenso) se debe activar
-    el protocolo de evacuaci\xF3n. Record\xE1: en laboratorio, ante la duda, alejarse
-    y avisar siempre es la respuesta correcta."
+  correctFeedback: "\xA1Correcto! Ante una reaccion inesperada, no improvises: alejate,
+    ventila y avisa. Si escala, se evacua."

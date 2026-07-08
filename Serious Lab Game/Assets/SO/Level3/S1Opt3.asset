@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S1Opt3
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Ir a la estaci\xF3n de lavado ocular y mantener los ojos abiertos
-    bajo el chorro al menos 15 minutos"
+  optionText: Ir al lavaojos y lavar con los ojos abiertos
   isCorrect: 1
   incorrectFeedback: 
-  correctFeedback: "\xA1Correcto! La estaci\xF3n de lavado ocular es el dispositivo
-    espec\xEDfico para esta emergencia. Deb\xE9s mantener los p\xE1rpados abiertos
-    con los dedos, aunque sea dif\xEDcil por el reflejo, y dejar correr agua durante
-    un m\xEDnimo de 15 minutos continuos. Luego report\xE1 el incidente al docente
-    y busc\xE1 atenci\xF3n m\xE9dica aunque los s\xEDntomas hayan cedido, ya que
-    algunos qu\xEDmicos tienen efectos retardados."
+  correctFeedback: "\xA1Correcto! Usa el lavaojos, mantenelos abiertos y lava por
+    15 minutos. Despues avisale al docente y busca atencion medica."

@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S5Opt3
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Apagar el mechero, alertar al docente y alejarte junto con tus compa\xF1eros
-    de la zona"
+  optionText: Apagar el mechero, avisar y alejar al grupo
   isCorrect: 1
   incorrectFeedback: 
-  correctFeedback: "\xA1Correcto! Ante un incendio peque\xF1o en la mesada, lo primero
-    es cortar la fuente de calor apagando el mechero para no seguir alimentando la
-    llama. Luego alert\xE1 al docente de inmediato; \xE9l/ella conoce la ubicaci\xF3n
-    del extintor y el tipo de fuego con el que se trata. Alej\xE1 al grupo de la
-    zona de riesgo. Si el fuego escala y no puede ser controlado, se activa el protocolo
-    de evacuaci\xF3n del laboratorio."
+  correctFeedback: "\xA1Correcto! Primero corta la fuente de calor. Luego avisa al
+    docente y aleja al grupo; si crece, se evacua."

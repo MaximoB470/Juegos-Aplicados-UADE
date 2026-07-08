@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba59874f1bb3d3647b62a1a0b18df633, type: 3}
   m_Name: QuizSituation6
   m_EditorClassIdentifier: Assembly-CSharp::QuizSituationSO
-  situationText: "Sin darte cuenta, agarr\xE1s con la mano sin guante un recipiente
-    de vidrio que estuvo en contacto con el mechero. Sent\xEDs un dolor agudo inmediato
-    y ves que la piel de tus dedos est\xE1 enrojecida. \xBFCu\xE1l es la respuesta
-    correcta?"
+  situationText: "Agarras sin guante un recipiente caliente. Te duele y los dedos
+    se ponen rojos. \xBFCual es la respuesta correcta?"
   options:
   - {fileID: 11400000, guid: 94bc49e62b378ab47a41fe725fbc6f6f, type: 2}
   - {fileID: 11400000, guid: 80315a64e5e518c4ba451865792b96ec, type: 2}

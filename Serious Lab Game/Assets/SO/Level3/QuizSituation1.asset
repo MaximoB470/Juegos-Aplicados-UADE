@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba59874f1bb3d3647b62a1a0b18df633, type: 3}
   m_Name: QuizSituation1
   m_EditorClassIdentifier: Assembly-CSharp::QuizSituationSO
-  situationText: "Est\xE1s trabajando con \xE1cido ac\xE9tico diluido en la mesada.
-    Al agitar el recipiente sin taparlo, una peque\xF1a salpicadura entra en contacto
-    directo con tus ojos. Sent\xEDs ardor intenso, lagrimeo y tu visi\xF3n se vuelve
-    borrosa. \xBFCu\xE1l es la primera acci\xF3n que deb\xE9s tomar?"
+  situationText: "Te salpica acido diluido en los ojos. Te arde, lagrimeas y ves
+    borroso. \xBFCual es la primera accion correcta?"
   options:
   - {fileID: 11400000, guid: 7bba83987b5941841844e3ccd5937d95, type: 2}
   - {fileID: 11400000, guid: f7e89968424cf434e8ee2400813fb95f, type: 2}

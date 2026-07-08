@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S3Opt1
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: Acercar la nariz al recipiente para identificar mejor el olor del vapor
+  optionText: Acercar la nariz para oler mejor el vapor
   isCorrect: 0
-  incorrectFeedback: "Nunca deb\xE9s inhalar directamente vapores de laboratorio,
-    especialmente de una reacci\xF3n no controlada. Muchos gases producidos en reacciones
-    inesperadas son t\xF3xicos, irritantes o incluso asfixiantes a concentraciones
-    que el olfato no puede advertir a tiempo. Si necesit\xE1s percibir un olor en
-    laboratorio, la t\xE9cnica correcta es abanicar suavemente con la mano para dirigir
-    una peque\xF1a cantidad de vapor hacia la nariz, nunca aspirar directamente del
-    recipiente."
+  incorrectFeedback: "Nunca inhales vapores directamente: pueden ser toxicos o irritantes.
+    Alejate y avisa."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

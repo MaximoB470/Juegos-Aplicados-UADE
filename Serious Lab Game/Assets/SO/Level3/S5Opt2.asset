@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S5Opt2
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Echarle agua de tu vaso de precipitados para apagar la llama"
+  optionText: Tirarle agua al fuego
   isCorrect: 0
-  incorrectFeedback: "Echar agua sobre llamas de origen qu\xEDmico puede ser muy peligroso.
-    Algunas sustancias reaccionan violentamente con el agua, produciendo salpicaduras
-    o intensificando el fuego. El agua tampoco es efectiva en fuegos de origen org\xE1nico
-    o de solventes. Lo correcto es cortar la fuente de calor (apagar el mechero),
-    cubrir el recipiente con una tapa o pa\xF1o ignifugo si est\xE1 disponible, y
-    avisar al docente."
+  incorrectFeedback: "El agua puede empeorar algunos fuegos quimicos o causar salpicaduras.
+    Apaga el mechero y avisa al docente."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

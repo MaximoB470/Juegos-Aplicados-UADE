@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S1Opt2
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: Ir a la canilla de la mesada y enjuagarte con agua
+  optionText: Enjuagarte en la canilla de la mesada
   isCorrect: 0
-  incorrectFeedback: "Aunque el instinto de usar la canilla m\xE1s cercana es comprensible,
-    las canillas comunes de laboratorio no est\xE1n dise\xF1adas para emergencias
-    oculares. La presi\xF3n del agua puede ser demasiado alta y causar da\xF1o adicional
-    en la c\xF3rnea, y la posici\xF3n inc\xF3moda impide un lavado completo y uniforme.
-    Las estaciones de lavado ocular regulan el flujo y la presi\xF3n espec\xEDficamente
-    para este tipo de emergencia."
+  incorrectFeedback: "La canilla comun no esta pensada para ojos: puede tener mala
+    presion y lavar mal. Usa la estacion de lavado ocular."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

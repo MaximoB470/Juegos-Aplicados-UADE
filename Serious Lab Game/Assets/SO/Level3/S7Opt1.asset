@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db7648d60c9f56488c28520a2113121, type: 3}
   m_Name: S7Opt1
   m_EditorClassIdentifier: Assembly-CSharp::QuizOptionSO
-  optionText: "Ayudarlo a levantarse r\xE1pidamente para que no siga en el piso"
+  optionText: Ayudarlo a levantarse rapido
   isCorrect: 0
-  incorrectFeedback: "Mover a una persona que acaba de recibir un golpe en la cabeza
-    sin evaluaci\xF3n previa puede ser muy peligroso. Existe riesgo de lesi\xF3n cervical
-    o de empeorar una posible conmoci\xF3n cerebral. La visi\xF3n borrosa es un s\xEDntoma
-    de alerta. Lo correcto es mantenerlo en reposo en el lugar, sin moverlo, avisar
-    al docente y pedir asistencia m\xE9dica si los s\xEDntomas persisten."
+  incorrectFeedback: "No lo levantes: con golpe en la cabeza puede haber lesion cervical
+    o conmocion. Dejalo quieto y avisa."
   correctFeedback: "\xA1Correcto! Esta es la acci\xF3n adecuada porque..."

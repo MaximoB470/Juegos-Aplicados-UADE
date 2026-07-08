@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba59874f1bb3d3647b62a1a0b18df633, type: 3}
   m_Name: QuizSituation2
   m_EditorClassIdentifier: Assembly-CSharp::QuizSituationSO
-  situationText: "Al limpiar la mesada despu\xE9s de un experimento, un vaso de precipitados
-    fisurado se rompe en tu mano. Ten\xE9s un corte profundo en la palma que sangra
-    de forma continua. Los fragmentos de vidrio est\xE1n esparcidos sobre la mesada
-    y en el piso alrededor tuyo. \n\xBFCu\xE1l es la secuencia de acciones correcta?"
+  situationText: "Un vaso fisurado se rompe en tu mano. Tenes un corte que sangra
+    y hay vidrios en la mesada. \xBFQue haces primero?"
   options:
   - {fileID: 11400000, guid: fa08ef050f5fba04d8276f97391e51d4, type: 2}
   - {fileID: 11400000, guid: 29ec9d845a16ede479123e9fe63f8c62, type: 2}
