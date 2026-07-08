@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: Nivel 1
   sceneName: Level1
+  infoTitle: Nivel 1 - Identificacion de Fallas de Seguridad
   levelIcon: {fileID: 0}
-  description: "Descripci\xF3n del nivel."
+  description: Observa una escena de laboratorio con errores de seguridad, identifica
+    cada falla haciendo click y aprende por que representa un riesgo.

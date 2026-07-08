@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: Nivel 2
   sceneName: Level2
+  infoTitle: Nivel 2 - Seleccion de Equipamiento de Proteccion Personal
   levelIcon: {fileID: 0}
-  description: "Descripci\xF3n del nivel."
+  description: Elegi el equipamiento de proteccion correcto para cada situacion de
+    laboratorio, cubriendo cabeza, cuerpo, manos y pies.

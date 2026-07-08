@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelSelectorManager : MonoBehaviour
 {
@@ -11,8 +13,14 @@ public class LevelSelectorManager : MonoBehaviour
     [Tooltip("Conector 0 = línea entre nodo 0 y nodo 1, etc.")]
     [SerializeField] private List<LevelConnector> connectors;
 
+    [Header("Panel de informacion")]
+    [SerializeField] private GameObject infoPanel;
+
     private LevelProgressService progressService;
     private GradeService gradeService;
+    private TMP_Text levelTitleText;
+    private TMP_Text levelDescriptionText;
+    private LevelNode selectedNode;
 
     private void Start()
     {
@@ -28,6 +36,8 @@ public class LevelSelectorManager : MonoBehaviour
         if (gradeService != null)
             gradeService.OnGradeSubmitted += OnGradeSubmitted;
 
+        CacheInfoPanelReferences();
+        CloseInfoPanel();
         Refresh();
     }
 
@@ -110,6 +120,61 @@ public class LevelSelectorManager : MonoBehaviour
             return;
         }
 
-        SceneManager.LoadScene(node.levelData.sceneName);
+        selectedNode = node;
+
+        if (levelTitleText != null)
+            levelTitleText.text = string.IsNullOrWhiteSpace(node.levelData.infoTitle)
+                ? node.levelData.levelName
+                : node.levelData.infoTitle;
+
+        if (levelDescriptionText != null)
+            levelDescriptionText.text = node.levelData.description;
+
+        if (infoPanel != null)
+            infoPanel.SetActive(true);
+    }
+
+    public void ContinueToSelectedLevel()
+    {
+        if (selectedNode == null || selectedNode.levelData == null)
+        {
+            Debug.LogWarning("[LevelSelectorManager] No hay nivel seleccionado para continuar.");
+            return;
+        }
+
+        SceneManager.LoadScene(selectedNode.levelData.sceneName);
+    }
+
+    public void CloseInfoPanel()
+    {
+        selectedNode = null;
+
+        if (infoPanel != null)
+            infoPanel.SetActive(false);
+    }
+
+    private void CacheInfoPanelReferences()
+    {
+        if (infoPanel == null)
+        {
+            Debug.LogWarning("[LevelSelectorManager] InfoPanel no asignado.");
+            return;
+        }
+
+        foreach (TMP_Text text in infoPanel.GetComponentsInChildren<TMP_Text>(true))
+        {
+            if (text.name == "Title")
+                levelTitleText = text;
+            else if (text.name == "Description")
+                levelDescriptionText = text;
+        }
+
+        foreach (Button button in infoPanel.GetComponentsInChildren<Button>(true))
+        {
+            if (button.name == "ContinueButton")
+                button.onClick.AddListener(ContinueToSelectedLevel);
+            else if (button.name == "GoBackButton")
+                button.onClick.AddListener(CloseInfoPanel);
+        }
     }
 }
